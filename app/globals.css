@@ -1,0 +1,52 @@
+@import "tailwindcss";
+@import "./theme/dark.css";
+@import "./theme/sepia.css";
+@import "./theme/monochrome.css";
+
+@theme {
+  --font-outfit: "Outfit", "sans-serif";
+  /* gray */
+  --color-gray-110: #f4f4f4;
+  --color-gray-120: #d1d5dc;
+  --color-gray-130: #939393;
+  /* text-bold-color */
+  --color-gray-140: #5c5c5c;
+
+  /* orange */
+
+  /* bg-color */
+  --color-orange-101: #fff8ed;
+  /* linear-color */
+  --color-orange-110: #f97916;
+  --color-orange-120: #eab308;
+  /* mid-linear-color */
+  --color-orange-140: #f1960f;
+  /* text-highlight-color */
+  --color-orange-150: #ffb333;
+
+  /* blue */
+  --color-blue-110: #edf5fa;
+}
+body {
+  color: var(--color-black);
+  background: var(--color-white);
+}
+
+.container {
+  @apply !max-w-screen-xl xl:!px-0;
+}
+
+.light .img-dark {
+  display: none;
+}
+
+.dark .img-light {
+  display: none;
+}
+.hide-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.hide-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}

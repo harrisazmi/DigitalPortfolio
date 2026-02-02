@@ -1,0 +1,21 @@
+.monochrome {
+  /* gray - warm neutrals */
+  --color-gray-110: #f5f1e6;
+  --color-gray-120: #d6cdbd;
+  --color-gray-130: #8f8573;
+
+  /* orange */
+
+  /* bg-color */
+  --color-orange-101: #fef8e2;
+  /* linear-color */
+  --color-orange-110: #d88c3b;
+  --color-orange-120: #c2932e;
+  /* mid-linear-color */
+  --color-orange-140: #e0a042;
+  /* text-highlight-color */
+  --color-orange-150: #ffc66b;
+
+  /* blue (shifted to deep teal/brown tones) */
+  --color-blue-110: #e7dfcd;
+}

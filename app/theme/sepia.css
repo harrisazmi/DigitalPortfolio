@@ -1,0 +1,21 @@
+.sepia {
+  /* gray - pure grayscale shades */
+  --color-gray-110: #f2f2f2;
+  --color-gray-120: #bdbdbd;
+  --color-gray-130: #7a7a7a;
+
+  /* orange (converted to grayscale equivalent) */
+
+  /* bg-color */
+  --color-orange-101: #eaeaea;
+  /* linear-color */
+  --color-orange-110: #a0a0a0;
+  --color-orange-120: #c4c4c4;
+  /* mid-linear-color */
+  --color-orange-140: #b1b1b1;
+  /* text-highlight-color */
+  --color-orange-150: #d6d6d6;
+
+  /* blue (converted to cool gray tone) */
+  --color-blue-110: #dfe3e6;
+}

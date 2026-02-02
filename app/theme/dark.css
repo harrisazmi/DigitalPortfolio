@@ -1,0 +1,29 @@
+.dark {
+  /* black */
+  --color-black: #ffffff;
+
+  /* white */
+  --color-white: #000000;
+
+  /* gray - darker neutrals for background and borders */
+  --color-gray-110: #1e1e1e; /* base background */
+  --color-gray-120: #3a3a3a; /* border / neutral elements */
+  --color-gray-130: #a1a1a1; /* muted text */
+  /* text-bold-color */
+  --color-gray-140: #c7c7c7;
+
+  /* orange */
+
+  /* bg-color */
+  --color-orange-101: #2b1b0f; /* subtle warm background for dark mode */
+  /* linear-color */
+  --color-orange-110: #ff9234; /* brighter orange pop */
+  --color-orange-120: #facc15; /* vibrant yellow-orange for gradients */
+  /* mid-linear-color */
+  --color-orange-140: #fbbf24; /* intermediate warm hue */
+  /* text-highlight-color */
+  --color-orange-150: #ffcc80; /* soft but noticeable highlight */
+
+  /* blue */
+  --color-blue-110: #102a43; /* dark bluish tone for background or subtle accents */
+}

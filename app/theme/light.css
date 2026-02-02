@@ -1,0 +1,5 @@
+.light {
+  /* Background - White */
+  --color-white-hover: var(--color-gray-50);
+  --color-white-disabled: var(--color-gray-100) / 0.4;
+}
