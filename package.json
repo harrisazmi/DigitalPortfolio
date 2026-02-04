@@ -1,7 +1,8 @@
 {
-  "name": "sample",
-  "version": "1.0.0",
-  "description": "A blank template to get started with Payload 3.0",
+  "name": "digitalportfolio",
+  "version": "2.0.0",
+  "private": true,
+  "description": "Modern Next.js portfolio powered by Payload CMS",
   "license": "MIT",
   "type": "module",
   "scripts": {
