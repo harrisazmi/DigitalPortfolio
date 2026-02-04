@@ -1,123 +1,67 @@
-# 🌐 Online Portfolio v2
+# Payload Blank Template
 
-A modern, cloud-deployed personal portfolio designed to showcase professional skills, technical projects, and career achievements. Built with a focus on performance, accessibility, and continuous delivery, the portfolio reflects a commitment to clean UI/UX, scalable architecture, and real-world DevOps practices.
+This template comes configured with the bare minimum to get started on anything you need.
 
-> **Live Demo:** [View Portfolio](https://portfoliocf.harrisviewcodes.uk/)  
-> **Live Legacy:** [View Portfolio](https://Legacy1portfoliocf.harrisviewcodes.uk/)  
-> **Source Code:** [GitHub Repository](https://github.com/harrisazmi/OnlinePortfolioV2)  
-> **Report Issues:** [GitHub Issues](https://github.com/harrisazmi/OnlinePortfolioV2/issues)
+## Quick start
 
----
+This template can be deployed directly from our Cloud hosting and it will setup MongoDB and cloud S3 object storage for media.
 
-## 📌 Why I Built This
+## Quick Start - local setup
 
-While digital resumes and static PDFs serve their purpose, they often fall short in showcasing technical depth, real-time updates, and interactivity. I realized my traditional resume lacked flexibility and didn’t truly reflect the way I work or what I’ve built.
+To spin up this template locally, follow these steps:
 
-This portfolio solves that by offering:
+### Clone
 
-- A dynamic and interactive format for showcasing my professional journey
-- A centralized place to explore my experience, skills, and technical projects
-- Mobile and print-friendly formats to adapt across various platforms
-- Continuous updates via CI/CD pipelines and global hosting via Cloudflare Pages
+After you click the `Deploy` button above, you'll want to have standalone copy of this repo on your machine. If you've already cloned this repo, skip to [Development](#development).
 
----
+### Development
 
-## 🛠️ Tech Stack
+1. First [clone the repo](#clone) if you have not done so already
+2. `cd my-project && cp .env.example .env` to copy the example environment variables. You'll need to add the `MONGODB_URL` from your Cloud project to your `.env` if you want to use S3 storage and the MongoDB database that was created for you.
 
-### Frontend & Backend
+3. `pnpm install && pnpm dev` to install dependencies and start the dev server
+4. open `http://localhost:3000` to open the app in your browser
 
-- **TypeScript** – Type-safe development
-- **Next.js 15** – React framework for SSR & static sites
-- **React 19** – Component-driven architecture
-- **Tailwind CSS v4** – Utility-first styling
-- **MYDS-UI** – Custom design system
-- **Radix UI** – Accessible component primitives
-- **ShadCN UI** – Headless component styling
-- **Node.js** – Runtime environment
+That's it! Changes made in `./src` will be reflected in your app. Follow the on-screen instructions to login and create your first admin user. Then check out [Production](#production) once you're ready to build and serve your app, and [Deployment](#deployment) when you're ready to go live.
 
-### DevOps & Hosting
+#### Docker (Optional)
 
-- **Cloudflare Pages** – Fast, edge-hosted deployments
-- **Vercel (Preview)** – Zero-config previews for PRs
-- **GitHub Actions** – CI/CD pipeline for automated builds and deployments
+If you prefer to use Docker for local development instead of a local MongoDB instance, the provided docker-compose.yml file can be used.
 
----
+To do so, follow these steps:
 
-## 🚀 Key Features & Technical Highlights
+- Modify the `MONGODB_URL` in your `.env` file to `mongodb://127.0.0.1/<dbname>`
+- Modify the `docker-compose.yml` file's `MONGODB_URL` to match the above `<dbname>`
+- Run `docker-compose up` to start the database, optionally pass `-d` to run in the background.
 
-### ✅ Interactive, Component-Driven Layout
+## How it works
 
-- Built with modular, reusable React components for scalability
-- All major sections (projects, experience, contact) are abstracted for clean separation of concerns
+The Payload config is tailored specifically to the needs of most websites. It is pre-configured in the following ways:
 
-### 📱 Fully Responsive Design
+### Collections
 
-- Mobile-first approach with seamless adaptation across devices
-- Optimized layout and UX for desktops, tablets, and smartphones
+See the [Collections](https://payloadcms.com/docs/configuration/collections) docs for details on how to extend this functionality.
 
-### ♿ Accessibility-Focused UI
+- #### Users (Authentication)
 
-- Keyboard navigation, semantic HTML, and compliant color contrast
-- Prioritizes inclusive experiences for all users
+  Users are auth-enabled collections that have access to the admin panel.
 
-### 🔁 CI/CD Integration
+  For additional help, see the official [Auth Example](https://github.com/payloadcms/payload/tree/main/examples/auth) or the [Authentication](https://payloadcms.com/docs/authentication/overview#authentication-overview) docs.
 
-- GitHub commits trigger automatic builds via Cloudflare Pages
-- Enables continuous delivery with minimal overhead and instant updates
+- #### Media
 
----
+  This is the uploads enabled collection. It features pre-configured sizes, focal point and manual resizing to help you manage your pictures.
 
-## 📈 Impact and Outcomes
+### Docker
 
-### 🌍 Improved Accessibility and Engagement
+Alternatively, you can use [Docker](https://www.docker.com) to spin up this template locally. To do so, follow these steps:
 
-- Transitioned from static documents to a dynamic, engaging platform
-- Encourages exploration and interactivity for recruiters and collaborators
+1. Follow [steps 1 and 2 from above](#development), the docker-compose file will automatically use the `.env` file in your project root
+1. Next run `docker-compose up`
+1. Follow [steps 4 and 5 from above](#development) to login and create your first admin user
 
-### 🔗 Simplified Sharing and Outreach
+That's it! The Docker instance will help you get up and running quickly while also standardizing the development environment across your teams.
 
-- A single link serves as a centralized professional identity
-- Consolidates skills, credentials, and contact info in one accessible format
+## Questions
 
-### 💡 Demonstrated Technical Proficiency
-
-- Highlights real-world application of modern web technologies
-- Reflects strong knowledge of CI/CD, component-driven design, and performance optimization
-
-### 🚧 Built to Scale and Evolve
-
-- More than a static portfolio—this is a professional platform
-- Built to adapt with my evolving career, skillset, and personal brand
-
----
-
-## 🧪 Available Scripts
-
-| Script  | Description                     |
-| ------- | ------------------------------- |
-| `dev`   | Starts local development server |
-| `build` | Builds the production app       |
-| `start` | Starts production server        |
-| `lint`  | Lints project using ESLint      |
-
----
-
-## 📄 License
-
-This project is open-source and available under the [MIT License](LICENSE).
-
----
-
-## 👨‍💻 Author
-
-**HARRIS AZMI BIN ROSWADI**  
-Full-Stack Engineer | React · TypeScript · Next.js · AWS · CI/CD  
-[LinkedIn](https://www.linkedin.com/in/harris-azmi-roswadi/) • [GitHub](https://github.com/harrisazmi)
-
----
-
-## 🙋‍♀️ Feedback and Contributions
-
-Have ideas to improve this portfolio?  
-Feel free to [open an issue](https://github.com/harrisazmi/OnlinePortfolioV2/issues) or submit a pull request.  
-If you found it inspiring, a ⭐ is always appreciated!
+If you have any issues or questions, reach out to us on [Discord](https://discord.com/invite/payload) or start a [GitHub discussion](https://github.com/payloadcms/payload/discussions).
