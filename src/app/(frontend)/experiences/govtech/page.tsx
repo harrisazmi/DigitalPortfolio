@@ -11,11 +11,10 @@ const GovTechPage: FSP = async () => {
 
   const { docs: experienceDataList } = await payload.find({
     collection: 'experiences-list',
-    limit: 1,
+    limit: 3,
     depth: 0,
   })
-  const experienceData = experienceDataList[0]
-  console.log(JSON.stringify(experienceData))
+  const experienceData = experienceDataList[2]
 
   return (
     <Suspense>

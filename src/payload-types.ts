@@ -256,10 +256,6 @@ export interface ExperiencesList {
   companyImage: string | Media;
   companyWebsite: string;
   /**
-   * Toggle to flag whether the company website is publicly accessible yet.
-   */
-  companyWebsiteLive?: boolean | null;
-  /**
    * Year working
    */
   yearRange: string;
@@ -544,7 +540,6 @@ export interface ExperiencesListSelect<T extends boolean = true> {
   name?: T;
   companyImage?: T;
   companyWebsite?: T;
-  companyWebsiteLive?: T;
   yearRange?: T;
   position?: T;
   overview?: T;

@@ -31,15 +31,6 @@ export const ExperiencesLists: CollectionConfig = {
       type: 'text',
       required: true,
     },
-    {
-      name: 'companyWebsiteLive',
-      label: 'Website Live',
-      type: 'checkbox',
-      defaultValue: false,
-      admin: {
-        description: 'Toggle to flag whether the company website is publicly accessible yet.',
-      },
-    },
     // working year range
     {
       name: 'yearRange',
