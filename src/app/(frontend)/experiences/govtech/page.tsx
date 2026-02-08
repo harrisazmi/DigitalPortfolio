@@ -1,5 +1,5 @@
 import { getPayload } from 'payload'
-import { JSX, ReactNode, Suspense } from 'react'
+import { JSX, Suspense } from 'react'
 import config from '@/payload.config'
 import GovtechPageClient from './page-component'
 

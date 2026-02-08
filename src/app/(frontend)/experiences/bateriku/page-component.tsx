@@ -8,7 +8,6 @@ import { Button } from '@/components/Button'
 import { RichTextContent } from '@/components/RichTextContent'
 import PreviousExperience from '@/components/PreviousExperience'
 import { getIconComponent } from '@/lib/iconRegistry'
-import { isExternalHref } from '@/lib/urlHelpers'
 import { cardVariants } from '@/lib/motionVariants'
 import type { ExperienceProject, ExperiencesList } from '@/types/experience'
 import { clx } from '@/lib/utils'
@@ -59,7 +58,6 @@ export default function BaterikuPageClient({
                 <div className="flex flex-wrap gap-2 items-center justify-center lg:justify-start">
                   {projects.map((project) => {
                     const IconComponent = getIconComponent(project.iconKey)
-                    const isExternal = isExternalHref(project.href)
 
                     return (
                       <Link href={project.href} key={project.id}>
