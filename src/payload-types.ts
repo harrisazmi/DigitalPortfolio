@@ -256,6 +256,10 @@ export interface ExperiencesList {
   companyImage: string | Media;
   companyWebsite: string;
   /**
+   * Editors tick this once they confirm the official site is reachable.
+   */
+  companyWebsiteLive: boolean;
+  /**
    * Year working
    */
   yearRange: string;
@@ -540,6 +544,7 @@ export interface ExperiencesListSelect<T extends boolean = true> {
   name?: T;
   companyImage?: T;
   companyWebsite?: T;
+  companyWebsiteLive?: T;
   yearRange?: T;
   position?: T;
   overview?: T;

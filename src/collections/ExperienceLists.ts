@@ -31,6 +31,16 @@ export const ExperiencesLists: CollectionConfig = {
       type: 'text',
       required: true,
     },
+    //company website status
+    {
+      name: 'companyWebsiteLive',
+      label: 'Website Verified Live',
+      type: 'checkbox',
+      required: true,
+      admin: {
+        description: 'Editors tick this once they confirm the official site is reachable.',
+      },
+    },
     // working year range
     {
       name: 'yearRange',

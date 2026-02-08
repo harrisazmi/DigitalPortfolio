@@ -3,10 +3,10 @@ import { Button } from './Button'
 
 interface WebsiteCheckerProps {
   href: string
-  isLive: boolean | null | undefined
+  isLive?: boolean | null | undefined
 }
 
-export default function WebsiteChecker({ href, isLive }: WebsiteCheckerProps) {
+export default function WebsiteChecker({ href, isLive = false }: WebsiteCheckerProps) {
   return (
     <div className="gap-4 flex flex-col">
       {!isLive && (
