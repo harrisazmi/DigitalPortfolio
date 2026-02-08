@@ -3,12 +3,8 @@ import { JSX, ReactNode, Suspense } from 'react'
 import config from '@/payload.config'
 import GovtechPageClient from './page-component'
 
-type ServerProp = {
-  children: ReactNode
-}
-
 // Async-friendly server component type alias
-type FSP = (props: ServerProp) => Promise<JSX.Element>
+type FSP = () => Promise<JSX.Element>
 
 const GovTechPage: FSP = async () => {
   const payload = await getPayload({ config })
