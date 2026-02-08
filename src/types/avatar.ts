@@ -1,11 +1,6 @@
-import type { ReactNode } from "react";
+import type { AvatarInfo as PayloadAvatarInfo } from '@/payload-types'
 
-export type AvatarLinkType = {
-  href: string;
-  label: string;
-  icon: ReactNode;
-};
-
-export type AvatarDesignationListType = string[];
-
-export type AvatarUsernameType = string;
+export type AvatarInfo = PayloadAvatarInfo
+type LinksArray = NonNullable<AvatarInfo['links']>
+export type AvatarLinkType = LinksArray[number]
+export type AvatarLinkIcon = AvatarLinkType['icon']

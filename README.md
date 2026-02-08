@@ -67,7 +67,7 @@ src/
 
 - **Layout System** – `LayoutContent` orchestrates Avatar placement and responsive breakpoints, while `Navbar` renders animated navigation tabs from `NavigationData`.
 - **Theming** – `ThemeProvider` + `ThemeToggler` switch between CSS theme files (`light.css`, `dark.css`, `sepia.css`, `monochrome.css`). Typography defaults to Outfit via Next Font.
-- **Content Modules** – Pages read from TypeScript data sources (`HomeInfo`, `ExpInfo`, `ProjectsData`, `ProjectInfo`, `ToolCategories`, `AvatarInfo`) so copy changes never require component rewrites.
+- **Content Modules** – Pages read from TypeScript data sources (`HomeInfo`, `ExpInfo`, `ProjectsData`, `ProjectInfo`, `ToolCategories`) so copy changes never require component rewrites.
 - **Project Narratives** – `ProjectDetail` handles hero media, Markdown sections, tech stacks, link groups, and CTA buttons for every `/projects/*` route.
 - **Animations** – `motionVariants` + Framer Motion power staggered entrances, card hover states, and in-view transitions.
 
