@@ -1,46 +1,45 @@
-"use client";
+'use client'
 
-import { HomeInfo } from "@/data/HomeInfo";
-import { clx } from "@/lib/utils";
-import { cardVariants } from "@/lib/motionVariants";
-import { motion, useInView } from "framer-motion";
-import { useEffect, useRef } from "react";
-import Image from "next/image";
-import HorizontalCard from "@/components/HorizontalCard";
-import { ArrowRightIcon } from "@/Icons";
-import Link from "next/link";
-import Contacts from "@/components/Contact";
-import { Button } from "@/components/Button";
-import { collabProjectsData } from "@/data/ProjectsData";
-import { ExpInfo } from "@/data/ExpInfo";
-
+import { HomeInfo } from '@/data/HomeInfo'
+import { clx } from '@/lib/utils'
+import { cardVariants } from '@/lib/motionVariants'
+import { motion, useInView } from 'framer-motion'
+import { useEffect, useRef } from 'react'
+import Image from 'next/image'
+import HorizontalCard from '@/components/HorizontalCard'
+import { ArrowRightIcon } from '@/Icons'
+import Link from 'next/link'
+import Contacts from '@/components/Contact'
+import { Button } from '@/components/Button'
+import { collabProjectsData } from '@/data/ProjectsData'
+import { ExpInfo } from '@/data/ExpInfo'
 
 export default function Home() {
-  const ref = useRef(null);
-  const isInView = useInView(ref, { once: true });
+  const ref = useRef(null)
+  const isInView = useInView(ref, { once: true })
 
   useEffect(() => {
-    window.scrollTo(0, 0);
-  }, []);
+    window.scrollTo(0, 0)
+  }, [])
 
   return (
     <div className="">
       <motion.div
         variants={cardVariants}
         initial="initial"
-        animate={isInView ? "animate" : "initial"}
+        animate={isInView ? 'animate' : 'initial'}
         transition={{ duration: 0.4, delay: 0.2 }}
       >
         <div
           ref={ref}
           className={clx(
-            "flex flex-col items-center space-y-8 pt-8",
-            "lg:items-start lg:pt-0 w-full"
+            'flex flex-col items-center space-y-8 pt-8',
+            'lg:items-start lg:pt-0 w-full',
           )}
         >
-          <div className="border-b-1 border-blue-110">
+          <div className="border-b border-blue-110">
             <h1 className="text-4xl font-extrabold lg:text-left">
-              {HomeInfo.titleHook.split("\n").map((line, id) => (
+              {HomeInfo.titleHook.split('\n').map((line, id) => (
                 <span key={id}>
                   {line}
                   <br />
@@ -54,29 +53,16 @@ export default function Home() {
           </h2>
           <div className=" gap-8 flex flex-col w-full text-left">
             {ExpInfo.map((exp, index) => (
-              <div
-                key={index}
-                className="flex w-full rounded-2xl items-center "
-              >
+              <div key={index} className="flex w-full rounded-2xl items-center ">
                 <div className="pr-4">
                   <div className="rounded-full size-16 overflow-hidden shrink-0 border border-gray-110">
-                    <Image
-                      src={exp.path}
-                      alt={exp.name}
-                      width={64}
-                      height={64}
-                      quality={100}
-                    />
+                    <Image src={exp.path} alt={exp.name} width={64} height={64} quality={100} />
                   </div>
                 </div>
                 <div>
                   <div className="text-xl font-semibold">{exp.name}</div>
-                  <div className="text-gray-140 font-light text-sm">
-                    {exp.position}
-                  </div>
-                  <div className="text-gray-140 font-light text-sm">
-                    {exp.year}
-                  </div>
+                  <div className="text-gray-140 font-light text-sm">{exp.position}</div>
+                  <div className="text-gray-140 font-light text-sm">{exp.year}</div>
                 </div>
               </div>
             ))}
@@ -91,46 +77,31 @@ export default function Home() {
                 <div key={index} className="flex justify-between ">
                   <div>
                     <div className="text-xl font-medium">{edu.title}</div>
-                    <div className="text-gray-140 font-light text-sm">
-                      {edu.major}
-                    </div>
-                    <div className="text-gray-140 font-light text-sm">
-                      {edu.year}
-                    </div>
+                    <div className="text-gray-140 font-light text-sm">{edu.major}</div>
+                    <div className="text-gray-140 font-light text-sm">{edu.year}</div>
                   </div>
 
                   <div className=" shrink-0 ml-4">
-                    <Image
-                      src={edu.path}
-                      alt={edu.name}
-                      width={120}
-                      height={60}
-                      quality={100}
-                    />
+                    <Image src={edu.path} alt={edu.name} width={120} height={60} quality={100} />
                   </div>
                 </div>
               ))}
             </div>
           </div>
-          <HorizontalCard title={"CERTIFICATES"}>
+          <HorizontalCard title={'CERTIFICATES'}>
             {HomeInfo.certificate.map((certificate, index) => (
               <div
                 key={index}
-                className="rounded-lg border border-blue-110 bg-white p-3 flex justify-between items-center flex-shrink-0 snap-start"
+                className="rounded-lg border border-blue-110 bg-white p-3 flex justify-between items-center shrink-0 snap-start"
               >
                 <div>
-                  <div
-                    className="font-medium"
-                    style={{ maxWidth: "20ch", wordWrap: "break-word" }}
-                  >
+                  <div className="font-medium" style={{ maxWidth: '20ch', wordWrap: 'break-word' }}>
                     {certificate.title}
                   </div>
                   <div className="text-xs text-gray-140">
                     {certificate.issuer}, {certificate.year}
                   </div>
-                  <div className="text-xs font-light text-gray-140">
-                    {certificate.credID}
-                  </div>
+                  <div className="text-xs font-light text-gray-140">{certificate.credID}</div>
                 </div>
                 <div className="pl-4">
                   <Image
@@ -151,9 +122,9 @@ export default function Home() {
               </h2>
               <Link
                 href="/projects"
-                className="text-xs bg-gradient-to-r from-orange-110 to-orange-120 bg-clip-text text-transparent hover:cursor-pointer"
+                className="text-xs bg-linear-to-r from-orange-110 to-orange-120 bg-clip-text text-transparent hover:cursor-pointer"
               >
-                <Button className="text-sm bg-gradient-to-r from-orange-110 to-orange-120 bg-clip-text text-transparent hover:cursor-pointer">
+                <Button className="text-sm bg-linear-to-r from-orange-110 to-orange-120 bg-clip-text text-transparent hover:cursor-pointer">
                   View All
                 </Button>
               </Link>
@@ -163,7 +134,7 @@ export default function Home() {
               {collabProjectsData.map((project, index) => (
                 <div key={index} className="flex flex-col gap-6">
                   <Link href={project.href}>
-                    <div className="relative w-full aspect-[325/202] hover:cursor-pointer">
+                    <div className="relative w-full aspect-325/202 hover:cursor-pointer">
                       <Image
                         src={project.image}
                         alt={project.title}
@@ -175,17 +146,14 @@ export default function Home() {
                   </Link>
                   <div className="flex flex-col gap-2">
                     <div className="font-semibold text-xl">{project.title}</div>
-                    <div className="text-gray-140">
-                      {project.shortDescription}
-                    </div>
+                    <div className="text-gray-140">{project.shortDescription}</div>
                     <div className="mt-3">
                       <Link
                         href={project.href}
-                        className="text-xs bg-gradient-to-r from-orange-110 to-orange-120 bg-clip-text text-transparent"
+                        className="text-xs bg-linear-to-r from-orange-110 to-orange-120 bg-clip-text text-transparent"
                       >
-                        <Button className="flex items-center gap-2 flex-shrink-0 text-white hover:cursor-pointer">
-                          More Info{" "}
-                          <ArrowRightIcon className="text-white shrink-0" />
+                        <Button className="flex items-center gap-2 shrink-0 text-white hover:cursor-pointer">
+                          More Info <ArrowRightIcon className="text-white shrink-0" />
                         </Button>
                       </Link>
                     </div>
@@ -194,13 +162,11 @@ export default function Home() {
               ))}
             </div>
           </div>
-          <HorizontalCard
-            title={"WORKING WITH  KEMENTERIAN DIGITAL AND MYDIGITAL CORP"}
-          >
+          <HorizontalCard title={'WORKING WITH  KEMENTERIAN DIGITAL AND MYDIGITAL CORP'}>
             {HomeInfo.gallery.map((about, index) => (
               <div
                 key={index}
-                className="rounded-lg w-[400px] h-[300px] border border-blue-110 bg-white gap-2.5 flex flex-col items-start flex-shrink-0 snap-start overflow-clip"
+                className="rounded-lg w-100 h-75 border border-blue-110 bg-white gap-2.5 flex flex-col items-start shrink-0 snap-start overflow-clip"
               >
                 <div className="flex items-center gap-2.5 justify-start">
                   <div className="w-fit h-fit overflow-hidden shrink-0">
@@ -216,26 +182,20 @@ export default function Home() {
               </div>
             ))}
           </HorizontalCard>
-          <HorizontalCard title={"WHAT PEOPLE SAY ABOUT ME"}>
+          <HorizontalCard title={'WHAT PEOPLE SAY ABOUT ME'}>
             {HomeInfo.sayAboutMe.map((about, index) => (
               <div
                 key={index}
-                className="rounded-lg w-[310px] border border-blue-110 bg-white gap-2.5 flex flex-col p-3 items-start flex-shrink-0 snap-start"
+                className="rounded-lg w-77.5 border border-blue-110 bg-white gap-2.5 flex flex-col p-3 items-start shrink-0 snap-start"
               >
                 <div className="flex items-center gap-2.5 justify-start">
                   <div className="rounded-full size-8 overflow-hidden shrink-0">
-                    <Image
-                      src={about.path}
-                      alt={about.name}
-                      width={32}
-                      height={32}
-                      quality={100}
-                    />
+                    <Image src={about.path} alt={about.name} width={32} height={32} quality={100} />
                   </div>
                   <div>
                     <div
                       className="font-medium"
-                      style={{ maxWidth: "20ch", wordWrap: "break-word" }}
+                      style={{ maxWidth: '20ch', wordWrap: 'break-word' }}
                     >
                       {about.name}
                     </div>
@@ -245,9 +205,7 @@ export default function Home() {
                   </div>
                 </div>
 
-                <p className="text-xs font-light text-gray-140">
-                  {about.comments}
-                </p>
+                <p className="text-xs font-light text-gray-140">{about.comments}</p>
               </div>
             ))}
           </HorizontalCard>
@@ -255,5 +213,5 @@ export default function Home() {
         </div>
       </motion.div>
     </div>
-  );
+  )
 }

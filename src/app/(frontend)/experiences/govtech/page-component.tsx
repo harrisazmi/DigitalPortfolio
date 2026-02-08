@@ -1,0 +1,116 @@
+'use client'
+
+import Link from 'next/link'
+import { motion, useInView } from 'framer-motion'
+import { useRef } from 'react'
+import * as Icons from '@/Icons'
+import { Button } from '@/components/Button'
+import { RichTextContent } from '@/components/RichTextContent'
+import PreviousExperience from '@/components/PreviousExperience'
+import { getIconComponent } from '@/lib/iconRegistry'
+import { isExternalHref } from '@/lib/urlHelpers'
+import { cardVariants } from '@/lib/motionVariants'
+import type { ExperienceProject, ExperiencesList } from '@/types/experience'
+import { clx } from '@/lib/utils'
+import WebsiteChecker from '@/components/WebsiteChecker'
+
+export default function GovtechPageClient({ experienceData }: { experienceData: ExperiencesList }) {
+  const expRef = useRef(null)
+  const isExpRefInView = useInView(expRef, { once: true })
+  const projectEntries = experienceData.projects ?? []
+  const projects = projectEntries.filter((project): project is ExperienceProject => project != null)
+  return (
+    <div className="pb-4">
+      <motion.div
+        variants={cardVariants}
+        initial="initial"
+        animate={isExpRefInView ? 'animate' : 'initial'}
+        transition={{ duration: 0.3, delay: 0.2 }}
+      >
+        <div ref={expRef}>
+          <Link href="/experiences">
+            <Button className="flex gap-4 bg-white border border-gray-110 hover:cursor-pointer">
+              <Icons.ArrowLeftIcon />
+              All Experiences
+            </Button>
+          </Link>
+          <div className="py-8 flex flex-col gap-8">
+            <div>
+              <h1 className="font-bold text-5xl pb-1">{experienceData.name}</h1>
+              <div className="flex gap-2">
+                <div>{experienceData.position} : </div>
+                <div>{experienceData.yearRange}</div>
+              </div>
+            </div>
+            <section>
+              <h2 className="font-bold text-4xl pb-4">Overview</h2>
+              <RichTextContent
+                field={experienceData.overview}
+                className="space-y-3 leading-relaxed "
+              />
+            </section>
+            {projects.length > 0 && (
+              <section className="flex flex-col gap-3.5">
+                <h2 className="font-bold text-4xl pb-4">Project Collaborations</h2>
+                <div className="flex flex-wrap gap-2 items-center justify-center lg:justify-start">
+                  {projects.map((project) => {
+                    const IconComponent = getIconComponent(project.iconKey)
+                    const isExternal = isExternalHref(project.href)
+
+                    return (
+                      <Link href={project.href} key={project.id}>
+                        <div
+                          className={clx(
+                            'w-37.5 h-17.5 rounded-xl flex items-center justify-center gap-3 px-6',
+                            'border border-blue-110 hover:bg-orange-101 hover:border-orange-140',
+                          )}
+                        >
+                          <IconComponent className="shrink-0" />
+                          <div className="font-semibold">{project.title}</div>
+                        </div>
+                      </Link>
+                    )
+                  })}
+                </div>
+              </section>
+            )}
+            <section>
+              <h2 className="font-bold text-4xl pb-4">My Role</h2>
+              <RichTextContent field={experienceData.role} className="space-y-3 leading-relaxed " />
+            </section>
+            {experienceData.keyAchievements?.length ? (
+              <section>
+                <h2 className="font-bold text-4xl pb-6">Skills Acquired and Contributions</h2>
+                <div className="space-y-6">
+                  {experienceData.keyAchievements.map(({ heading, content, id }) => (
+                    <article key={id}>
+                      <h3 className="font-semibold text-xl">{heading}</h3>
+                      <RichTextContent field={content} className="mt-3 space-y-3 leading-relaxed" />
+                    </article>
+                  ))}
+                </div>
+              </section>
+            ) : null}
+            {experienceData.impact?.length ? (
+              <section>
+                <h2 className="font-bold text-4xl pb-4">Impact</h2>
+                <div className="space-y-6">
+                  {experienceData.impact.map(({ heading, content, id }) => (
+                    <article key={id}>
+                      <h3 className="font-semibold text-xl">{heading}</h3>
+                      <RichTextContent field={content} className="leading-relaxed" />
+                    </article>
+                  ))}
+                </div>
+              </section>
+            ) : null}
+            <WebsiteChecker href={experienceData.companyWebsite} />
+          </div>
+        </div>
+      </motion.div>
+      <div>
+        <PreviousExperience />
+      </div>
+    </div>
+  )
+}

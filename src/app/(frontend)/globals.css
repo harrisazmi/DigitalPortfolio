@@ -1,10 +1,10 @@
-@import "tailwindcss";
-@import "./theme/dark.css";
-@import "./theme/sepia.css";
-@import "./theme/monochrome.css";
+@import 'tailwindcss';
+@import './theme/dark.css';
+@import './theme/sepia.css';
+@import './theme/monochrome.css';
 
 @theme {
-  --font-outfit: "Outfit", "sans-serif";
+  --font-outfit: 'Outfit', 'sans-serif';
   /* gray */
   --color-gray-110: #f4f4f4;
   --color-gray-120: #d1d5dc;

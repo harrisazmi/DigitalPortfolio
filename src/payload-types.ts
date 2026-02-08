@@ -70,6 +70,8 @@ export interface Config {
     users: User;
     media: Media;
     'avatar-info': AvatarInfo;
+    experiences: Experience;
+    'experiences-list': ExperiencesList;
     'payload-kv': PayloadKv;
     'payload-locked-documents': PayloadLockedDocument;
     'payload-preferences': PayloadPreference;
@@ -80,6 +82,8 @@ export interface Config {
     users: UsersSelect<false> | UsersSelect<true>;
     media: MediaSelect<false> | MediaSelect<true>;
     'avatar-info': AvatarInfoSelect<false> | AvatarInfoSelect<true>;
+    experiences: ExperiencesSelect<false> | ExperiencesSelect<true>;
+    'experiences-list': ExperiencesListSelect<false> | ExperiencesListSelect<true>;
     'payload-kv': PayloadKvSelect<false> | PayloadKvSelect<true>;
     'payload-locked-documents': PayloadLockedDocumentsSelect<false> | PayloadLockedDocumentsSelect<true>;
     'payload-preferences': PayloadPreferencesSelect<false> | PayloadPreferencesSelect<true>;
@@ -187,6 +191,186 @@ export interface AvatarInfo {
   createdAt: string;
 }
 /**
+ * Timeline entries powering experience pages and detail views.
+ *
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "experiences".
+ */
+export interface Experience {
+  id: string;
+  name: string;
+  /**
+   * Short description shown on the primary experience list.
+   */
+  details: {
+    root: {
+      type: string;
+      children: {
+        type: any;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  };
+  yearRange: string;
+  position: string;
+  ctaHref: string;
+  /**
+   * Image of the Company
+   */
+  companyImage: string | Media;
+  /**
+   * Optional set of related projects (AskMyGov, Directory, etc.).
+   */
+  projects?:
+    | {
+        title: string;
+        href: string;
+        /**
+         * Matches a frontend icon component name, e.g., AskMyGovIcon.
+         */
+        iconKey: string;
+        id?: string | null;
+      }[]
+    | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * Timeline entries powering experience pages and detail views.
+ *
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "experiences-list".
+ */
+export interface ExperiencesList {
+  id: string;
+  name: string;
+  /**
+   * Image shown on cards and detail hero sections.
+   */
+  companyImage: string | Media;
+  companyWebsite: string;
+  /**
+   * Toggle to flag whether the company website is publicly accessible yet.
+   */
+  companyWebsiteLive?: boolean | null;
+  /**
+   * Year working
+   */
+  yearRange: string;
+  /**
+   * Position in Company
+   */
+  position: string;
+  /**
+   * Overview what the company does
+   */
+  overview: {
+    root: {
+      type: string;
+      children: {
+        type: any;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  };
+  /**
+   * Role at the company
+   */
+  role: {
+    root: {
+      type: string;
+      children: {
+        type: any;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  };
+  /**
+   * Optional set of related projects
+   */
+  projects?:
+    | {
+        title: string;
+        href: string;
+        /**
+         * Matches a frontend icon component name, e.g., AskMyGovIcon.
+         */
+        iconKey: string;
+        id?: string | null;
+      }[]
+    | null;
+  /**
+   * Each entry renders as a section with its own rich text details.
+   */
+  keyAchievements: {
+    heading: string;
+    /**
+     * Use paragraphs or bullet lists to describe contributions.
+     */
+    content: {
+      root: {
+        type: string;
+        children: {
+          type: any;
+          version: number;
+          [k: string]: unknown;
+        }[];
+        direction: ('ltr' | 'rtl') | null;
+        format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+        indent: number;
+        version: number;
+      };
+      [k: string]: unknown;
+    };
+    id?: string | null;
+  }[];
+  /**
+   * Each entry renders as a section with its own rich text details.
+   */
+  impact: {
+    heading: string;
+    /**
+     * Use paragraphs or bullet lists to describe impact.
+     */
+    content: {
+      root: {
+        type: string;
+        children: {
+          type: any;
+          version: number;
+          [k: string]: unknown;
+        }[];
+        direction: ('ltr' | 'rtl') | null;
+        format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+        indent: number;
+        version: number;
+      };
+      [k: string]: unknown;
+    };
+    id?: string | null;
+  }[];
+  updatedAt: string;
+  createdAt: string;
+}
+/**
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "payload-kv".
  */
@@ -221,6 +405,14 @@ export interface PayloadLockedDocument {
     | ({
         relationTo: 'avatar-info';
         value: string | AvatarInfo;
+      } | null)
+    | ({
+        relationTo: 'experiences';
+        value: string | Experience;
+      } | null)
+    | ({
+        relationTo: 'experiences-list';
+        value: string | ExperiencesList;
       } | null);
   globalSlug?: string | null;
   user: {
@@ -317,6 +509,66 @@ export interface AvatarInfoSelect<T extends boolean = true> {
         label?: T;
         href?: T;
         icon?: T;
+        id?: T;
+      };
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "experiences_select".
+ */
+export interface ExperiencesSelect<T extends boolean = true> {
+  name?: T;
+  details?: T;
+  yearRange?: T;
+  position?: T;
+  ctaHref?: T;
+  companyImage?: T;
+  projects?:
+    | T
+    | {
+        title?: T;
+        href?: T;
+        iconKey?: T;
+        id?: T;
+      };
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "experiences-list_select".
+ */
+export interface ExperiencesListSelect<T extends boolean = true> {
+  name?: T;
+  companyImage?: T;
+  companyWebsite?: T;
+  companyWebsiteLive?: T;
+  yearRange?: T;
+  position?: T;
+  overview?: T;
+  role?: T;
+  projects?:
+    | T
+    | {
+        title?: T;
+        href?: T;
+        iconKey?: T;
+        id?: T;
+      };
+  keyAchievements?:
+    | T
+    | {
+        heading?: T;
+        content?: T;
+        id?: T;
+      };
+  impact?:
+    | T
+    | {
+        heading?: T;
+        content?: T;
         id?: T;
       };
   updatedAt?: T;
