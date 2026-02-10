@@ -7,6 +7,62 @@ export const HomeInfo: HomeInfoShape = {
   titleHook: 'From Chemical Chaos \n To Clean Code!',
   descHook:
     'From optimizing production lines to refining code, I’ve always been driven by one thing — making things work better. I once led teams to improve production line efficiency; now I craft code that improves lives.',
+  techStack: [
+    {
+      name: 'Next.js',
+      path: '/tools/fullstack/nextjs.png',
+      proficiency: 'App Router, SSR, and API routes',
+      category: 'Fullstack',
+    },
+    {
+      name: 'React',
+      path: '/tools/frontend/react.png',
+      proficiency: 'Composable UI with hooks & context',
+      category: 'Frontend',
+    },
+    {
+      name: 'TypeScript',
+      path: '/tools/languages/typescript.png',
+      proficiency: 'Type-safe architecture & domain models',
+      category: 'Language',
+    },
+    {
+      name: 'Node.js',
+      path: '/tools/backend/nodejs.png',
+      proficiency: 'Event-driven backend services',
+      category: 'Backend',
+    },
+    {
+      name: 'Express.js',
+      path: '/tools/backend/expressjs.png',
+      proficiency: 'REST APIs with auth & validation',
+      category: 'Backend',
+    },
+    {
+      name: 'MongoDB',
+      path: '/tools/database/mongodb.png',
+      proficiency: 'Flexible document data modeling',
+      category: 'Database',
+    },
+    {
+      name: 'PostgreSQL',
+      path: '/tools/database/postgres.png',
+      proficiency: 'Relational schemas & SQL tuning',
+      category: 'Database',
+    },
+    {
+      name: 'Tailwind CSS',
+      path: '/tools/frontend/tailwind.png',
+      proficiency: 'Utility-first design systems',
+      category: 'Frontend',
+    },
+    {
+      name: 'Docker',
+      path: '/tools/devops/docker.png',
+      proficiency: 'Containerized deployments & dev envs',
+      category: 'Dev Ops',
+    },
+  ],
   education: [
     {
       title: 'B.Eng. (Hons) Chemical Engineering',

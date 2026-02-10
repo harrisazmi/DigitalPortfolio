@@ -110,7 +110,7 @@ export const collabProjectsData: CollabProject[] = [
   },
 ]
 
-export const ToolsImages = [
+export const ToolsImages: ToolItem[] = [
   //Language
   { name: 'C++', path: '/tools/languages/cpp.png', type: 'languages' },
   {

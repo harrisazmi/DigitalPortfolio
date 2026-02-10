@@ -14,6 +14,7 @@ import { collabProjectsData } from '@/data/ProjectsData'
 import { GalleryStrip } from '@/components/home/GalleryStrip'
 import { Testimonials } from '@/components/home/Testimonials'
 import Contacts from '@/components/shared/Contact'
+import { TechStackGrid } from '@/components/home/TechStackGrid'
 
 type HomePageClientProps = {
   ExpInfoDataList: Experience[]
@@ -21,15 +22,37 @@ type HomePageClientProps = {
 
 export default function HomePageClient({ ExpInfoDataList }: HomePageClientProps) {
   const experiences = Array.isArray(ExpInfoDataList) ? ExpInfoDataList : []
+  const techStackItems = HomeInfo.techStack ?? []
 
   return (
     <div className="flex flex-col gap-6">
       <HeroSection title={HomeInfo.titleHook} description={HomeInfo.descHook} />
-      <SectionCard label="WORK EXPERIENCE">
+      <SectionCard
+        label="WORK EXPERIENCE"
+        action={
+          <Link href="/experiences">
+            <Button className="text-sm bg-linear-to-r from-orange-110 to-orange-120 border-orange-120 border-from bg-clip-text text-transparent hover:cursor-pointer">
+              More Info
+            </Button>
+          </Link>
+        }
+      >
         <ExperienceList experiences={experiences} />
       </SectionCard>
       <SectionCard label="EDUCATION">
         <EducationSection items={HomeInfo.education} />
+      </SectionCard>
+      <SectionCard
+        label="MAIN TECHSTACK"
+        action={
+          <Link href="/tools">
+            <Button className="text-sm bg-linear-to-r from-orange-110 to-orange-120 border-orange-120 border-from bg-clip-text text-transparent hover:cursor-pointer">
+              View All
+            </Button>
+          </Link>
+        }
+      >
+        <TechStackGrid items={techStackItems} />
       </SectionCard>
       <CertificateCarousel items={HomeInfo.certificate} />
       <SectionCard

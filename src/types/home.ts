@@ -41,10 +41,18 @@ export type ConnectItem = {
   href: string
 }
 
+export type TechStackItem = {
+  name: string
+  path: string
+  proficiency?: string
+  category?: string
+}
+
 export type HomeInfoShape = HeroInfo & {
   education: EducationItem[]
   certificate: CertificateItem[]
   sayAboutMe: TestimonialItem[]
   gallery: GalleryItem[]
   connect: ConnectItem[]
+  techStack: TechStackItem[]
 }
