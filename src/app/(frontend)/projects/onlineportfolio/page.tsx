@@ -1,6 +1,6 @@
-"use client";
-import { ProjectDetail } from "@/components/ProjectDetail";
-import { OnlinePortfolio } from "@/data/ProjectInfo";
+'use client'
+import { ProjectDetail } from '@/components/shared/ProjectDetail'
+import { OnlinePortfolio } from '@/data/ProjectInfo'
 
 export default function OnlinePortfolios() {
   return (
@@ -10,32 +10,32 @@ export default function OnlinePortfolios() {
       overview={OnlinePortfolio.overview}
       linkGroups={[
         {
-          title: "Online Portfolio V2",
+          title: 'Online Portfolio V2',
           links: [
             {
-              label: "View Live",
+              label: 'View Live',
               href: OnlinePortfolio.livehref,
-              iconType: "live",
+              iconType: 'live',
             },
             {
-              label: "View Code - GitHub",
+              label: 'View Code - GitHub',
               href: OnlinePortfolio.githubhref,
-              iconType: "github",
+              iconType: 'github',
             },
           ],
         },
         {
-          title: "Online Portfolio Legacy",
+          title: 'Online Portfolio Legacy',
           links: [
             {
-              label: "View Live",
+              label: 'View Live',
               href: OnlinePortfolio.livelhref,
-              iconType: "live",
+              iconType: 'live',
             },
             {
-              label: "View Code - GitHub",
+              label: 'View Code - GitHub',
               href: OnlinePortfolio.githublhref,
-              iconType: "github",
+              iconType: 'github',
             },
           ],
         },
@@ -46,15 +46,15 @@ export default function OnlinePortfolios() {
       solutionsConclusion={OnlinePortfolio.solutionsConclusion}
       techStacks={[
         {
-          title: "Tech Stack (Frontend & Backend Stack)",
+          title: 'Tech Stack (Frontend & Backend Stack)',
           tools: OnlinePortfolio.techstack.fenbe,
         },
         {
-          title: "Tech Stack (DevOps)",
+          title: 'Tech Stack (DevOps)',
           tools: OnlinePortfolio.techstack.devops,
         },
       ]}
       sections={OnlinePortfolio.sections}
     />
-  );
+  )
 }

@@ -1,5 +1,5 @@
 "use client";
-import Contact from "@/components/Contact";
+import Contact from "@/components/shared/Contact";
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
 import { cardVariants } from "@/lib/motionVariants";

@@ -1,6 +1,6 @@
-"use client";
-import { ProjectDetail } from "@/components/ProjectDetail";
-import { TerraformAWSPortfolio } from "@/data/ProjectInfo";
+'use client'
+import { ProjectDetail } from '@/components/shared/ProjectDetail'
+import { TerraformAWSPortfolio } from '@/data/ProjectInfo'
 
 export default function TerraformAWS() {
   return (
@@ -12,9 +12,9 @@ export default function TerraformAWS() {
         {
           links: [
             {
-              label: "View Code - GitHub",
+              label: 'View Code - GitHub',
               href: TerraformAWSPortfolio.githubhref,
-              iconType: "github",
+              iconType: 'github',
             },
           ],
         },
@@ -25,11 +25,11 @@ export default function TerraformAWS() {
       solutionsConclusion={TerraformAWSPortfolio.solutionsConclusion}
       techStacks={[
         {
-          title: "Tech Stack (DevOps)",
+          title: 'Tech Stack (DevOps)',
           tools: TerraformAWSPortfolio.techstack.devops,
         },
       ]}
       sections={TerraformAWSPortfolio.sections}
     />
-  );
+  )
 }

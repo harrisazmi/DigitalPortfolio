@@ -1,7 +1,7 @@
-"use client";
+'use client'
 
-import { ProjectDetail } from "@/components/ProjectDetail";
-import { ExpenseTrackerPortfolio } from "@/data/ProjectInfo";
+import { ProjectDetail } from '@/components/shared/ProjectDetail'
+import { ExpenseTrackerPortfolio } from '@/data/ProjectInfo'
 
 export default function ExpenseTracker() {
   return (
@@ -13,14 +13,14 @@ export default function ExpenseTracker() {
         {
           links: [
             {
-              label: "View Live",
+              label: 'View Live',
               href: ExpenseTrackerPortfolio.livehref,
-              iconType: "live",
+              iconType: 'live',
             },
             {
-              label: "View Code - GitHub",
+              label: 'View Code - GitHub',
               href: ExpenseTrackerPortfolio.githubhref,
-              iconType: "github",
+              iconType: 'github',
             },
           ],
         },
@@ -31,15 +31,15 @@ export default function ExpenseTracker() {
       solutionsConclusion={ExpenseTrackerPortfolio.solutionsConclusion}
       techStacks={[
         {
-          title: "Tech Stack (Frontend & Backend Stack)",
+          title: 'Tech Stack (Frontend & Backend Stack)',
           tools: ExpenseTrackerPortfolio.techstack.fenbe,
         },
         {
-          title: "Tech Stack (DevOps)",
+          title: 'Tech Stack (DevOps)',
           tools: ExpenseTrackerPortfolio.techstack.devops,
         },
       ]}
       sections={ExpenseTrackerPortfolio.sections}
     />
-  );
+  )
 }

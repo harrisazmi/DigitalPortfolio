@@ -1,6 +1,6 @@
-"use client";
-import { ProjectDetail } from "@/components/ProjectDetail";
-import { HomeServerPortfolio } from "@/data/ProjectInfo";
+'use client'
+import { ProjectDetail } from '@/components/shared/ProjectDetail'
+import { HomeServerPortfolio } from '@/data/ProjectInfo'
 
 export default function HomeServer() {
   return (
@@ -10,11 +10,11 @@ export default function HomeServer() {
       overview={HomeServerPortfolio.overview}
       techStacks={[
         {
-          title: "Tech Stack (DevOps)",
+          title: 'Tech Stack (DevOps)',
           tools: HomeServerPortfolio.techstack.devops,
         },
       ]}
       sections={HomeServerPortfolio.sections}
     />
-  );
+  )
 }

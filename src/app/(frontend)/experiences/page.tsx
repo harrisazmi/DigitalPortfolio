@@ -1,6 +1,6 @@
-"use client";
+'use client'
 
-import PreviousExperience from "@/components/PreviousExperience";
+import PreviousExperience from '@/components/shared/PreviousExperience'
 
 export default function ExperiencesPage() {
   return (
@@ -8,5 +8,5 @@ export default function ExperiencesPage() {
       <h1 className="text-4xl font-bold pb-8">Experiences</h1>
       <PreviousExperience sub={false} />
     </div>
-  );
+  )
 }

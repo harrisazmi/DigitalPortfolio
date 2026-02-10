@@ -1,7 +1,7 @@
-"use client";
+'use client'
 
-import { ProjectDetail } from "@/components/ProjectDetail";
-import { askMyGovPortfolio } from "@/data/ProjectInfo";
+import { ProjectDetail } from '@/components/shared/ProjectDetail'
+import { askMyGovPortfolio } from '@/data/ProjectInfo'
 
 export default function AskMyGov() {
   return (
@@ -10,33 +10,33 @@ export default function AskMyGov() {
       projectName={askMyGovPortfolio.projectName}
       overview={askMyGovPortfolio.overview}
       infoNotes={[
-        "Please note that the project has not yet launched. Live access will remain unavailable until the official release.",
+        'Please note that the project has not yet launched. Live access will remain unavailable until the official release.',
       ]}
       linkGroups={[
         {
           links: [
             {
-              label: "View Live",
+              label: 'View Live',
               href: askMyGovPortfolio.livehref,
-              iconType: "live",
+              iconType: 'live',
               disabled: true,
             },
             {
-              label: "View Code - GitHub",
+              label: 'View Code - GitHub',
               href: askMyGovPortfolio.githubhref,
-              iconType: "github",
+              iconType: 'github',
             },
           ],
         },
       ]}
       techStacks={[
         {
-          title: "Tech Stack (FE and DevOps)",
+          title: 'Tech Stack (FE and DevOps)',
           tools: askMyGovPortfolio.techstack.main,
         },
       ]}
       sections={askMyGovPortfolio.sections}
       heroBorder={false}
     />
-  );
+  )
 }

@@ -4,14 +4,14 @@ import Link from 'next/link'
 import { motion, useInView } from 'framer-motion'
 import { useRef } from 'react'
 import * as Icons from '@/Icons'
-import { Button } from '@/components/Button'
-import { RichTextContent } from '@/components/RichTextContent'
-import PreviousExperience from '@/components/PreviousExperience'
+import { Button } from '@/components/shared/Button'
+import { RichTextContent } from '@/components/shared/RichTextContent'
+import PreviousExperience from '@/components/shared/PreviousExperience'
 import { getIconComponent } from '@/lib/iconRegistry'
 import { cardVariants } from '@/lib/motionVariants'
 import type { ExperienceProject, ExperiencesList } from '@/types/experience'
 import { clx } from '@/lib/utils'
-import WebsiteChecker from '@/components/WebsiteChecker'
+import WebsiteChecker from '@/components/shared/WebsiteChecker'
 
 export default function ChemizPageClient({ experienceData }: { experienceData: ExperiencesList }) {
   const expRef = useRef(null)

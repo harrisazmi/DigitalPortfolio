@@ -1,6 +1,6 @@
-"use client";
-import { ProjectDetail } from "@/components/ProjectDetail";
-import { mydsPortfolio } from "@/data/ProjectInfo";
+'use client'
+import { ProjectDetail } from '@/components/shared/ProjectDetail'
+import { mydsPortfolio } from '@/data/ProjectInfo'
 
 export default function Myds() {
   return (
@@ -12,25 +12,25 @@ export default function Myds() {
         {
           links: [
             {
-              label: "View Live",
+              label: 'View Live',
               href: mydsPortfolio.livehref,
-              iconType: "live",
+              iconType: 'live',
             },
             {
-              label: "View Code - GitHub",
+              label: 'View Code - GitHub',
               href: mydsPortfolio.githubhref,
-              iconType: "github",
+              iconType: 'github',
             },
           ],
         },
       ]}
       techStacks={[
         {
-          title: "Tech Stack (FE and DevOps)",
+          title: 'Tech Stack (FE and DevOps)',
           tools: mydsPortfolio.techstack.main,
         },
       ]}
       sections={mydsPortfolio.sections}
     />
-  );
+  )
 }
