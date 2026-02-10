@@ -1,6 +1,3 @@
-import { GitHubIcon, LinkedInIcon, MailIcon, ResumeIcon } from '@/Icons'
-import { TelegramIcon } from '@/Icons/TelegramIcon'
-import { WhatsappIcon } from '@/Icons/WhatsappIcon'
 import type { HomeInfoShape } from '@/types/home'
 
 export const HomeInfo: HomeInfoShape = {
@@ -194,37 +191,37 @@ export const HomeInfo: HomeInfoShape = {
   connect: [
     {
       title: 'My Github',
-      icon: <GitHubIcon className="size-6" />,
+      iconKey: 'GitHub',
       details: 'https://www.github.com/harrisazmi',
       href: 'https://www.github.com/harrisazmi',
     },
     {
       title: 'My LinkedIn',
-      icon: <LinkedInIcon className="size-6" />,
+      iconKey: 'LinkedIn',
       details: 'https://www.linkedin.com/in/harris-azmi-roswadi/',
       href: 'https://www.linkedin.com/in/harris-azmi-roswadi/',
     },
     {
       title: 'Whatsapp Me!',
-      icon: <WhatsappIcon className="size-6" />,
+      iconKey: 'Whatsapp',
       details: '+6013-***-****',
       href: 'https://wa.me/+60134256413',
     },
     {
       title: 'Telegram!',
-      icon: <TelegramIcon className="size-6" />,
+      iconKey: 'Telegram',
       details: '+6013-***-****',
       href: 'https://t.me/harris_azmi',
     },
     {
       title: 'Email Me!',
-      icon: <MailIcon className="size-6" />,
+      iconKey: 'Mail',
       details: '*******@gmail.com',
       href: 'mailto:forviewcodes@gmail.com?subject=Inquiry%20from%20Your%20Portfolio&body=Hello,%20I%20came%20across%20your%20portfolio%20and%20wanted%20to%20reach%20out.%20Looking%20forward%20to%20connect%20with%20you%20harris!',
     },
     {
       title: 'My CV/Resume',
-      icon: <ResumeIcon className="size-6" />,
+      iconKey: 'Resume',
       details: 'Contact me for access',
       href: '/resume/harris_azmi_resume.pdf',
     },

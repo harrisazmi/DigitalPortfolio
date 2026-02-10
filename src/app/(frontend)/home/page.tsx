@@ -2,6 +2,7 @@ import { getPayload } from 'payload'
 import { JSX, Suspense } from 'react'
 import config from '@/payload.config'
 import HomePageClient from './page-component'
+import { normalizeHomeInfo } from '@/lib/homeInfoAdapter'
 
 // Async-friendly server component type alias
 type FSP = () => Promise<JSX.Element>
@@ -15,9 +16,17 @@ const HomePage: FSP = async () => {
     depth: 3,
   })
 
+  const { docs: homeInfoDocs } = await payload.find({
+    collection: 'home-info',
+    limit: 1,
+    depth: 2,
+  })
+
+  const homeInfoData = normalizeHomeInfo(homeInfoDocs.at(0) ?? null)
+
   return (
     <Suspense>
-      <HomePageClient ExpInfoDataList={experienceInfoDataList} />
+      <HomePageClient ExpInfoDataList={experienceInfoDataList} homeInfoData={homeInfoData} />
     </Suspense>
   )
 }

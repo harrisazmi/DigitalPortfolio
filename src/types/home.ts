@@ -1,5 +1,3 @@
-import type { ReactNode } from 'react'
-
 export type HeroInfo = {
   titleHook: string
   descHook: string
@@ -36,7 +34,7 @@ export type GalleryItem = {
 
 export type ConnectItem = {
   title: string
-  icon: ReactNode
+  iconKey?: string
   details: string
   href: string
 }

@@ -10,6 +10,7 @@ import { Media } from './collections/Media'
 import { AvatarInfo } from './collections/AvatarInfo'
 import { ExperiencesInfo } from './collections/ExperiencesInfo'
 import { ExperiencesLists } from './collections/ExperienceLists'
+import { HomeInfo } from './collections/HomeInfo'
 
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
@@ -21,7 +22,7 @@ export default buildConfig({
       baseDir: path.resolve(dirname),
     },
   },
-  collections: [Users, Media, AvatarInfo, ExperiencesInfo, ExperiencesLists],
+  collections: [Users, Media, AvatarInfo, ExperiencesInfo, ExperiencesLists, HomeInfo],
   editor: lexicalEditor(),
   secret: process.env.PAYLOAD_SECRET || '',
   typescript: {

@@ -72,6 +72,7 @@ export interface Config {
     'avatar-info': AvatarInfo;
     experiences: Experience;
     'experiences-list': ExperiencesList;
+    'home-info': HomeInfo;
     'payload-kv': PayloadKv;
     'payload-locked-documents': PayloadLockedDocument;
     'payload-preferences': PayloadPreference;
@@ -84,6 +85,7 @@ export interface Config {
     'avatar-info': AvatarInfoSelect<false> | AvatarInfoSelect<true>;
     experiences: ExperiencesSelect<false> | ExperiencesSelect<true>;
     'experiences-list': ExperiencesListSelect<false> | ExperiencesListSelect<true>;
+    'home-info': HomeInfoSelect<false> | HomeInfoSelect<true>;
     'payload-kv': PayloadKvSelect<false> | PayloadKvSelect<true>;
     'payload-locked-documents': PayloadLockedDocumentsSelect<false> | PayloadLockedDocumentsSelect<true>;
     'payload-preferences': PayloadPreferencesSelect<false> | PayloadPreferencesSelect<true>;
@@ -371,6 +373,98 @@ export interface ExperiencesList {
   createdAt: string;
 }
 /**
+ * Hero copy, highlights, and contact links powering the home page.
+ *
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "home-info".
+ */
+export interface HomeInfo {
+  id: string;
+  /**
+   * Primary hero headline. Supports new lines for dramatic wraps.
+   */
+  titleHook: string;
+  /**
+   * Supporting paragraph shown under the hero headline.
+   */
+  descHook: string;
+  /**
+   * Logos, proficiencies, and categories for the highlight grid.
+   */
+  techStack?:
+    | {
+        name: string;
+        /**
+         * Absolute public path or CDN URL, e.g., /tools/fullstack/nextjs.png.
+         */
+        path: string;
+        /**
+         * Short sentence describing your experience with the tool.
+         */
+        proficiency?: string | null;
+        /**
+         * Determines the section grouping inside the tech stack grid.
+         */
+        category?: ('fullstack' | 'frontend' | 'backend' | 'language' | 'database' | 'dev-ops') | null;
+        id?: string | null;
+      }[]
+    | null;
+  education?:
+    | {
+        title: string;
+        major: string;
+        year: string;
+        name: string;
+        path: string;
+        id?: string | null;
+      }[]
+    | null;
+  certificate?:
+    | {
+        title: string;
+        issuer: string;
+        year: string;
+        credID?: string | null;
+        path: string;
+        id?: string | null;
+      }[]
+    | null;
+  sayAboutMe?:
+    | {
+        name: string;
+        position: string;
+        company: string;
+        comments: string;
+        path: string;
+        id?: string | null;
+      }[]
+    | null;
+  gallery?:
+    | {
+        name: string;
+        /**
+         * Link each gallery entry to a managed Media asset instead of hardcoded paths.
+         */
+        image: string | Media;
+        id?: string | null;
+      }[]
+    | null;
+  connect?:
+    | {
+        title: string;
+        /**
+         * Front-end maps this key to the matching React icon component.
+         */
+        iconKey: 'GitHubIcon' | 'LinkedInIcon' | 'WhatsappIcon' | 'TelegramIcon' | 'MailIcon' | 'ResumeIcon';
+        details: string;
+        href: string;
+        id?: string | null;
+      }[]
+    | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "payload-kv".
  */
@@ -413,6 +507,10 @@ export interface PayloadLockedDocument {
     | ({
         relationTo: 'experiences-list';
         value: string | ExperiencesList;
+      } | null)
+    | ({
+        relationTo: 'home-info';
+        value: string | HomeInfo;
       } | null);
   globalSlug?: string | null;
   user: {
@@ -569,6 +667,71 @@ export interface ExperiencesListSelect<T extends boolean = true> {
     | {
         heading?: T;
         content?: T;
+        id?: T;
+      };
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "home-info_select".
+ */
+export interface HomeInfoSelect<T extends boolean = true> {
+  titleHook?: T;
+  descHook?: T;
+  techStack?:
+    | T
+    | {
+        name?: T;
+        path?: T;
+        proficiency?: T;
+        category?: T;
+        id?: T;
+      };
+  education?:
+    | T
+    | {
+        title?: T;
+        major?: T;
+        year?: T;
+        name?: T;
+        path?: T;
+        id?: T;
+      };
+  certificate?:
+    | T
+    | {
+        title?: T;
+        issuer?: T;
+        year?: T;
+        credID?: T;
+        path?: T;
+        id?: T;
+      };
+  sayAboutMe?:
+    | T
+    | {
+        name?: T;
+        position?: T;
+        company?: T;
+        comments?: T;
+        path?: T;
+        id?: T;
+      };
+  gallery?:
+    | T
+    | {
+        name?: T;
+        image?: T;
+        id?: T;
+      };
+  connect?:
+    | T
+    | {
+        title?: T;
+        iconKey?: T;
+        details?: T;
+        href?: T;
         id?: T;
       };
   updatedAt?: T;
