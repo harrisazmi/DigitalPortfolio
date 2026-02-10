@@ -10,10 +10,19 @@ import PreviousExperience from '@/components/shared/PreviousExperience'
 import { getIconComponent } from '@/lib/iconRegistry'
 import { cardVariants } from '@/lib/motionVariants'
 import type { ExperienceProject, ExperiencesList } from '@/types/experience'
+import type { Experience } from '@/payload-types'
 import { clx } from '@/lib/utils'
 import WebsiteChecker from '@/components/shared/WebsiteChecker'
 
-export default function ChemizPageClient({ experienceData }: { experienceData: ExperiencesList }) {
+type ChemizPageClientProps = {
+  experienceData: ExperiencesList
+  experiences?: Experience[]
+}
+
+export default function ChemizPageClient({
+  experienceData,
+  experiences = [],
+}: ChemizPageClientProps) {
   const expRef = useRef(null)
   const isExpRefInView = useInView(expRef, { once: true })
   const projectEntries = experienceData.projects ?? []
@@ -110,7 +119,7 @@ export default function ChemizPageClient({ experienceData }: { experienceData: E
         </div>
       </motion.div>
       <div>
-        <PreviousExperience />
+        <PreviousExperience experiences={experiences} />
       </div>
     </div>
   )

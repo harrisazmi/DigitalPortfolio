@@ -1,12 +1,28 @@
-'use client'
+import { getPayload } from 'payload'
+import { JSX, Suspense } from 'react'
+import config from '@/payload.config'
+import ExperiencesPageClient from './page-component'
 
-import PreviousExperience from '@/components/shared/PreviousExperience'
+// Async-friendly server component type alias
+type FSP = () => Promise<JSX.Element>
 
-export default function ExperiencesPage() {
+const ExperiencesPage: FSP = async () => {
+  const payload = await getPayload({ config })
+
+  const { docs: experienceDataList } = await payload.find({
+    collection: 'experiences',
+    limit: 3,
+    depth: 2,
+  })
+
+  // reverse mutate original array
+  const experienceDataListReversed = experienceDataList.reverse()
+
   return (
-    <div className="pb-8">
-      <h1 className="text-4xl font-bold pb-8">Experiences</h1>
-      <PreviousExperience sub={false} />
-    </div>
+    <Suspense>
+      <ExperiencesPageClient experiences={experienceDataListReversed} />
+    </Suspense>
   )
 }
+
+export default ExperiencesPage

@@ -16,9 +16,17 @@ const GovTechPage: FSP = async () => {
   })
   const experienceData = experienceDataList[2]
 
+  const { docs: experiences } = await payload.find({
+    collection: 'experiences',
+    limit: 10,
+    depth: 2,
+  })
+
+  const experiencesReversed = experiences.reverse()
+
   return (
     <Suspense>
-      <GovtechPageClient experienceData={experienceData} />
+      <GovtechPageClient experienceData={experienceData} experiences={experiencesReversed} />
     </Suspense>
   )
 }

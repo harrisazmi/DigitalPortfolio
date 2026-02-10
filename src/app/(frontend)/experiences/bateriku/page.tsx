@@ -6,7 +6,7 @@ import BaterikuPageClient from './page-component'
 // Async-friendly server component type alias
 type FSP = () => Promise<JSX.Element>
 
-const ChemizPage: FSP = async () => {
+const BaterikuPage: FSP = async () => {
   const payload = await getPayload({ config })
 
   const { docs: experienceDataList } = await payload.find({
@@ -16,11 +16,19 @@ const ChemizPage: FSP = async () => {
   })
   const experienceData = experienceDataList[1]
 
+  const { docs: experiences } = await payload.find({
+    collection: 'experiences',
+    limit: 10,
+    depth: 2,
+  })
+
+  const experiencesReversed = experiences.reverse()
+
   return (
     <Suspense>
-      <BaterikuPageClient experienceData={experienceData} />
+      <BaterikuPageClient experienceData={experienceData} experiences={experiencesReversed} />
     </Suspense>
   )
 }
 
-export default ChemizPage
+export default BaterikuPage

@@ -16,9 +16,17 @@ const ChemizPage: FSP = async () => {
   })
   const experienceData = experienceDataList[0]
 
+  const { docs: experiences } = await payload.find({
+    collection: 'experiences',
+    limit: 10,
+    depth: 2,
+  })
+
+  const experiencesReversed = experiences.reverse()
+
   return (
     <Suspense>
-      <ChemizPageClient experienceData={experienceData} />
+      <ChemizPageClient experienceData={experienceData} experiences={experiencesReversed} />
     </Suspense>
   )
 }
