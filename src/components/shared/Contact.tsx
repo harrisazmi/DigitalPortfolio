@@ -1,4 +1,3 @@
-import { HomeInfo } from '@/data/HomeInfo'
 import { ArrowRightShortIcon } from '@/Icons'
 import { clx } from '@/lib/utils'
 import Link from 'next/link'
