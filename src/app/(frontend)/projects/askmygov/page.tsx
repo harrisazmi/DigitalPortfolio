@@ -1,42 +1,30 @@
-'use client'
+import { getPayload } from 'payload'
+import { JSX, Suspense } from 'react'
+import config from '@/payload.config'
 
-import { ProjectDetail } from '@/components/shared/ProjectDetail'
-import { askMyGovPortfolio } from '@/data/ProjectInfo'
+// Async-friendly server component type alias
+type FSP = () => Promise<JSX.Element>
 
-export default function AskMyGov() {
+const AskMyGovPage: FSP = async () => {
+  const payload = await getPayload({ config })
+
+  const { docs: askgovmyInfo } = await payload.find({
+    collection: 'projects',
+    where: {
+      path: {
+        equals: 'askmygov',
+      },
+    },
+    limit: 1,
+    depth: 3,
+  })
+
   return (
-    <ProjectDetail
-      projectImage={askMyGovPortfolio.projectImage}
-      projectName={askMyGovPortfolio.projectName}
-      overview={askMyGovPortfolio.overview}
-      infoNotes={[
-        'Please note that the project has not yet launched. Live access will remain unavailable until the official release.',
-      ]}
-      linkGroups={[
-        {
-          links: [
-            {
-              label: 'View Live',
-              href: askMyGovPortfolio.livehref,
-              iconType: 'live',
-              disabled: true,
-            },
-            {
-              label: 'View Code - GitHub',
-              href: askMyGovPortfolio.githubhref,
-              iconType: 'github',
-            },
-          ],
-        },
-      ]}
-      techStacks={[
-        {
-          title: 'Tech Stack (FE and DevOps)',
-          tools: askMyGovPortfolio.techstack.main,
-        },
-      ]}
-      sections={askMyGovPortfolio.sections}
-      heroBorder={false}
-    />
+    <Suspense>
+      <div>hehe</div>
+      {/* <HomePageClient ExpInfoDataList={experienceInfoDataList} homeInfoData={homeInfoData} /> */}
+    </Suspense>
   )
 }
+
+export default AskMyGovPage

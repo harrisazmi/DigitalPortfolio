@@ -2,6 +2,7 @@
 
 import type { Experience } from '@/payload-types'
 import type { HomeInfoShape } from '@/types/home'
+import type { ProjectGridItem } from '@/lib/projectAdapter'
 import { HeroSection } from '@/components/home/HeroSection'
 import { ExperienceList } from '@/components/home/ExperienceList'
 import { SectionCard } from '@/components/home/SectionCard'
@@ -10,7 +11,6 @@ import { EducationSection } from '@/components/home/EducationSection'
 import Link from 'next/link'
 import { Button } from '@/components/shared/Button'
 import { ProjectsShowcase } from '@/components/home/ProjectsShowcase'
-import { collabProjectsData } from '@/data/ProjectsData'
 import { GalleryStrip } from '@/components/home/GalleryStrip'
 import { Testimonials } from '@/components/home/Testimonials'
 import Contacts from '@/components/shared/Contact'
@@ -19,10 +19,16 @@ import { TechStackGrid } from '@/components/home/TechStackGrid'
 type HomePageClientProps = {
   ExpInfoDataList: Experience[]
   homeInfoData?: HomeInfoShape
+  collaborativeProjects: ProjectGridItem[]
 }
 
-export default function HomePageClient({ ExpInfoDataList, homeInfoData }: HomePageClientProps) {
+export default function HomePageClient({
+  ExpInfoDataList,
+  homeInfoData,
+  collaborativeProjects,
+}: HomePageClientProps) {
   const experiences = Array.isArray(ExpInfoDataList) ? ExpInfoDataList : []
+  const collabProjects = Array.isArray(collaborativeProjects) ? collaborativeProjects : []
 
   return (
     <>
@@ -67,7 +73,7 @@ export default function HomePageClient({ ExpInfoDataList, homeInfoData }: HomePa
               </Link>
             }
           >
-            <ProjectsShowcase projects={collabProjectsData} />
+            <ProjectsShowcase projects={collabProjects} />
           </SectionCard>
           <GalleryStrip items={homeInfoData.gallery} />
           <Testimonials items={homeInfoData.sayAboutMe} />
