@@ -74,6 +74,7 @@ export interface Config {
     'experiences-list': ExperiencesList;
     'home-info': HomeInfo;
     projects: Project;
+    tools: Tool;
     'payload-kv': PayloadKv;
     'payload-locked-documents': PayloadLockedDocument;
     'payload-preferences': PayloadPreference;
@@ -88,6 +89,7 @@ export interface Config {
     'experiences-list': ExperiencesListSelect<false> | ExperiencesListSelect<true>;
     'home-info': HomeInfoSelect<false> | HomeInfoSelect<true>;
     projects: ProjectsSelect<false> | ProjectsSelect<true>;
+    tools: ToolsSelect<false> | ToolsSelect<true>;
     'payload-kv': PayloadKvSelect<false> | PayloadKvSelect<true>;
     'payload-locked-documents': PayloadLockedDocumentsSelect<false> | PayloadLockedDocumentsSelect<true>;
     'payload-preferences': PayloadPreferencesSelect<false> | PayloadPreferencesSelect<true>;
@@ -492,6 +494,35 @@ export interface Project {
   createdAt: string;
 }
 /**
+ * Tech stack items powering the Tools grid.
+ *
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "tools".
+ */
+export interface Tool {
+  id: string;
+  name: string;
+  /**
+   * Matches the `type` property consumed on the frontend.
+   */
+  category:
+    | 'languages'
+    | 'fullstack'
+    | 'frontend'
+    | 'backend'
+    | 'database'
+    | 'devops'
+    | 'management'
+    | 'others'
+    | 'testing';
+  /**
+   * Upload an icon when not serving from a static /public path.
+   */
+  icon?: (string | null) | Media;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "payload-kv".
  */
@@ -542,6 +573,10 @@ export interface PayloadLockedDocument {
     | ({
         relationTo: 'projects';
         value: string | Project;
+      } | null)
+    | ({
+        relationTo: 'tools';
+        value: string | Tool;
       } | null);
   globalSlug?: string | null;
   user: {
@@ -781,6 +816,17 @@ export interface ProjectsSelect<T extends boolean = true> {
   image?: T;
   gitHubUrl?: T;
   previewUrl?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "tools_select".
+ */
+export interface ToolsSelect<T extends boolean = true> {
+  name?: T;
+  category?: T;
+  icon?: T;
   updatedAt?: T;
   createdAt?: T;
 }
