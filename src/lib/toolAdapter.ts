@@ -1,5 +1,5 @@
 import type { Tool } from '@/payload-types'
-import { ToolCategories, type ToolCategory } from '@/data/ToolCategories'
+import { ToolCategories, type ToolCategory } from '@/types/tool'
 
 export type ToolGridItem = {
   id: string
