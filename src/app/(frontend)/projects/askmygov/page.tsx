@@ -1,6 +1,7 @@
 import { getPayload } from 'payload'
 import { JSX, Suspense } from 'react'
 import config from '@/payload.config'
+import AskMyGovClientPage from './page-component'
 
 // Async-friendly server component type alias
 type FSP = () => Promise<JSX.Element>
@@ -8,21 +9,22 @@ type FSP = () => Promise<JSX.Element>
 const AskMyGovPage: FSP = async () => {
   const payload = await getPayload({ config })
 
-  const { docs: askgovmyInfo } = await payload.find({
-    collection: 'projects',
+  const { docs: askmygovInfo } = await payload.find({
+    collection: 'project-details',
     where: {
-      path: {
-        equals: 'askmygov',
+      slug: {
+        equals: 'AskMyGov',
       },
     },
     limit: 1,
     depth: 3,
   })
 
+  const askgovProjectDetail = askmygovInfo[0]
+
   return (
     <Suspense>
-      <div>hehe</div>
-      {/* <HomePageClient ExpInfoDataList={experienceInfoDataList} homeInfoData={homeInfoData} /> */}
+      <AskMyGovClientPage askgovProjectDetail={askgovProjectDetail} />
     </Suspense>
   )
 }

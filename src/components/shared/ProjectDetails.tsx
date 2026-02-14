@@ -1,0 +1,147 @@
+'use client'
+
+import Image from 'next/image'
+import Link from 'next/link'
+import { useEffect, useRef } from 'react'
+import { motion, moveItem, useInView } from 'framer-motion'
+import { RichText } from '@payloadcms/richtext-lexical/react'
+import { Button } from '@/components/shared/Button'
+import ProjectLinks from '@/components/shared/ProjectLinks'
+import TechStack, { type TechTool } from '@/components/shared/TechStack'
+import { ArrowLeftIcon, BroadcastIcon, GitHubIcon } from '@/Icons'
+import { cardVariants } from '@/lib/motionVariants'
+import { getMediaUrl } from '@/lib/media'
+import { clx } from '@/lib/utils'
+import type { ProjectDetail } from '@/payload-types'
+
+interface ProjectDetailsProps {
+  projectDetails: ProjectDetail
+}
+
+export default function ProjectDetails({ projectDetails }: ProjectDetailsProps) {
+  const ref = useRef<HTMLDivElement | null>(null)
+  const isInView = useInView(ref, { once: true })
+
+  useEffect(() => {
+    window.scrollTo(0, 0)
+  }, [])
+
+  const heroImageSrc = getMediaUrl(projectDetails.hero?.image)
+
+  return (
+    <motion.div
+      variants={cardVariants}
+      initial="initial"
+      animate={isInView ? 'animate' : 'initial'}
+      transition={{ duration: 0.4, delay: 0.2 }}
+    >
+      <div ref={ref} className="max-w-3xl mx-auto p-6 lg:pt-0 space-y-6">
+        <Link href="/projects">
+          <Button className="flex gap-4 bg-white border border-gray-110 hover:cursor-pointer">
+            <ArrowLeftIcon />
+            All Projects
+          </Button>
+        </Link>
+
+        {heroImageSrc && (
+          <div
+            className={clx(
+              'relative w-full mt-4',
+              'aspect-325/202 border-2 border-gray-110 rounded-3xl overflow-clip',
+            )}
+          >
+            <Image
+              src={heroImageSrc}
+              alt={projectDetails.title}
+              width={3000}
+              height={2000}
+              quality={100}
+            />
+          </div>
+        )}
+
+        <h1 className="font-bold text-5xl">{projectDetails.title}</h1>
+        {projectDetails.overview && (
+          <p className="text-lg text-gray-140">{projectDetails.overview}</p>
+        )}
+
+        <ProjectLinks
+          website={projectDetails.links.website}
+          websitelive={projectDetails.links.websitelive}
+          github={projectDetails.links.github}
+          githublive={projectDetails.links.githublive}
+        />
+
+        {/* {hasIssues && (
+          <section>
+            <h2 className="font-bold text-2xl">Issues</h2>
+            <p className="text-lg text-gray-140 pt-2">{projectDetails.problemStatement?.issues}</p>
+          </section>
+        )} */}
+
+        {/* {hasSolutions && (
+          <section>
+            <h2 className="font-bold text-2xl">Solutions</h2>
+            {projectDetails.problemStatement?.solutionsHeader && (
+              <p className="text-lg text-gray-140 py-2">
+                {projectDetails.problemStatement.solutionsHeader}
+              </p>
+            )}
+            {projectDetails.problemStatement?.solutionsList?.map((solution, index) => (
+              <li key={`solution-${solution.id ?? index}`} className="text-gray-140 text-lg">
+                {solution.item}
+              </li>
+            ))}
+            {projectDetails.problemStatement?.solutionsConclusion && (
+              <p className="text-lg text-gray-140 pt-2">
+                {projectDetails.problemStatement.solutionsConclusion}
+              </p>
+            )}
+          </section>
+        )} */}
+
+        {projectDetails.techstack && (
+          <TechStack
+            title={projectDetails.techstack[0]?.title}
+            techStackTool={
+              projectDetails.techstack[0]?.items?.map((item) => ({
+                name: item.name,
+                media: item.image,
+              })) ?? []
+            }
+          />
+        )}
+
+        {projectDetails.sections && projectDetails.sections.length > 0 && (
+          <section>
+            {projectDetails.sections.map((section) => (
+              <div key={section.id} className="pt-6">
+                <h3 className="font-semibold text-2xl pb-6 pt-6">{section.title}</h3>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  {section.items?.map((item, index) => (
+                    <div
+                      key={`${section.title}-${index}`}
+                      className="flex flex-col gap-4 bg-gray-110 rounded-lg p-4"
+                    >
+                      <div>
+                        <h4 className="text-xl font-semibold pb-4">{item.heading}</h4>
+                        {item.details?.map((detail, detailIndex) => (
+                          <div
+                            key={`${section.title}-${index}-${detailIndex}`}
+                            className="space-y-2"
+                          >
+                            <RichText className="flex flex-col prose gap-7" data={detail.line} />
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            ))}
+          </section>
+        )}
+      </div>
+    </motion.div>
+  )
+}

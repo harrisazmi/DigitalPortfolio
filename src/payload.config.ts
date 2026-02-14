@@ -12,6 +12,7 @@ import { ExperiencesInfo } from './collections/ExperiencesInfo'
 import { ExperiencesLists } from './collections/ExperienceLists'
 import { HomeInfo } from './collections/HomeInfo'
 import { Projects } from './collections/Projects'
+import { ProjectDetails } from './collections/ProjectDetails'
 import { Tools } from './collections/Tools'
 
 const filename = fileURLToPath(import.meta.url)
@@ -32,6 +33,7 @@ export default buildConfig({
     ExperiencesLists,
     HomeInfo,
     Projects,
+    ProjectDetails,
     Tools,
   ],
   editor: lexicalEditor(),

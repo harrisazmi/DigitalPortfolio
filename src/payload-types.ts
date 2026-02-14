@@ -74,6 +74,7 @@ export interface Config {
     'experiences-list': ExperiencesList;
     'home-info': HomeInfo;
     projects: Project;
+    'project-details': ProjectDetail;
     tools: Tool;
     'payload-kv': PayloadKv;
     'payload-locked-documents': PayloadLockedDocument;
@@ -89,6 +90,7 @@ export interface Config {
     'experiences-list': ExperiencesListSelect<false> | ExperiencesListSelect<true>;
     'home-info': HomeInfoSelect<false> | HomeInfoSelect<true>;
     projects: ProjectsSelect<false> | ProjectsSelect<true>;
+    'project-details': ProjectDetailsSelect<false> | ProjectDetailsSelect<true>;
     tools: ToolsSelect<false> | ToolsSelect<true>;
     'payload-kv': PayloadKvSelect<false> | PayloadKvSelect<true>;
     'payload-locked-documents': PayloadLockedDocumentsSelect<false> | PayloadLockedDocumentsSelect<true>;
@@ -494,6 +496,115 @@ export interface Project {
   createdAt: string;
 }
 /**
+ * Long-form write-ups used by the detailed project pages.
+ *
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "project-details".
+ */
+export interface ProjectDetail {
+  id: string;
+  title: string;
+  /**
+   * Stable identifier consumed by the frontend route builder.
+   */
+  slug: string;
+  /**
+   * Lower numbers surface first when listing detail pages.
+   */
+  priority?: number | null;
+  hero?: {
+    image?: (string | null) | Media;
+  };
+  /**
+   * Opening paragraph that appears directly under the hero.
+   */
+  overview: string;
+  problemStatement?: {
+    issues?: string | null;
+    /**
+     * Optional subtitle introducing the solutions list.
+     */
+    solutionsHeader?: string | null;
+    solutionsList?:
+      | {
+          item: string;
+          id?: string | null;
+        }[]
+      | null;
+    solutionsConclusion?: string | null;
+  };
+  links: {
+    website: string;
+    /**
+     * Editors tick this once they confirm the official site is reachable.
+     */
+    websitelive: boolean;
+    github: string;
+    /**
+     * Editors tick this once they confirm the official Github site is reachable.
+     */
+    githublive: boolean;
+  };
+  /**
+   * Mirror the grouped tech stacks exported inside src/data/ProjectInfo.tsx.
+   */
+  techstack?:
+    | {
+        /**
+         * Slug consumed by the frontend (e.g., main, fenbe, devops).
+         */
+        key: string;
+        title: string;
+        items?:
+          | {
+              name: string;
+              image?: (string | null) | Media;
+              id?: string | null;
+            }[]
+          | null;
+        id?: string | null;
+      }[]
+    | null;
+  sections?:
+    | {
+        /**
+         * Machine-friendly identifier, e.g., FrontendDevelopment.
+         */
+        key: string;
+        title: string;
+        items?:
+          | {
+              heading: string;
+              details?:
+                | {
+                    line: {
+                      root: {
+                        type: string;
+                        children: {
+                          type: any;
+                          version: number;
+                          [k: string]: unknown;
+                        }[];
+                        direction: ('ltr' | 'rtl') | null;
+                        format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+                        indent: number;
+                        version: number;
+                      };
+                      [k: string]: unknown;
+                    };
+                    id?: string | null;
+                  }[]
+                | null;
+              id?: string | null;
+            }[]
+          | null;
+        id?: string | null;
+      }[]
+    | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
  * Tech stack items powering the Tools grid.
  *
  * This interface was referenced by `Config`'s JSON-Schema
@@ -573,6 +684,10 @@ export interface PayloadLockedDocument {
     | ({
         relationTo: 'projects';
         value: string | Project;
+      } | null)
+    | ({
+        relationTo: 'project-details';
+        value: string | ProjectDetail;
       } | null)
     | ({
         relationTo: 'tools';
@@ -816,6 +931,77 @@ export interface ProjectsSelect<T extends boolean = true> {
   image?: T;
   gitHubUrl?: T;
   previewUrl?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "project-details_select".
+ */
+export interface ProjectDetailsSelect<T extends boolean = true> {
+  title?: T;
+  slug?: T;
+  priority?: T;
+  hero?:
+    | T
+    | {
+        image?: T;
+      };
+  overview?: T;
+  problemStatement?:
+    | T
+    | {
+        issues?: T;
+        solutionsHeader?: T;
+        solutionsList?:
+          | T
+          | {
+              item?: T;
+              id?: T;
+            };
+        solutionsConclusion?: T;
+      };
+  links?:
+    | T
+    | {
+        website?: T;
+        websitelive?: T;
+        github?: T;
+        githublive?: T;
+      };
+  techstack?:
+    | T
+    | {
+        key?: T;
+        title?: T;
+        items?:
+          | T
+          | {
+              name?: T;
+              image?: T;
+              id?: T;
+            };
+        id?: T;
+      };
+  sections?:
+    | T
+    | {
+        key?: T;
+        title?: T;
+        items?:
+          | T
+          | {
+              heading?: T;
+              details?:
+                | T
+                | {
+                    line?: T;
+                    id?: T;
+                  };
+              id?: T;
+            };
+        id?: T;
+      };
   updatedAt?: T;
   createdAt?: T;
 }
