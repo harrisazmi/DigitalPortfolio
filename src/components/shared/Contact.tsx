@@ -1,19 +1,19 @@
 import { ArrowRightShortIcon } from '@/Icons'
 import { clx } from '@/lib/utils'
 import Link from 'next/link'
-import type { ConnectItem } from '@/types/home'
 import { getIconComponent } from '@/lib/iconRegistry'
+import { ContactInfo } from '@/payload-types'
 
 type ContactsProps = {
   title?: string
-  contactItems?: ConnectItem[]
+  contactItems?: ContactInfo['connect']
 }
 
 export default function Contacts({ title, contactItems }: ContactsProps) {
   const contactItemsCheck = Array.isArray(contactItems) ? contactItems : []
   return (
     <div className="flex flex-col w-full border-b border-blue-110">
-      <h2 className="tracking-[2px] text-gray-130 text-xs font-medium">{title}</h2>
+      {title && <h2 className="tracking-[2px] text-gray-130 text-xs font-medium">{title}</h2>}
       <div className="py-8 gap-2 flex flex-col">
         {contactItemsCheck.map((connect) => {
           const IconComponent = getIconComponent(connect.iconKey)

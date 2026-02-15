@@ -76,6 +76,7 @@ export interface Config {
     projects: Project;
     'project-details': ProjectDetail;
     tools: Tool;
+    'contact-info': ContactInfo;
     'payload-kv': PayloadKv;
     'payload-locked-documents': PayloadLockedDocument;
     'payload-preferences': PayloadPreference;
@@ -92,6 +93,7 @@ export interface Config {
     projects: ProjectsSelect<false> | ProjectsSelect<true>;
     'project-details': ProjectDetailsSelect<false> | ProjectDetailsSelect<true>;
     tools: ToolsSelect<false> | ToolsSelect<true>;
+    'contact-info': ContactInfoSelect<false> | ContactInfoSelect<true>;
     'payload-kv': PayloadKvSelect<false> | PayloadKvSelect<true>;
     'payload-locked-documents': PayloadLockedDocumentsSelect<false> | PayloadLockedDocumentsSelect<true>;
     'payload-preferences': PayloadPreferencesSelect<false> | PayloadPreferencesSelect<true>;
@@ -455,18 +457,6 @@ export interface HomeInfo {
         id?: string | null;
       }[]
     | null;
-  connect?:
-    | {
-        title: string;
-        /**
-         * Front-end maps this key to the matching React icon component.
-         */
-        iconKey: 'GitHubIcon' | 'LinkedInIcon' | 'WhatsappIcon' | 'TelegramIcon' | 'MailIcon' | 'ResumeIcon';
-        details: string;
-        href: string;
-        id?: string | null;
-      }[]
-    | null;
   updatedAt: string;
   createdAt: string;
 }
@@ -635,6 +625,28 @@ export interface Tool {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "contact-info".
+ */
+export interface ContactInfo {
+  id: string;
+  label: string;
+  connect?:
+    | {
+        title: string;
+        /**
+         * Front-end maps this key to the matching React icon component.
+         */
+        iconKey: 'GitHubIcon' | 'LinkedInIcon' | 'WhatsappIcon' | 'TelegramIcon' | 'MailIcon' | 'ResumeIcon';
+        details: string;
+        href: string;
+        id?: string | null;
+      }[]
+    | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "payload-kv".
  */
 export interface PayloadKv {
@@ -692,6 +704,10 @@ export interface PayloadLockedDocument {
     | ({
         relationTo: 'tools';
         value: string | Tool;
+      } | null)
+    | ({
+        relationTo: 'contact-info';
+        value: string | ContactInfo;
       } | null);
   globalSlug?: string | null;
   user: {
@@ -906,15 +922,6 @@ export interface HomeInfoSelect<T extends boolean = true> {
         image?: T;
         id?: T;
       };
-  connect?:
-    | T
-    | {
-        title?: T;
-        iconKey?: T;
-        details?: T;
-        href?: T;
-        id?: T;
-      };
   updatedAt?: T;
   createdAt?: T;
 }
@@ -1013,6 +1020,24 @@ export interface ToolsSelect<T extends boolean = true> {
   name?: T;
   category?: T;
   icon?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "contact-info_select".
+ */
+export interface ContactInfoSelect<T extends boolean = true> {
+  label?: T;
+  connect?:
+    | T
+    | {
+        title?: T;
+        iconKey?: T;
+        details?: T;
+        href?: T;
+        id?: T;
+      };
   updatedAt?: T;
   createdAt?: T;
 }

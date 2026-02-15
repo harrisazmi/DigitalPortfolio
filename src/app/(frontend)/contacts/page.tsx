@@ -1,24 +1,27 @@
-'use client'
-import Contact from '@/components/shared/Contact'
-import { motion, useInView } from 'framer-motion'
-import { useRef } from 'react'
-import { cardVariants } from '@/lib/motionVariants'
+import { getPayload } from 'payload'
+import { JSX, Suspense } from 'react'
+import config from '@/payload.config'
+import ContactsPageClient from './page-component'
 
-export default function ContactsPage() {
-  const ref = useRef(null)
-  const isInView = useInView(ref, { once: true })
+// Async-friendly server component type alias
+type FSP = () => Promise<JSX.Element>
+
+const BaterikuPage: FSP = async () => {
+  const payload = await getPayload({ config })
+
+  const { docs: contactInfoDocs } = await payload.find({
+    collection: 'contact-info',
+    limit: 1,
+    depth: 2,
+  })
+
+  const contactInfo = contactInfoDocs[0]
 
   return (
-    <div ref={ref}>
-      <motion.div
-        variants={cardVariants}
-        initial="initial"
-        animate={isInView ? 'animate' : 'initial'}
-        transition={{ duration: 0.3, delay: 0.2 }}
-      >
-        <h1 className="text-4xl font-bold">Let’s Connect and Collaborate!</h1>
-        <Contact />
-      </motion.div>
-    </div>
+    <Suspense>
+      <ContactsPageClient contactInfo={contactInfo} />
+    </Suspense>
   )
 }
+
+export default BaterikuPage

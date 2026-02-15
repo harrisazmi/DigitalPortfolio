@@ -1,12 +1,12 @@
 import Image from 'next/image'
 import HorizontalCard from '@/components/shared/HorizontalCard'
-import type { CertificateItem } from '@/types/home'
+import type { HomeInfo } from '@/payload-types'
 
 type CertificateCarouselProps = {
-  items: CertificateItem[]
+  items: NonNullable<HomeInfo['certificate']>
 }
 
-export function CertificateCarousel({ items }: CertificateCarouselProps) {
+export default function CertificateCarousel({ items }: CertificateCarouselProps) {
   if (!items.length) return null
 
   return (

@@ -1,13 +1,11 @@
 import Image from 'next/image'
-import type { EducationItem } from '@/types/home'
+import type { HomeInfo } from '@/payload-types'
 
 type EducationSectionProps = {
-  items: EducationItem[]
+  items: NonNullable<HomeInfo['education']>
 }
 
-export function EducationSection({ items }: EducationSectionProps) {
-  if (!items.length) return null
-
+export default function EducationSection({ items }: EducationSectionProps) {
   return (
     <div className="flex w-full flex-col gap-6 py-8">
       {items.map((edu) => (

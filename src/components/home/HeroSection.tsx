@@ -9,7 +9,7 @@ type HeroSectionProps = {
   description: string
 }
 
-export function HeroSection({ title, description }: HeroSectionProps) {
+export default function HeroSection({ title, description }: HeroSectionProps) {
   const ref = useRef<HTMLDivElement>(null)
   const isInView = useInView(ref, { once: true })
 

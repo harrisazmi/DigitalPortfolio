@@ -1,15 +1,11 @@
 import Image from 'next/image'
-import type { TechStackItem } from '@/types/home'
+import type { HomeInfo } from '@/payload-types'
 
 type TechStackGridProps = {
-  items?: TechStackItem[]
+  items: NonNullable<HomeInfo['techStack']>
 }
 
-export function TechStackGrid({ items = [] }: TechStackGridProps) {
-  if (!items.length) {
-    return <p className="text-sm text-gray-400">Tech stack information coming soon.</p>
-  }
-
+export default function TechStackGrid({ items = [] }: TechStackGridProps) {
   return (
     <div className="grid grid-cols-2 gap-4 py-8 sm:grid-cols-3 xl:grid-cols-3">
       {items.map((stack) => (

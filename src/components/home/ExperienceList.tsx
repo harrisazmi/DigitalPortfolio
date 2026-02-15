@@ -1,23 +1,18 @@
 import Image from 'next/image'
 import Link from 'next/link'
-import type { Experience } from '@/payload-types'
+import { getMediaUrl } from '@/lib/media'
+import type { Experience, Media } from '@/payload-types'
 
 type ExperienceListProps = {
   experiences: Experience[]
 }
 
-export function ExperienceList({ experiences }: ExperienceListProps) {
-  if (!experiences.length) {
-    return <p className="text-sm text-gray-140">No experiences found.</p>
-  }
-
+export default function ExperienceList({ experiences }: ExperienceListProps) {
   return (
     <div className="flex w-full flex-col gap-8 py-8 ">
       {experiences.map((experience) => {
-        const companyImage = experience.companyImage
-        const imageSrc = typeof companyImage === 'string' ? companyImage : companyImage?.url
-        const imageAlt =
-          typeof companyImage === 'string' ? experience.name : companyImage?.alt || experience.name
+        const companyImage = experience.companyImage as Media
+        const imageSrc = getMediaUrl(companyImage)
 
         return (
           <Link
@@ -27,10 +22,14 @@ export function ExperienceList({ experiences }: ExperienceListProps) {
           >
             <div className="pr-4">
               <div className="flex size-16 shrink-0 items-center justify-center overflow-hidden rounded-full border border-gray-110 bg-white">
-                {imageSrc ? (
-                  <Image src={imageSrc} alt={imageAlt} width={64} height={64} quality={100} />
-                ) : (
-                  <span className="text-xs font-semibold text-gray-140">{experience.name}</span>
+                {imageSrc && (
+                  <Image
+                    src={imageSrc}
+                    alt={companyImage.alt}
+                    width={64}
+                    height={64}
+                    quality={100}
+                  />
                 )}
               </div>
             </div>

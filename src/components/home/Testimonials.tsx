@@ -1,14 +1,12 @@
 import Image from 'next/image'
 import HorizontalCard from '@/components/shared/HorizontalCard'
-import type { TestimonialItem } from '@/types/home'
+import { HomeInfo } from '@/payload-types'
 
 type TestimonialsProps = {
-  items: TestimonialItem[]
+  items: NonNullable<HomeInfo['sayAboutMe']>
 }
 
-export function Testimonials({ items }: TestimonialsProps) {
-  if (!items.length) return null
-
+export default function Testimonials({ items }: TestimonialsProps) {
   return (
     <HorizontalCard title="WHAT PEOPLE SAY ABOUT ME">
       {items.map((item) => (

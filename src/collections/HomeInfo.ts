@@ -9,15 +9,6 @@ const techStackCategoryOptions: { label: string; value: string }[] = [
   { label: 'Dev Ops', value: 'dev-ops' },
 ]
 
-const contactIconOptions: { label: string; value: string }[] = [
-  { label: 'GitHub', value: 'GitHubIcon' },
-  { label: 'LinkedIn', value: 'LinkedInIcon' },
-  { label: 'WhatsApp', value: 'WhatsappIcon' },
-  { label: 'Telegram', value: 'TelegramIcon' },
-  { label: 'Mail', value: 'MailIcon' },
-  { label: 'Resume', value: 'ResumeIcon' },
-]
-
 export const HomeInfo: CollectionConfig = {
   slug: 'home-info',
   labels: {
@@ -182,34 +173,6 @@ export const HomeInfo: CollectionConfig = {
             description:
               'Link each gallery entry to a managed Media asset instead of hardcoded paths.',
           },
-        },
-      ],
-    },
-    {
-      name: 'connect',
-      label: 'Contact Links',
-      type: 'array',
-      minRows: 1,
-      admin: {
-        initCollapsed: true,
-      },
-      fields: [
-        { name: 'title', type: 'text', required: true },
-        {
-          name: 'iconKey',
-          label: 'Icon',
-          type: 'select',
-          required: true,
-          options: contactIconOptions,
-          admin: {
-            description: 'Front-end maps this key to the matching React icon component.',
-          },
-        },
-        { name: 'details', type: 'text', required: true },
-        {
-          name: 'href',
-          type: 'text',
-          required: true,
         },
       ],
     },

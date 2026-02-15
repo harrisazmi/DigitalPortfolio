@@ -14,6 +14,7 @@ import { HomeInfo } from './collections/HomeInfo'
 import { Projects } from './collections/Projects'
 import { ProjectDetails } from './collections/ProjectDetails'
 import { Tools } from './collections/Tools'
+import { ContactInfo } from './collections/ContactInfo'
 
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
@@ -35,6 +36,7 @@ export default buildConfig({
     Projects,
     ProjectDetails,
     Tools,
+    ContactInfo,
   ],
   editor: lexicalEditor(),
   secret: process.env.PAYLOAD_SECRET || '',

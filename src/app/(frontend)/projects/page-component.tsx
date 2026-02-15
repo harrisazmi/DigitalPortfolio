@@ -6,18 +6,19 @@ import { motion, useInView } from 'framer-motion'
 import { useRef, type RefObject } from 'react'
 import { clx } from '@/lib/utils'
 import { cardVariants } from '@/lib/motionVariants'
-import type { ProjectGridItem } from '@/lib/projectAdapter'
+import { Media, Project } from '@/payload-types'
+import { getMediaUrl } from '@/lib/media'
 
 type ProjectSectionProps = {
   title: string
-  projects: ProjectGridItem[]
+  projects: Project[]
   sectionRef: RefObject<HTMLDivElement | null>
   isInView: boolean
 }
 
-export type ProjectsPageClientProps = {
-  collaborativeProjects: ProjectGridItem[]
-  personalProjects: ProjectGridItem[]
+type ProjectsPageClientProps = {
+  collaborativeProjects: Project[]
+  personalProjects: Project[]
 }
 
 function ProjectSection({ title, projects, sectionRef, isInView }: ProjectSectionProps) {
@@ -31,31 +32,37 @@ function ProjectSection({ title, projects, sectionRef, isInView }: ProjectSectio
           ' sm:grid-cols-2 lg:grid-cols-2 pb-8',
         )}
       >
-        {projects.map((project, index) => (
-          <motion.div
-            key={project.id}
-            variants={cardVariants}
-            initial="initial"
-            animate={isInView ? 'animate' : 'initial'}
-            transition={{ duration: 0.3, delay: index * 0.2 }}
-          >
-            <Link href={`/projects/${project.path}`}>
-              <div className="h-72.5 w-70 bg-gray-110 rounded-3xl overflow-clip cursor-pointer border border-gray-110">
-                <Image
-                  src={project.image}
-                  alt={project.title}
-                  width={310}
-                  height={230}
-                  quality={100}
-                />
-                <div className="flex flex-col w-full items-start justify-start text-start p-4 pl-6">
-                  <h3 className="font-bold text-2xl">{project.title}</h3>
-                  <p>{project.description}</p>
+        {projects.map((project, index) => {
+          const projectImage = project.image as Media
+          const imageSrc = getMediaUrl(projectImage)
+          return (
+            <motion.div
+              key={project.id}
+              variants={cardVariants}
+              initial="initial"
+              animate={isInView ? 'animate' : 'initial'}
+              transition={{ duration: 0.3, delay: index * 0.2 }}
+            >
+              <Link href={project.path}>
+                <div className="h-72.5 w-70 bg-gray-110 rounded-3xl overflow-clip cursor-pointer border border-gray-110">
+                  {imageSrc && (
+                    <Image
+                      src={imageSrc}
+                      alt={projectImage.alt}
+                      width={310}
+                      height={230}
+                      quality={100}
+                    />
+                  )}
+                  <div className="flex flex-col w-full items-start justify-start text-start p-4 pl-6">
+                    <h3 className="font-bold text-2xl">{project.title}</h3>
+                    <p>{project.description}</p>
+                  </div>
                 </div>
-              </div>
-            </Link>
-          </motion.div>
-        ))}
+              </Link>
+            </motion.div>
+          )
+        })}
       </div>
     </section>
   )
