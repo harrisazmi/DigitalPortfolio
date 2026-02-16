@@ -1,41 +1,32 @@
-'use client'
+import { getPayload } from 'payload'
+import { JSX, Suspense } from 'react'
+import config from '@/payload.config'
+import DirectoryClientPage from './page-component'
 
-import { ProjectDetail } from '@/components/shared/ProjectDetail'
-import { directoryPortfolio } from '@/data/ProjectInfo'
+// Async-friendly server component type alias
+type FSP = () => Promise<JSX.Element>
 
-export default function Directory() {
+const DirectoryPage: FSP = async () => {
+  const payload = await getPayload({ config })
+
+  const { docs: directoryInfo } = await payload.find({
+    collection: 'project-details',
+    where: {
+      slug: {
+        equals: 'Directory',
+      },
+    },
+    limit: 1,
+    depth: 3,
+  })
+
+  const directoryProjectDetail = directoryInfo[0]
+
   return (
-    <ProjectDetail
-      projectImage={directoryPortfolio.projectImage}
-      projectName={directoryPortfolio.projectName}
-      overview={directoryPortfolio.overview}
-      infoNotes={[
-        'Please note that the project has not yet launched. Live access and source code will remain unavailable until the official release.',
-      ]}
-      linkGroups={[
-        {
-          links: [
-            {
-              label: 'View Live',
-              href: directoryPortfolio.livehref,
-              iconType: 'live',
-              disabled: true,
-            },
-            {
-              label: 'View Code - GitHub',
-              href: directoryPortfolio.githubhref,
-              iconType: 'github',
-            },
-          ],
-        },
-      ]}
-      techStacks={[
-        {
-          title: 'Tech Stack (FE and DevOps)',
-          tools: directoryPortfolio.techstack.main,
-        },
-      ]}
-      sections={directoryPortfolio.sections}
-    />
+    <Suspense>
+      <DirectoryClientPage directoryProjectDetail={directoryProjectDetail} />
+    </Suspense>
   )
 }
+
+export default DirectoryPage

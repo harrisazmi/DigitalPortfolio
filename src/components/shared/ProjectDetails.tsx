@@ -72,44 +72,34 @@ export default function ProjectDetails({ projectDetails }: ProjectDetailsProps) 
           githublive={projectDetails.links.githublive}
         />
 
-        {/* {hasIssues && (
+        {projectDetails.problemStatement && (
           <section>
-            <h2 className="font-bold text-2xl">Issues</h2>
-            <p className="text-lg text-gray-140 pt-2">{projectDetails.problemStatement?.issues}</p>
+            <h2 className="font-bold text-2xl">{projectDetails.problemStatement.issuesHeader}</h2>
+            <div className="text-lg text-gray-140 pt-2">
+              <RichText
+                className="flex flex-col prose gap-7"
+                data={projectDetails.problemStatement.issueRichText}
+              />
+            </div>
           </section>
-        )} */}
+        )}
 
-        {/* {hasSolutions && (
+        {projectDetails.problemStatement && (
           <section>
-            <h2 className="font-bold text-2xl">Solutions</h2>
-            {projectDetails.problemStatement?.solutionsHeader && (
-              <p className="text-lg text-gray-140 py-2">
-                {projectDetails.problemStatement.solutionsHeader}
-              </p>
-            )}
-            {projectDetails.problemStatement?.solutionsList?.map((solution, index) => (
-              <li key={`solution-${solution.id ?? index}`} className="text-gray-140 text-lg">
-                {solution.item}
-              </li>
-            ))}
-            {projectDetails.problemStatement?.solutionsConclusion && (
-              <p className="text-lg text-gray-140 pt-2">
-                {projectDetails.problemStatement.solutionsConclusion}
-              </p>
-            )}
+            <h2 className="font-bold text-2xl">
+              {projectDetails.problemStatement.solutionsHeader}
+            </h2>
+            <div className="text-lg text-gray-140 pt-2">
+              <RichText
+                className="flex flex-col prose gap-7"
+                data={projectDetails.problemStatement.solutionsRichText}
+              />
+            </div>
           </section>
-        )} */}
+        )}
 
-        {projectDetails.techstack && (
-          <TechStack
-            title={projectDetails.techstack[0]?.title}
-            techStackTool={
-              projectDetails.techstack[0]?.items?.map((item) => ({
-                name: item.name,
-                media: item.image,
-              })) ?? []
-            }
-          />
+        {projectDetails.techstack && projectDetails.techstack.length > 0 && (
+          <TechStack techstackdata={projectDetails.techstack} />
         )}
 
         {projectDetails.sections && projectDetails.sections.length > 0 && (
@@ -128,7 +118,7 @@ export default function ProjectDetails({ projectDetails }: ProjectDetailsProps) 
                         {item.details?.map((detail, detailIndex) => (
                           <div
                             key={`${section.title}-${index}-${detailIndex}`}
-                            className="space-y-2"
+                            className="space-y-2  text-gray-140"
                           >
                             <RichText className="flex flex-col prose gap-7" data={detail.line} />
                           </div>

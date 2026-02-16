@@ -1,35 +1,32 @@
-'use client'
-import { ProjectDetail } from '@/components/shared/ProjectDetail'
-import { TerraformAWSPortfolio } from '@/data/ProjectInfo'
+import { getPayload } from 'payload'
+import { JSX, Suspense } from 'react'
+import config from '@/payload.config'
+import TerraformAWSClientPage from './page-component'
 
-export default function TerraformAWS() {
+// Async-friendly server component type alias
+type FSP = () => Promise<JSX.Element>
+
+const TerraformAWSPage: FSP = async () => {
+  const payload = await getPayload({ config })
+
+  const { docs: terraformAWSInfo } = await payload.find({
+    collection: 'project-details',
+    where: {
+      slug: {
+        equals: 'TerraformAWS',
+      },
+    },
+    limit: 1,
+    depth: 3,
+  })
+
+  const terraformAWSProjectDetail = terraformAWSInfo[0]
+
   return (
-    <ProjectDetail
-      projectImage={TerraformAWSPortfolio.projectImage}
-      projectName={TerraformAWSPortfolio.projectName}
-      overview={TerraformAWSPortfolio.overview}
-      linkGroups={[
-        {
-          links: [
-            {
-              label: 'View Code - GitHub',
-              href: TerraformAWSPortfolio.githubhref,
-              iconType: 'github',
-            },
-          ],
-        },
-      ]}
-      issues={TerraformAWSPortfolio.issues}
-      solutionsHeader={TerraformAWSPortfolio.solutionsHeader}
-      solutionsList={TerraformAWSPortfolio.solutionsList}
-      solutionsConclusion={TerraformAWSPortfolio.solutionsConclusion}
-      techStacks={[
-        {
-          title: 'Tech Stack (DevOps)',
-          tools: TerraformAWSPortfolio.techstack.devops,
-        },
-      ]}
-      sections={TerraformAWSPortfolio.sections}
-    />
+    <Suspense>
+      <TerraformAWSClientPage terraformAWSProjectDetail={terraformAWSProjectDetail} />
+    </Suspense>
   )
 }
+
+export default TerraformAWSPage

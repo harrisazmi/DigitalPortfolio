@@ -1,20 +1,32 @@
-'use client'
-import { ProjectDetail } from '@/components/shared/ProjectDetail'
-import { HomeServerPortfolio } from '@/data/ProjectInfo'
+import { getPayload } from 'payload'
+import { JSX, Suspense } from 'react'
+import config from '@/payload.config'
+import HomeserverClientPage from './page-component'
 
-export default function HomeServer() {
+// Async-friendly server component type alias
+type FSP = () => Promise<JSX.Element>
+
+const HomeserverPage: FSP = async () => {
+  const payload = await getPayload({ config })
+
+  const { docs: homeserverInfo } = await payload.find({
+    collection: 'project-details',
+    where: {
+      slug: {
+        equals: 'Homeserver',
+      },
+    },
+    limit: 1,
+    depth: 3,
+  })
+
+  const homeserverProjectDetail = homeserverInfo[0]
+
   return (
-    <ProjectDetail
-      projectImage={HomeServerPortfolio.projectImage}
-      projectName={HomeServerPortfolio.projectName}
-      overview={HomeServerPortfolio.overview}
-      techStacks={[
-        {
-          title: 'Tech Stack (DevOps)',
-          tools: HomeServerPortfolio.techstack.devops,
-        },
-      ]}
-      sections={HomeServerPortfolio.sections}
-    />
+    <Suspense>
+      <HomeserverClientPage homeserverProjectDetail={homeserverProjectDetail} />
+    </Suspense>
   )
 }
+
+export default HomeserverPage

@@ -65,42 +65,35 @@ export const ProjectDetails: CollectionConfig = {
       type: 'group',
       fields: [
         {
-          name: 'issues',
-          label: 'Problem Statement',
-          type: 'textarea',
+          name: 'issuesHeader',
+          type: 'text',
           admin: {
-            rows: 5,
+            description: 'header for Issues',
+          },
+        },
+        {
+          name: 'issueRichText',
+          label: 'Issues Rich Text',
+          type: 'richText',
+          required: true,
+          admin: {
+            description: 'Rich Text for Issue description',
           },
         },
         {
           name: 'solutionsHeader',
           type: 'text',
           admin: {
-            description: 'Optional subtitle introducing the solutions list.',
+            description: 'header for Solutions',
           },
         },
         {
-          name: 'solutionsList',
-          label: 'Solution Bullets',
-          type: 'array',
+          name: 'solutionsRichText',
+          label: 'Solutions Rich Text',
+          type: 'richText',
+          required: true,
           admin: {
-            initCollapsed: true,
-          },
-          fields: [
-            {
-              name: 'item',
-              label: 'Bullet',
-              type: 'text',
-              required: true,
-            },
-          ],
-        },
-        {
-          name: 'solutionsConclusion',
-          label: 'Solutions Conclusion',
-          type: 'textarea',
-          admin: {
-            rows: 5,
+            description: 'Rich Text for Solutions',
           },
         },
       ],

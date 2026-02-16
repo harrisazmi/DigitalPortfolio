@@ -31,8 +31,8 @@ const ProjectPage: FSP = async () => {
     },
   })
 
-  const collaborativeProjects = collaborativeProjectsDocs
-  const personalProjects = personalProjectsDocs
+  const collaborativeProjects = collaborativeProjectsDocs.reverse()
+  const personalProjects = personalProjectsDocs.reverse()
 
   return (
     <ProjectsPageClient

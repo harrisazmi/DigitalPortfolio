@@ -1,36 +1,32 @@
-'use client'
-import { ProjectDetail } from '@/components/shared/ProjectDetail'
-import { mydsPortfolio } from '@/data/ProjectInfo'
+import { getPayload } from 'payload'
+import { JSX, Suspense } from 'react'
+import config from '@/payload.config'
+import MydsClientPage from './page-component'
 
-export default function Myds() {
+// Async-friendly server component type alias
+type FSP = () => Promise<JSX.Element>
+
+const MydsPage: FSP = async () => {
+  const payload = await getPayload({ config })
+
+  const { docs: mydsInfo } = await payload.find({
+    collection: 'project-details',
+    where: {
+      slug: {
+        equals: 'MYDS',
+      },
+    },
+    limit: 1,
+    depth: 3,
+  })
+
+  const mydsProjectDetail = mydsInfo[0]
+
   return (
-    <ProjectDetail
-      projectImage={mydsPortfolio.projectImage}
-      projectName={mydsPortfolio.projectName}
-      overview={mydsPortfolio.overview}
-      linkGroups={[
-        {
-          links: [
-            {
-              label: 'View Live',
-              href: mydsPortfolio.livehref,
-              iconType: 'live',
-            },
-            {
-              label: 'View Code - GitHub',
-              href: mydsPortfolio.githubhref,
-              iconType: 'github',
-            },
-          ],
-        },
-      ]}
-      techStacks={[
-        {
-          title: 'Tech Stack (FE and DevOps)',
-          tools: mydsPortfolio.techstack.main,
-        },
-      ]}
-      sections={mydsPortfolio.sections}
-    />
+    <Suspense>
+      <MydsClientPage mydsProjectDetail={mydsProjectDetail} />
+    </Suspense>
   )
 }
+
+export default MydsPage

@@ -509,19 +509,51 @@ export interface ProjectDetail {
    * Opening paragraph that appears directly under the hero.
    */
   overview: string;
-  problemStatement?: {
-    issues?: string | null;
+  problemStatement: {
     /**
-     * Optional subtitle introducing the solutions list.
+     * header for Issues
+     */
+    issuesHeader?: string | null;
+    /**
+     * Rich Text for Issue description
+     */
+    issueRichText: {
+      root: {
+        type: string;
+        children: {
+          type: any;
+          version: number;
+          [k: string]: unknown;
+        }[];
+        direction: ('ltr' | 'rtl') | null;
+        format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+        indent: number;
+        version: number;
+      };
+      [k: string]: unknown;
+    };
+    /**
+     * header for Solutions
      */
     solutionsHeader?: string | null;
-    solutionsList?:
-      | {
-          item: string;
-          id?: string | null;
-        }[]
-      | null;
-    solutionsConclusion?: string | null;
+    /**
+     * Rich Text for Solutions
+     */
+    solutionsRichText: {
+      root: {
+        type: string;
+        children: {
+          type: any;
+          version: number;
+          [k: string]: unknown;
+        }[];
+        direction: ('ltr' | 'rtl') | null;
+        format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+        indent: number;
+        version: number;
+      };
+      [k: string]: unknown;
+    };
   };
   links: {
     website: string;
@@ -958,15 +990,10 @@ export interface ProjectDetailsSelect<T extends boolean = true> {
   problemStatement?:
     | T
     | {
-        issues?: T;
+        issuesHeader?: T;
+        issueRichText?: T;
         solutionsHeader?: T;
-        solutionsList?:
-          | T
-          | {
-              item?: T;
-              id?: T;
-            };
-        solutionsConclusion?: T;
+        solutionsRichText?: T;
       };
   links?:
     | T
