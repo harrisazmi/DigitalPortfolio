@@ -3,7 +3,7 @@
 import Image from 'next/image'
 import Link from 'next/link'
 import { useEffect, useRef } from 'react'
-import { motion, moveItem, useInView } from 'framer-motion'
+import { motion, useInView } from 'framer-motion'
 import { RichText } from '@payloadcms/richtext-lexical/react'
 import { Button } from '@/components/shared/Button'
 import ProjectLinks from '@/components/shared/ProjectLinks'

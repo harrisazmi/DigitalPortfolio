@@ -13,6 +13,33 @@ export const AvatarInfo: CollectionConfig = {
       required: true,
     },
     {
+      name: 'location',
+      type: 'text',
+      required: true,
+    },
+    {
+      name: 'buttonInfo',
+      type: 'text',
+    },
+    {
+      name: 'imageDark',
+      type: 'upload',
+      relationTo: 'media',
+      required: true,
+      admin: {
+        description: 'Avatar image optimized for dark backgrounds.',
+      },
+    },
+    {
+      name: 'imageLight',
+      type: 'upload',
+      relationTo: 'media',
+      required: true,
+      admin: {
+        description: 'Avatar image optimized for light backgrounds.',
+      },
+    },
+    {
       name: 'designations',
       type: 'text',
       hasMany: true,

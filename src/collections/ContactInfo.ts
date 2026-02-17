@@ -15,6 +15,12 @@ export const ContactInfo: CollectionConfig = {
   },
   fields: [
     {
+      name: 'mainlabel',
+      label: 'Main Profile Label',
+      type: 'text',
+      required: true,
+    },
+    {
       name: 'label',
       label: 'Profile Label',
       type: 'text',

@@ -67,7 +67,7 @@ const RootLayout: FSP = async ({ children }) => {
   const { docs: avatarInfoData } = await payload.find({
     collection: 'avatar-info',
     limit: 1,
-    depth: 0,
+    depth: 1,
   })
   const avatarInfo = avatarInfoData[0]
 

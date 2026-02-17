@@ -9,6 +9,8 @@ import { TypeAnimation } from 'react-type-animation'
 import type { AvatarInfo, AvatarLinkIcon } from '@/types/avatar'
 import type { ReactElement } from 'react'
 import { GitHubIcon, LinkedInIcon, MailIcon, ResumeIcon } from '@/Icons'
+import { Media } from '@/payload-types'
+import { getMediaUrl } from '@/lib/media'
 
 interface AvatarProps {
   className?: string
@@ -22,6 +24,12 @@ export default function Avatar({ className, avatarInfo }: AvatarProps) {
     mail: <MailIcon />,
     resume: <ResumeIcon />,
   }
+  const avatarImageLight = avatarInfo?.imageLight as Media
+  const avatarImageDark = avatarInfo?.imageDark as Media
+  const imageSrcLight = getMediaUrl(avatarImageLight)
+  const imageSrcDark = getMediaUrl(avatarImageDark)
+  console.log(imageSrcDark)
+  console.log(imageSrcLight)
 
   return (
     <>
@@ -36,12 +44,26 @@ export default function Avatar({ className, avatarInfo }: AvatarProps) {
           <div className="flex flex-col justify-between h-134">
             <div className="items-center justify-center flex flex-col">
               <div className="h-70 w-60 rounded-lg mb-6 overflow-clip">
-                <Image
-                  src={'/avatar/avatar-light.png'}
-                  alt={'avatar'}
-                  width={240}
-                  height={280}
-                ></Image>
+                <div className="img-dark">
+                  {imageSrcDark && (
+                    <Image
+                      src={imageSrcDark}
+                      alt={'Avatar Dark Mode'}
+                      width={240}
+                      height={280}
+                    ></Image>
+                  )}
+                </div>
+                <div className="img-light">
+                  {imageSrcLight && (
+                    <Image
+                      src={imageSrcLight}
+                      alt={'Avatar Light Mode'}
+                      width={240}
+                      height={280}
+                    ></Image>
+                  )}
+                </div>
               </div>
               <div className="flex flex-col items-start space-y-1">
                 <div className="text-center">
@@ -61,7 +83,7 @@ export default function Avatar({ className, avatarInfo }: AvatarProps) {
                       />
                     </span>
                   </h2>
-                  <p className="text-lg text-gray-130">Shah Alam, Malaysia</p>
+                  <p className="text-lg text-gray-130">{avatarInfo.location}</p>
                 </div>
               </div>
 
@@ -89,7 +111,7 @@ export default function Avatar({ className, avatarInfo }: AvatarProps) {
             <div className="items-center justify-center flex">
               <Link href={'/contacts'}>
                 <Button className="px-10 py-2 hover:cursor-pointer text-white">
-                  Let&#39;s talk
+                  {avatarInfo.buttonInfo}
                 </Button>
               </Link>
             </div>

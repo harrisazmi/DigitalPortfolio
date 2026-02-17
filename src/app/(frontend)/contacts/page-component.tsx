@@ -21,7 +21,7 @@ export default function ContactsPageClient({ contactInfo }: ContactsPageClientPr
         animate={isInView ? 'animate' : 'initial'}
         transition={{ duration: 0.3, delay: 0.2 }}
       >
-        <h1 className="text-4xl font-bold">Let’s Connect and Collaborate!</h1>
+        <h1 className="text-4xl font-bold">{contactInfo.mainlabel}</h1>
         {contactInfo.connect && <Contact contactItems={contactInfo.connect} />}
       </motion.div>
     </div>

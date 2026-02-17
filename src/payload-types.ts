@@ -182,6 +182,16 @@ export interface Media {
 export interface AvatarInfo {
   id: string;
   username: string;
+  location: string;
+  buttonInfo?: string | null;
+  /**
+   * Avatar image optimized for dark backgrounds.
+   */
+  imageDark: string | Media;
+  /**
+   * Avatar image optimized for light backgrounds.
+   */
+  imageLight: string | Media;
   /**
    * Ordered list of roles or taglines displayed under your name. Example: ["chemical engineer","developer"]
    */
@@ -403,17 +413,9 @@ export interface HomeInfo {
     | {
         name: string;
         /**
-         * Absolute public path or CDN URL, e.g., /tools/fullstack/nextjs.png.
+         * Select a Media item (PNG/SVG) for this logo.
          */
-        path: string;
-        /**
-         * Short sentence describing your experience with the tool.
-         */
-        proficiency?: string | null;
-        /**
-         * Determines the section grouping inside the tech stack grid.
-         */
-        category?: ('fullstack' | 'frontend' | 'backend' | 'language' | 'database' | 'dev-ops') | null;
+        logo: string | Media;
         id?: string | null;
       }[]
     | null;
@@ -423,7 +425,7 @@ export interface HomeInfo {
         major: string;
         year: string;
         name: string;
-        path: string;
+        logo: string | Media;
         id?: string | null;
       }[]
     | null;
@@ -433,7 +435,7 @@ export interface HomeInfo {
         issuer: string;
         year: string;
         credID?: string | null;
-        path: string;
+        logo: string | Media;
         id?: string | null;
       }[]
     | null;
@@ -443,7 +445,7 @@ export interface HomeInfo {
         position: string;
         company: string;
         comments: string;
-        path: string;
+        avatarImage: string | Media;
         id?: string | null;
       }[]
     | null;
@@ -661,6 +663,7 @@ export interface Tool {
  */
 export interface ContactInfo {
   id: string;
+  mainlabel: string;
   label: string;
   connect?:
     | {
@@ -829,6 +832,10 @@ export interface MediaSelect<T extends boolean = true> {
  */
 export interface AvatarInfoSelect<T extends boolean = true> {
   username?: T;
+  location?: T;
+  buttonInfo?: T;
+  imageDark?: T;
+  imageLight?: T;
   designations?: T;
   links?:
     | T
@@ -912,9 +919,7 @@ export interface HomeInfoSelect<T extends boolean = true> {
     | T
     | {
         name?: T;
-        path?: T;
-        proficiency?: T;
-        category?: T;
+        logo?: T;
         id?: T;
       };
   education?:
@@ -924,7 +929,7 @@ export interface HomeInfoSelect<T extends boolean = true> {
         major?: T;
         year?: T;
         name?: T;
-        path?: T;
+        logo?: T;
         id?: T;
       };
   certificate?:
@@ -934,7 +939,7 @@ export interface HomeInfoSelect<T extends boolean = true> {
         issuer?: T;
         year?: T;
         credID?: T;
-        path?: T;
+        logo?: T;
         id?: T;
       };
   sayAboutMe?:
@@ -944,7 +949,7 @@ export interface HomeInfoSelect<T extends boolean = true> {
         position?: T;
         company?: T;
         comments?: T;
-        path?: T;
+        avatarImage?: T;
         id?: T;
       };
   gallery?:
@@ -1055,6 +1060,7 @@ export interface ToolsSelect<T extends boolean = true> {
  * via the `definition` "contact-info_select".
  */
 export interface ContactInfoSelect<T extends boolean = true> {
+  mainlabel?: T;
   label?: T;
   connect?:
     | T

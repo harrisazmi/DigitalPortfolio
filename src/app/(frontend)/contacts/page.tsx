@@ -6,7 +6,7 @@ import ContactsPageClient from './page-component'
 // Async-friendly server component type alias
 type FSP = () => Promise<JSX.Element>
 
-const BaterikuPage: FSP = async () => {
+const ContactPage: FSP = async () => {
   const payload = await getPayload({ config })
 
   const { docs: contactInfoDocs } = await payload.find({
@@ -24,4 +24,4 @@ const BaterikuPage: FSP = async () => {
   )
 }
 
-export default BaterikuPage
+export default ContactPage
