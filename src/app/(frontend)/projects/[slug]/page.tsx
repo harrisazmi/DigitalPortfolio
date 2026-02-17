@@ -19,14 +19,16 @@ export async function generateStaticParams() {
   }))
 }
 
-export default async function ProjectPage({ params }: { params: { slug: string } }) {
+export default async function ProjectPage({ params }: { params: Promise<{ slug: string }> }) {
   const payload = await getPayload({ config })
+
+  const { slug } = await params
 
   const { docs } = await payload.find({
     collection: 'project-details',
     where: {
       slug: {
-        equals: params.slug,
+        equals: slug,
       },
     },
     limit: 1,

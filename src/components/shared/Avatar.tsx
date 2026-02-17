@@ -28,8 +28,6 @@ export default function Avatar({ className, avatarInfo }: AvatarProps) {
   const avatarImageDark = avatarInfo?.imageDark as Media
   const imageSrcLight = getMediaUrl(avatarImageLight)
   const imageSrcDark = getMediaUrl(avatarImageDark)
-  console.log(imageSrcDark)
-  console.log(imageSrcLight)
 
   return (
     <>

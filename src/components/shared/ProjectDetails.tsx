@@ -72,7 +72,7 @@ export default function ProjectDetails({ projectDetails }: ProjectDetailsProps) 
           githublive={projectDetails.links.githublive}
         />
 
-        {projectDetails.problemStatement && (
+        {projectDetails.problemStatement && projectDetails.problemStatement.issueRichText && (
           <section>
             <h2 className="font-bold text-2xl">{projectDetails.problemStatement.issuesHeader}</h2>
             <div className="text-lg text-gray-140 pt-2">
@@ -84,7 +84,7 @@ export default function ProjectDetails({ projectDetails }: ProjectDetailsProps) 
           </section>
         )}
 
-        {projectDetails.problemStatement && (
+        {projectDetails.problemStatement && projectDetails.problemStatement.solutionsRichText && (
           <section>
             <h2 className="font-bold text-2xl">
               {projectDetails.problemStatement.solutionsHeader}
