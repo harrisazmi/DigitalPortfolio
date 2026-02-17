@@ -14,6 +14,16 @@ export const ExperiencesLists: CollectionConfig = {
       type: 'text',
       required: true,
     },
+    {
+      name: 'slug',
+      type: 'text',
+      required: true,
+      unique: true,
+      index: true,
+      admin: {
+        description: 'Stable identifier consumed by the frontend route builder.',
+      },
+    },
     // company image
     {
       name: 'companyImage',

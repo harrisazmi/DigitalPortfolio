@@ -271,6 +271,10 @@ export interface ExperiencesList {
   id: string;
   name: string;
   /**
+   * Stable identifier consumed by the frontend route builder.
+   */
+  slug: string;
+  /**
    * Image shown on cards and detail hero sections.
    */
   companyImage: string | Media;
@@ -896,6 +900,7 @@ export interface ExperiencesSelect<T extends boolean = true> {
  */
 export interface ExperiencesListSelect<T extends boolean = true> {
   name?: T;
+  slug?: T;
   companyImage?: T;
   companyWebsite?: T;
   companyWebsiteLive?: T;
