@@ -60,7 +60,14 @@ export const ExperiencesLists: CollectionConfig = {
         description: 'Position in Company',
       },
     },
-
+    {
+      name: 'overviewTitle',
+      type: 'text',
+      required: true,
+      admin: {
+        description: 'Overview Title',
+      },
+    },
     // overview
     {
       name: 'overview',
@@ -73,6 +80,14 @@ export const ExperiencesLists: CollectionConfig = {
 
     //role
     {
+      name: 'roleHeader',
+      type: 'text',
+      required: true,
+      admin: {
+        description: 'Role Header',
+      },
+    },
+    {
       name: 'role',
       type: 'richText',
       required: true,
@@ -82,6 +97,14 @@ export const ExperiencesLists: CollectionConfig = {
     },
 
     //projects
+    {
+      name: 'projectsHeader',
+      type: 'text',
+      required: true,
+      admin: {
+        description: 'Projects Header',
+      },
+    },
     {
       name: 'projects',
       label: 'Highlighted Projects',
@@ -116,6 +139,14 @@ export const ExperiencesLists: CollectionConfig = {
 
     //key achievements
     {
+      name: 'keyAchievementsHeader',
+      type: 'text',
+      required: true,
+      admin: {
+        description: 'Key Achievements Header Title',
+      },
+    },
+    {
       name: 'keyAchievements',
       label: 'Key Achievements & Contributions',
       type: 'array',
@@ -143,6 +174,14 @@ export const ExperiencesLists: CollectionConfig = {
     },
 
     //impact
+    {
+      name: 'impactHeader',
+      type: 'text',
+      required: true,
+      admin: {
+        description: 'Impact Header Title',
+      },
+    },
     {
       name: 'impact',
       label: 'Impact',

@@ -49,7 +49,7 @@ export default function ChemizPageClient({
               </div>
             </div>
             <section>
-              <h2 className="font-bold text-4xl pb-4">Overview</h2>
+              <h2 className="font-bold text-4xl pb-4">{experienceData.overviewTitle}</h2>
               <RichTextContent
                 field={experienceData.overview}
                 className="space-y-3 leading-relaxed "
@@ -57,7 +57,7 @@ export default function ChemizPageClient({
             </section>
             {experienceData && experienceData.projects && experienceData.projects.length > 0 && (
               <section className="flex flex-col gap-3.5">
-                <h2 className="font-bold text-4xl pb-4">Project Collaborations</h2>
+                <h2 className="font-bold text-4xl pb-4">{experienceData.projectsHeader}</h2>
                 <div className="flex flex-wrap gap-2 items-center justify-center lg:justify-start">
                   {experienceData.projects.map((project) => {
                     const IconComponent = getIconComponent(project.iconKey)
@@ -80,12 +80,12 @@ export default function ChemizPageClient({
               </section>
             )}
             <section>
-              <h2 className="font-bold text-4xl pb-4">My Role</h2>
+              <h2 className="font-bold text-4xl pb-4">{experienceData.roleHeader}</h2>
               <RichTextContent field={experienceData.role} className="space-y-3 leading-relaxed " />
             </section>
             {experienceData.keyAchievements?.length && (
               <section>
-                <h2 className="font-bold text-4xl pb-6">Skills Acquired and Contributions</h2>
+                <h2 className="font-bold text-4xl pb-6">{experienceData.keyAchievementsHeader}</h2>
                 <div className="space-y-6">
                   {experienceData.keyAchievements.map(({ heading, content, id }) => (
                     <article key={id}>
@@ -98,7 +98,7 @@ export default function ChemizPageClient({
             )}
             {experienceData.impact?.length && (
               <section>
-                <h2 className="font-bold text-4xl pb-4">Impact</h2>
+                <h2 className="font-bold text-4xl pb-4">{experienceData.impactHeader}</h2>
                 <div className="space-y-6">
                   {experienceData.impact.map(({ heading, content, id }) => (
                     <article key={id}>

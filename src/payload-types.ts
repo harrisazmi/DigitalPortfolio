@@ -288,6 +288,10 @@ export interface ExperiencesList {
    */
   position: string;
   /**
+   * Overview Title
+   */
+  overviewTitle: string;
+  /**
    * Overview what the company does
    */
   overview: {
@@ -305,6 +309,10 @@ export interface ExperiencesList {
     };
     [k: string]: unknown;
   };
+  /**
+   * Role Header
+   */
+  roleHeader: string;
   /**
    * Role at the company
    */
@@ -324,6 +332,10 @@ export interface ExperiencesList {
     [k: string]: unknown;
   };
   /**
+   * Projects Header
+   */
+  projectsHeader: string;
+  /**
    * Optional set of related projects
    */
   projects?:
@@ -337,6 +349,10 @@ export interface ExperiencesList {
         id?: string | null;
       }[]
     | null;
+  /**
+   * Key Achievements Header Title
+   */
+  keyAchievementsHeader: string;
   /**
    * Each entry renders as a section with its own rich text details.
    */
@@ -362,6 +378,10 @@ export interface ExperiencesList {
     };
     id?: string | null;
   }[];
+  /**
+   * Impact Header Title
+   */
+  impactHeader: string;
   /**
    * Each entry renders as a section with its own rich text details.
    */
@@ -881,8 +901,11 @@ export interface ExperiencesListSelect<T extends boolean = true> {
   companyWebsiteLive?: T;
   yearRange?: T;
   position?: T;
+  overviewTitle?: T;
   overview?: T;
+  roleHeader?: T;
   role?: T;
+  projectsHeader?: T;
   projects?:
     | T
     | {
@@ -891,6 +914,7 @@ export interface ExperiencesListSelect<T extends boolean = true> {
         iconKey?: T;
         id?: T;
       };
+  keyAchievementsHeader?: T;
   keyAchievements?:
     | T
     | {
@@ -898,6 +922,7 @@ export interface ExperiencesListSelect<T extends boolean = true> {
         content?: T;
         id?: T;
       };
+  impactHeader?: T;
   impact?:
     | T
     | {
