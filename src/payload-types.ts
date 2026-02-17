@@ -531,7 +531,7 @@ export interface ProjectDetail {
    * Opening paragraph that appears directly under the hero.
    */
   overview: string;
-  problemStatement: {
+  problemStatement?: {
     /**
      * header for Issues
      */
@@ -539,7 +539,7 @@ export interface ProjectDetail {
     /**
      * Rich Text for Issue description
      */
-    issueRichText: {
+    issueRichText?: {
       root: {
         type: string;
         children: {
@@ -553,7 +553,7 @@ export interface ProjectDetail {
         version: number;
       };
       [k: string]: unknown;
-    };
+    } | null;
     /**
      * header for Solutions
      */
@@ -561,7 +561,7 @@ export interface ProjectDetail {
     /**
      * Rich Text for Solutions
      */
-    solutionsRichText: {
+    solutionsRichText?: {
       root: {
         type: string;
         children: {
@@ -575,7 +575,7 @@ export interface ProjectDetail {
         version: number;
       };
       [k: string]: unknown;
-    };
+    } | null;
   };
   links: {
     website: string;

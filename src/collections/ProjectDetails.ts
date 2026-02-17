@@ -75,7 +75,6 @@ export const ProjectDetails: CollectionConfig = {
           name: 'issueRichText',
           label: 'Issues Rich Text',
           type: 'richText',
-          required: true,
           admin: {
             description: 'Rich Text for Issue description',
           },
@@ -91,7 +90,6 @@ export const ProjectDetails: CollectionConfig = {
           name: 'solutionsRichText',
           label: 'Solutions Rich Text',
           type: 'richText',
-          required: true,
           admin: {
             description: 'Rich Text for Solutions',
           },
