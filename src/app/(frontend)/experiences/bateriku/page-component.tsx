@@ -25,8 +25,6 @@ export default function BaterikuPageClient({
 }: BaterikuPageClientProps) {
   const expRef = useRef(null)
   const isExpRefInView = useInView(expRef, { once: true })
-  const projectEntries = experienceData.projects ?? []
-  const projects = projectEntries.filter((project): project is ExperienceProject => project != null)
   return (
     <div className="pb-4">
       <motion.div
@@ -57,11 +55,11 @@ export default function BaterikuPageClient({
                 className="space-y-3 leading-relaxed "
               />
             </section>
-            {projects.length > 0 && (
+            {experienceData && experienceData.projects && experienceData.projects.length > 0 && (
               <section className="flex flex-col gap-3.5">
                 <h2 className="font-bold text-4xl pb-4">Project Collaborations</h2>
                 <div className="flex flex-wrap gap-2 items-center justify-center lg:justify-start">
-                  {projects.map((project) => {
+                  {experienceData.projects.map((project) => {
                     const IconComponent = getIconComponent(project.iconKey)
 
                     return (
@@ -85,7 +83,7 @@ export default function BaterikuPageClient({
               <h2 className="font-bold text-4xl pb-4">My Role</h2>
               <RichTextContent field={experienceData.role} className="space-y-3 leading-relaxed " />
             </section>
-            {experienceData.keyAchievements?.length ? (
+            {experienceData.keyAchievements?.length && (
               <section>
                 <h2 className="font-bold text-4xl pb-6">Skills Acquired and Contributions</h2>
                 <div className="space-y-6">
@@ -97,8 +95,8 @@ export default function BaterikuPageClient({
                   ))}
                 </div>
               </section>
-            ) : null}
-            {experienceData.impact?.length ? (
+            )}
+            {experienceData.impact?.length && (
               <section>
                 <h2 className="font-bold text-4xl pb-4">Impact</h2>
                 <div className="space-y-6">
@@ -110,7 +108,7 @@ export default function BaterikuPageClient({
                   ))}
                 </div>
               </section>
-            ) : null}
+            )}
             <WebsiteChecker
               href={experienceData.companyWebsite}
               isLive={experienceData.companyWebsiteLive}
