@@ -44,21 +44,21 @@ export default function Avatar({ className, avatarInfo }: AvatarProps) {
           <div className="flex flex-col justify-between h-134">
             <div className="items-center justify-center flex flex-col">
               <div className="h-70 w-60 rounded-lg mb-6 overflow-clip">
-                <div className="img-dark">
-                  {imageSrcDark && (
-                    <Image
-                      src={imageSrcDark}
-                      alt={'Avatar Dark Mode'}
-                      width={240}
-                      height={280}
-                    ></Image>
-                  )}
-                </div>
                 <div className="img-light">
                   {imageSrcLight && (
                     <Image
                       src={imageSrcLight}
                       alt={'Avatar Light Mode'}
+                      width={240}
+                      height={280}
+                    ></Image>
+                  )}
+                </div>
+                <div className="img-dark">
+                  {imageSrcDark && (
+                    <Image
+                      src={imageSrcDark}
+                      alt={'Avatar Dark Mode'}
                       width={240}
                       height={280}
                     ></Image>
