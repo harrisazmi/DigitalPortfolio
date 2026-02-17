@@ -1,14 +1,5 @@
 import type { CollectionConfig } from 'payload'
 
-const techStackCategoryOptions: { label: string; value: string }[] = [
-  { label: 'Fullstack', value: 'fullstack' },
-  { label: 'Frontend', value: 'frontend' },
-  { label: 'Backend', value: 'backend' },
-  { label: 'Language', value: 'language' },
-  { label: 'Database', value: 'database' },
-  { label: 'Dev Ops', value: 'dev-ops' },
-]
-
 export const HomeInfo: CollectionConfig = {
   slug: 'home-info',
   labels: {
