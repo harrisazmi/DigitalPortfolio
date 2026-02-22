@@ -422,14 +422,43 @@ export interface ExperiencesList {
  */
 export interface HomeInfo {
   id: string;
+  homeMainInfo: string;
   /**
-   * Primary hero headline. Supports new lines for dramatic wraps.
+   * Hook For Title
    */
-  titleHook: string;
+  titleHook: {
+    root: {
+      type: string;
+      children: {
+        type: any;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  };
   /**
    * Supporting paragraph shown under the hero headline.
    */
-  descHook: string;
+  descHook: {
+    root: {
+      type: string;
+      children: {
+        type: any;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  };
   /**
    * Logos, proficiencies, and categories for the highlight grid.
    */
@@ -943,6 +972,7 @@ export interface ExperiencesListSelect<T extends boolean = true> {
  * via the `definition` "home-info_select".
  */
 export interface HomeInfoSelect<T extends boolean = true> {
+  homeMainInfo?: T;
   titleHook?: T;
   descHook?: T;
   techStack?:

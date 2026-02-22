@@ -7,27 +7,32 @@ export const HomeInfo: CollectionConfig = {
     plural: 'Home Info Entries',
   },
   admin: {
-    useAsTitle: 'titleHook',
-    defaultColumns: ['titleHook', 'updatedAt'],
+    useAsTitle: 'homeMainInfo',
+    defaultColumns: ['homeMainInfo', 'updatedAt'],
     description: 'Hero copy, highlights, and contact links powering the home page.',
   },
   fields: [
     {
+      name: 'homeMainInfo',
+      label: 'Home Main Info',
+      type: 'text',
+      required: true,
+    },
+    {
       name: 'titleHook',
-      type: 'textarea',
+      label: 'Title Hook',
+      type: 'richText',
       required: true,
       admin: {
-        rows: 2,
-        description: 'Primary hero headline. Supports new lines for dramatic wraps.',
+        description: 'Hook For Title',
       },
     },
     {
       name: 'descHook',
       label: 'Description',
-      type: 'textarea',
+      type: 'richText',
       required: true,
       admin: {
-        rows: 4,
         description: 'Supporting paragraph shown under the hero headline.',
       },
     },

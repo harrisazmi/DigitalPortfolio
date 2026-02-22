@@ -1,22 +1,23 @@
 'use client'
 
+import { ExperienceRichTextField } from '@/types/experience'
+import { RichTextContent } from '../shared/RichTextContent'
+
 type HeroSectionProps = {
-  title: string
-  description: string
+  title: ExperienceRichTextField
+  description: ExperienceRichTextField
 }
 
 export default function HeroSection({ title, description }: HeroSectionProps) {
   return (
     <>
       <h1 className="text-4xl font-extrabold">
-        {title.split('\n').map((line, id) => (
-          <span key={line.concat(String(id))}>
-            {line}
-            <br />
-          </span>
-        ))}
+        <RichTextContent field={title} className="" />
       </h1>
-      <p className="pt-3 text-gray-140">{description}</p>
+      <RichTextContent
+        field={description}
+        className="pt-3 space-y-3 leading-relaxed text-gray-140"
+      />
     </>
   )
 }
