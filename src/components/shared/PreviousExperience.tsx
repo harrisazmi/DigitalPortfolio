@@ -5,7 +5,7 @@ import Image from 'next/image'
 import { motion, useInView } from 'framer-motion'
 import Link from 'next/link'
 import { useMemo, useRef } from 'react'
-import { usePathname } from 'next/navigation'
+import { usePathname, useRouter } from 'next/navigation'
 import { clx } from '@/lib/utils'
 import { getIconComponent } from '@/lib/iconRegistry'
 import { Button } from './Button'
@@ -56,6 +56,7 @@ export default function PreviousExperience({
   experiences = [],
 }: PreviousExperienceProps) {
   const pathname = usePathname()
+  const router = useRouter()
   const currentSlug = useMemo(() => deriveExperienceSlug(pathname), [pathname])
   const ref = useRef(null)
   const isInView = useInView(ref, { once: true })
@@ -102,7 +103,15 @@ export default function PreviousExperience({
               return (
                 <div
                   key={exp.id}
-                  className="bg-white h-auto rounded-2xl flex flex-col justify-between p-6 border border-blue-110 gap-11"
+                  className="bg-white h-auto rounded-2xl flex flex-col justify-between p-6 border border-blue-110 gap-11 hover:cursor-pointer  hover:bg-orange-101 hover:border-orange-140"
+                  role="link"
+                  tabIndex={0}
+                  onClick={() => exp.ctaHref && router.push(exp.ctaHref)}
+                  onKeyDown={(event) => {
+                    if (event.key === 'Enter' && exp.ctaHref) {
+                      router.push(exp.ctaHref)
+                    }
+                  }}
                 >
                   <div className="flex flex-col gap-7">
                     <div className="sm:flex sm:justify-between sm:items-center">

@@ -32,7 +32,9 @@ export default function Contacts({ title, contactItems }: ContactsProps) {
 
                   <div>
                     <div className="font-medium text-base text-start">{connect.title}</div>
-                    <div className="font-light text-xs text-gray-140">{connect.details}</div>
+                    <div className="font-light text-xs text-gray-140 text-start">
+                      {connect.details}
+                    </div>
                   </div>
                 </div>
                 <div>
