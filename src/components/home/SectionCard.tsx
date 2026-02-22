@@ -1,10 +1,12 @@
+import { clx } from '@/lib/utils'
 import { HomeSectionHeading } from './HomeSectionHeading'
 
 type SectionCardProps = {
-  label: string
+  label?: string
   children: React.ReactNode
   action?: React.ReactNode
   bordered?: boolean
+  className?: string
 }
 
 export default function SectionCard({
@@ -12,9 +14,10 @@ export default function SectionCard({
   children,
   action,
   bordered = true,
+  className,
 }: SectionCardProps) {
   return (
-    <section className={bordered ? 'w-full border-b border-blue-110' : 'w-full'}>
+    <section className={clx(bordered ? 'w-full border-b border-blue-110' : 'w-full', className)}>
       <HomeSectionHeading label={label} action={action} />
       {children}
     </section>

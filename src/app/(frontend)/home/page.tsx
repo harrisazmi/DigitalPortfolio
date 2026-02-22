@@ -38,9 +38,9 @@ const HomePage: FSP = async () => {
     depth: 2,
   })
 
-  const experienceInfo = experienceInfoDocs
+  const experienceInfo = experienceInfoDocs.reverse()
   const homeInfo = homeInfoDocs[0]
-  const collaborativeProjectsInfo = collaborativeProjectInfoDocs
+  const collaborativeProjectsInfo = collaborativeProjectInfoDocs.reverse()
   const contactInfo = contactInfoDocs[0]
 
   return (

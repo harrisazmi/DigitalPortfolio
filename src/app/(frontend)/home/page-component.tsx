@@ -35,7 +35,9 @@ export default function HomePageClient({
   return (
     <div className="flex flex-col gap-6">
       <AnimatedSection>
-        <HeroSection title={homeInfo.titleHook} description={homeInfo.descHook} />
+        <SectionCard className="pb-6">
+          <HeroSection title={homeInfo.titleHook} description={homeInfo.descHook} />
+        </SectionCard>
       </AnimatedSection>
 
       <AnimatedSection>

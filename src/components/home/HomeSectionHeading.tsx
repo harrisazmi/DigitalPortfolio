@@ -1,7 +1,7 @@
 import type { ReactNode } from 'react'
 
 type HomeSectionHeadingProps = {
-  label: string
+  label?: string
   action?: ReactNode
 }
 
