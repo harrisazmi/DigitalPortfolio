@@ -90,7 +90,7 @@ export default function ExperiencePageClient({
                   {experienceData.keyAchievements.map(({ heading, content, id }) => (
                     <article key={id}>
                       <h3 className="font-semibold text-xl">{heading}</h3>
-                      <RichTextContent field={content} className="mt-3 space-y-3 leading-relaxed" />
+                      <RichTextContent field={content} className="mt-3" />
                     </article>
                   ))}
                 </div>
