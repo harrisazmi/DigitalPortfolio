@@ -1,30 +1,27 @@
-import { ArrowLeftShortIcon, ArrowRightShortIcon } from "@/Icons";
-import { useRef } from "react";
-import { IconButton } from "./Button";
-import { clx } from "@/lib/utils";
+import { ArrowLeftShortIcon, ArrowRightShortIcon } from '@/Icons'
+import { useRef } from 'react'
+import { IconButton } from './Button'
+import { clx } from '@/lib/utils'
 
 interface HorizontalCardProps {
-  title?: string;
-  children?: React.ReactNode;
+  title?: string
+  children?: React.ReactNode
 }
 
-export default function HorizontalCard({
-  title,
-  children,
-}: HorizontalCardProps) {
-  const scrollRef = useRef<HTMLDivElement>(null);
+export default function HorizontalCard({ title, children }: HorizontalCardProps) {
+  const scrollRef = useRef<HTMLDivElement>(null)
 
   const scroll = (offset: number) => {
     if (scrollRef.current) {
-      scrollRef.current.scrollBy({ left: offset, behavior: "smooth" });
+      scrollRef.current.scrollBy({ left: offset, behavior: 'smooth' })
     }
-  };
+  }
 
   return (
     <div
       className={clx(
-        "max-[375px]:max-w-[82vw] max-[450px]:max-w-[85vw] max-[550px]:max-w-[87vw] max-[650px]:max-w-[89vw] max-[750px]:max-w-[91vw] max-[850px]:max-w-[92vw] max-[950px]:max-w-[93vw] max-[1023px]:max-w-[94vw]",
-        "lg:max-w-162.5",
+        'max-[375px]:max-w-[82vw] max-[450px]:max-w-[85vw] max-[550px]:max-w-[87vw] max-[650px]:max-w-[89vw] max-[750px]:max-w-[91vw] max-[850px]:max-w-[92vw] max-[950px]:max-w-[93vw] max-[1023px]:max-w-[94vw]',
+        'lg:max-w-162.5',
       )}
     >
       <div className="w-full border-b border-blue-110">
@@ -50,5 +47,5 @@ export default function HorizontalCard({
         </div>
       </div>
     </div>
-  );
+  )
 }

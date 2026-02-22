@@ -27,9 +27,9 @@ export default function CertificateCarousel({ items }: CertificateCarouselProps)
               <div className="text-xs text-gray-140">
                 {certificate.issuer}, {certificate.year}
               </div>
-              {certificate.credID ? (
+              {certificate.credID && (
                 <div className="text-xs font-light text-gray-140">{certificate.credID}</div>
-              ) : null}
+              )}
             </div>
             <div className="pl-4">
               {imageSrc && (

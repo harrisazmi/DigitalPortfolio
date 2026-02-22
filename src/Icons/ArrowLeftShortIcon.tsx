@@ -1,21 +1,25 @@
-import { clx } from "@/lib/utils";
+import { useId } from 'react'
+import { clx } from '@/lib/utils'
 
-export function ArrowLeftShortIcon({ className = "", ...props }) {
+export function ArrowLeftShortIcon({ className = '', ...props }) {
+  const gradientId = useId()
+
   return (
     <svg
       viewBox="0 0 12 8"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
-      className={clx("size-4", className)}
+      className={clx('size-4', className)}
       {...props}
     >
       <path
         d="M4.66663 8L0.666626 4L4.66663 0L5.59996 0.966667L3.23329 3.33333H11.3333V4.66667H3.23329L5.59996 7.03333L4.66663 8Z"
-        fill="url(#paint0_linear_4323_163)"
+        fill={`url(#${gradientId})`}
       />
+
       <defs>
         <linearGradient
-          id="paint0_linear_4323_163"
+          id={gradientId}
           x1="0.666626"
           y1="0"
           x2="8.34663"
@@ -27,5 +31,5 @@ export function ArrowLeftShortIcon({ className = "", ...props }) {
         </linearGradient>
       </defs>
     </svg>
-  );
+  )
 }
