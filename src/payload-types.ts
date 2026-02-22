@@ -610,17 +610,37 @@ export interface ProjectDetail {
       [k: string]: unknown;
     } | null;
   };
-  links: {
-    website: string;
-    /**
-     * Editors tick this once they confirm the official site is reachable.
-     */
-    websitelive: boolean;
-    github: string;
-    /**
-     * Editors tick this once they confirm the official Github site is reachable.
-     */
-    githublive: boolean;
+  links?: {
+    website?: {
+      title?: string | null;
+      url?: string | null;
+      /**
+       * Editors tick this once they confirm the official site is reachable.
+       */
+      verified?: boolean | null;
+    };
+    githubs?:
+      | {
+          title?: string | null;
+          url?: string | null;
+          /**
+           * Editors tick this once they confirm the Github repository is reachable.
+           */
+          verified?: boolean | null;
+          id?: string | null;
+        }[]
+      | null;
+    others?:
+      | {
+          title?: string | null;
+          url?: string | null;
+          /**
+           * Editors tick this once they confirm the Other Link is reachable.
+           */
+          verified?: boolean | null;
+          id?: string | null;
+        }[]
+      | null;
   };
   /**
    * Mirror the grouped tech stacks exported inside src/data/ProjectInfo.tsx.
@@ -1063,10 +1083,29 @@ export interface ProjectDetailsSelect<T extends boolean = true> {
   links?:
     | T
     | {
-        website?: T;
-        websitelive?: T;
-        github?: T;
-        githublive?: T;
+        website?:
+          | T
+          | {
+              title?: T;
+              url?: T;
+              verified?: T;
+            };
+        githubs?:
+          | T
+          | {
+              title?: T;
+              url?: T;
+              verified?: T;
+              id?: T;
+            };
+        others?:
+          | T
+          | {
+              title?: T;
+              url?: T;
+              verified?: T;
+              id?: T;
+            };
       };
   techstack?:
     | T

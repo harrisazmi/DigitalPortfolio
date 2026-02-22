@@ -101,34 +101,92 @@ export const ProjectDetails: CollectionConfig = {
       label: 'Project Links',
       type: 'group',
       fields: [
+        /**
+         * WEBSITE (SINGLE)
+         */
         {
           name: 'website',
-          type: 'text',
-          required: true,
+          label: 'Official Website',
+          type: 'group',
+          fields: [
+            {
+              name: 'title',
+              label: 'Website Title',
+              type: 'text',
+            },
+            {
+              name: 'url',
+              label: 'Website URL',
+              type: 'text',
+            },
+            {
+              name: 'verified',
+              label: 'Website Verified Live',
+              type: 'checkbox',
+              admin: {
+                description: 'Editors tick this once they confirm the official site is reachable.',
+              },
+            },
+          ],
         },
+
+        /**
+         * GITHUB (MULTIPLE)
+         */
         {
-          name: 'websitelive',
-          label: 'Website Verified Live',
-          type: 'checkbox',
-          required: true,
-          admin: {
-            description: 'Editors tick this once they confirm the official site is reachable.',
-          },
+          name: 'githubs',
+          label: 'Github Repositories',
+          type: 'array',
+          fields: [
+            {
+              name: 'title',
+              label: 'Github Title',
+              type: 'text',
+            },
+            {
+              name: 'url',
+              label: 'Github Link',
+              type: 'text',
+            },
+            {
+              name: 'verified',
+              label: 'Github Verified Live',
+              type: 'checkbox',
+              admin: {
+                description:
+                  'Editors tick this once they confirm the Github repository is reachable.',
+              },
+            },
+          ],
         },
+
+        /**
+         * OTHERS (MULTIPLE)
+         */
         {
-          name: 'github',
-          type: 'text',
-          required: true,
-        },
-        {
-          name: 'githublive',
-          label: 'Github Verified Live',
-          type: 'checkbox',
-          required: true,
-          admin: {
-            description:
-              'Editors tick this once they confirm the official Github site is reachable.',
-          },
+          name: 'others',
+          label: 'others links',
+          type: 'array',
+          fields: [
+            {
+              name: 'title',
+              label: 'Others Title',
+              type: 'text',
+            },
+            {
+              name: 'url',
+              label: 'Others Link',
+              type: 'text',
+            },
+            {
+              name: 'verified',
+              label: 'Others Verified Live',
+              type: 'checkbox',
+              admin: {
+                description: 'Editors tick this once they confirm the Other Link is reachable.',
+              },
+            },
+          ],
         },
       ],
     },

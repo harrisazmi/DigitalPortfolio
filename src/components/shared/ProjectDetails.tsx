@@ -65,12 +65,13 @@ export default function ProjectDetails({ projectDetails }: ProjectDetailsProps) 
           <p className="text-lg text-gray-140">{projectDetails.overview}</p>
         )}
 
-        <ProjectLinks
-          website={projectDetails.links.website}
-          websitelive={projectDetails.links.websitelive}
-          github={projectDetails.links.github}
-          githublive={projectDetails.links.githublive}
-        />
+        {projectDetails.links && projectDetails.links.website && projectDetails.links.githubs && (
+          <ProjectLinks
+            website={projectDetails.links.website}
+            githubs={projectDetails.links.githubs}
+            others={projectDetails.links?.others}
+          />
+        )}
 
         {projectDetails.problemStatement && projectDetails.problemStatement.issueRichText && (
           <section>
