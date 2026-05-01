@@ -124,6 +124,15 @@ Each page is powered by `ProjectInfo.tsx`, ensuring consistent storytelling, tec
 - Tags are managed directly in this repo and mirrored on GitHub (see [Releases](https://github.com/harrisazmi/OnlinePortfolioV2/tags)).
 - Each tag ties into CI/CD deployments (Cloudflare Pages + self-hosted services) for reproducible releases.
 
+### Changelog
+
+| Version | Description |
+| ------- | ----------- |
+| `4.0.0` | **Dual-repo architecture** — Decoupled the CMS from the frontend monorepo, giving each layer its own deployment pipeline, dependency lifecycle, and release cadence for cleaner long-term maintenance. |
+| `3.0.0` | **CMS-powered content** — Integrated Payload CMS with MongoDB, unlocking a structured admin panel, REST and GraphQL APIs, and type-safe collections to manage portfolio data without touching source code. |
+| `2.0.0` | **Visual overhaul** — Rebuilt the UI with a component-first architecture, four curated themes, Framer Motion animations, and a responsive layout system that scales gracefully across devices. |
+| `1.0.0` | **Foundation** — Launched the first public portfolio as a static Next.js website, establishing the core pages, navigation structure, and initial project showcases. |
+
 ---
 
 ## Deployment & Hosting
