@@ -1,7 +1,7 @@
 import Image from 'next/image'
 import Link from 'next/link'
 import { getMediaUrl } from '@/lib/media'
-import type { Experience, Media } from '@/payload-types'
+import type { Experience, Media } from '@/types/payload-types'
 import { clx } from '@/lib/utils'
 import { ArrowRightShortIcon } from '@/Icons/ArrowRightShortIcon'
 

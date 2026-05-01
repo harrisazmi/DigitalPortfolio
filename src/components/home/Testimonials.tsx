@@ -1,6 +1,6 @@
 import Image from 'next/image'
 import HorizontalCard from '@/components/shared/HorizontalCard'
-import { HomeInfo, Media } from '@/payload-types'
+import { HomeInfo, Media } from '@/types/payload-types'
 import { getMediaUrl } from '@/lib/media'
 
 type TestimonialsProps = {

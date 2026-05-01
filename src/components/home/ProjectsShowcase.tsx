@@ -2,7 +2,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { ArrowRightIcon } from '@/Icons'
 import { Button } from '@/components/shared/Button'
-import { Media, Project } from '@/payload-types'
+import { Media, Project } from '@/types/payload-types'
 import { getMediaUrl } from '@/lib/media'
 
 type ProjectsShowcaseProps = {

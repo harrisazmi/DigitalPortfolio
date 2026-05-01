@@ -2,7 +2,7 @@ import { ArrowRightShortIcon } from '@/Icons'
 import { clx } from '@/lib/utils'
 import Link from 'next/link'
 import { getIconComponent } from '@/lib/iconRegistry'
-import { ContactInfo } from '@/payload-types'
+import { ContactInfo } from '@/types/payload-types'
 
 type ContactsProps = {
   title?: string

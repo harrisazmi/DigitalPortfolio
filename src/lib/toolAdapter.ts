@@ -1,5 +1,6 @@
-import type { Tool } from '@/payload-types'
+import type { Tool } from '@/types/payload-types'
 import { ToolCategories, type ToolCategory } from '@/types/tool'
+import { getMediaUrl } from '@/lib/media'
 
 export type ToolGridItem = {
   id: string
@@ -13,9 +14,7 @@ export type ToolCategorySection = ToolCategory & {
 
 const resolveUploadPath = (icon: Tool['icon']): string | null => {
   if (!icon) return null
-  if (typeof icon === 'string') return icon
-
-  return icon.url ?? (icon.filename ? `/media/${icon.filename}` : null)
+  return getMediaUrl(icon)
 }
 
 export const groupToolsByCategory = (docs: Tool[] = []): ToolCategorySection[] => {

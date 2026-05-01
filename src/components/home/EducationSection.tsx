@@ -1,5 +1,5 @@
 import Image from 'next/image'
-import type { HomeInfo, Media } from '@/payload-types'
+import type { HomeInfo, Media } from '@/types/payload-types'
 import { getMediaUrl } from '@/lib/media'
 
 type EducationSectionProps = {

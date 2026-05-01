@@ -9,7 +9,7 @@ import { TypeAnimation } from 'react-type-animation'
 import type { AvatarInfo, AvatarLinkIcon } from '@/types/avatar'
 import type { ReactElement } from 'react'
 import { GitHubIcon, LinkedInIcon, MailIcon, ResumeIcon } from '@/Icons'
-import { Media } from '@/payload-types'
+import { Media } from '@/types/payload-types'
 import { getMediaUrl } from '@/lib/media'
 
 interface AvatarProps {

@@ -1,5 +1,5 @@
 import Image from 'next/image'
-import type { ProjectDetail } from '@/payload-types'
+import type { ProjectDetail } from '@/types/payload-types'
 import { getMediaUrl } from '@/lib/media'
 
 interface TechStackProps {

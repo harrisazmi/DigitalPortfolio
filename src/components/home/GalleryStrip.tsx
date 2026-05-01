@@ -1,7 +1,7 @@
 import Image from 'next/image'
 import HorizontalCard from '@/components/shared/HorizontalCard'
 import { getMediaUrl } from '@/lib/media'
-import type { HomeInfo, Media } from '@/payload-types'
+import type { HomeInfo, Media } from '@/types/payload-types'
 
 type GalleryStripProps = {
   items: NonNullable<HomeInfo['gallery']>

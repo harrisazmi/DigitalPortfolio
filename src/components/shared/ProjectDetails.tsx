@@ -12,7 +12,7 @@ import { ArrowLeftIcon } from '@/Icons'
 import { cardVariants } from '@/lib/motionVariants'
 import { getMediaUrl } from '@/lib/media'
 import { clx } from '@/lib/utils'
-import type { ProjectDetail } from '@/payload-types'
+import type { ProjectDetail } from '@/types/payload-types'
 
 interface ProjectDetailsProps {
   projectDetails: ProjectDetail

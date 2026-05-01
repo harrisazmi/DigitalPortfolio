@@ -1,6 +1,6 @@
 'use client'
 
-import type { Experience } from '@/payload-types'
+import type { Experience } from '@/types/payload-types'
 import Image from 'next/image'
 import { motion, useInView } from 'framer-motion'
 import Link from 'next/link'
@@ -10,6 +10,7 @@ import { clx } from '@/lib/utils'
 import { getIconComponent } from '@/lib/iconRegistry'
 import { Button } from './Button'
 import { ArrowRightIcon } from '@/Icons'
+import { getMediaUrl } from '@/lib/media'
 
 type PreviousExperienceProps = {
   sub?: boolean
@@ -93,10 +94,11 @@ export default function PreviousExperience({
           ) : (
             filteredExperiences.map((exp) => {
               const companyImage = exp.companyImage
-              const imageSrc =
-                typeof companyImage === 'string' ? undefined : (companyImage?.url ?? undefined)
+              const imageSrc = getMediaUrl(companyImage) ?? undefined
               const imageAlt =
-                typeof companyImage === 'string' ? exp.name : companyImage?.alt || exp.name
+                typeof companyImage === 'string'
+                  ? exp.name
+                  : (companyImage as { alt?: string } | null)?.alt || exp.name
               const projects = Array.isArray(exp.projects) ? exp.projects : []
               const detailText = richTextToPlainText(exp.details)
 

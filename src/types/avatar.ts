@@ -1,4 +1,4 @@
-import type { AvatarInfo as PayloadAvatarInfo } from '@/payload-types'
+import type { AvatarInfo as PayloadAvatarInfo } from '@/types/payload-types'
 
 export type AvatarInfo = PayloadAvatarInfo
 type LinksArray = NonNullable<AvatarInfo['links']>

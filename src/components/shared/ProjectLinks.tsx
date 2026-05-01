@@ -1,7 +1,7 @@
 import { BroadcastIcon, GitHubIcon } from '@/Icons'
 import { Button } from './Button'
 import Link from 'next/link'
-import type { ProjectDetail } from '@/payload-types'
+import type { ProjectDetail } from '@/types/payload-types'
 import { OthersIcon } from '@/Icons/OthersIcon'
 
 type ProjectDetailLinks = NonNullable<ProjectDetail['links']>

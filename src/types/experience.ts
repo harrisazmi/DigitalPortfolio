@@ -1,4 +1,4 @@
-import type { ExperiencesList as PayloadExperiencesList } from '@/payload-types'
+import type { ExperiencesList as PayloadExperiencesList } from '@/types/payload-types'
 
 export type ExperiencesList = PayloadExperiencesList
 
