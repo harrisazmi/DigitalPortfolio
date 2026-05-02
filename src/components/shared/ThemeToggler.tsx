@@ -1,42 +1,23 @@
-"use client";
-import { FunctionComponent, ReactNode, useState } from "react";
-import { useTheme } from "@/hooks/useTheme";
-import { MoonIcon, PlaceholderIcon, SunIcon } from "@/Icons";
+'use client'
+import { useTheme } from 'next-themes'
+import { MoonIcon, SunIcon } from '@/Icons'
 
-interface Themes {
-  theme: string;
-  icon: ReactNode;
-}
-
-interface ThemeToggler {
-  themes?: Themes[];
-}
-
-const ThemeToggler: FunctionComponent<ThemeToggler> = ({
-  themes = [
-    { theme: "light", icon: <SunIcon /> },
-    { theme: "dark", icon: <MoonIcon /> },
-  ],
-}) => {
-  const { toggleTheme } = useTheme();
-  const [currentIndex, setCurrentIndex] = useState(0);
+const ThemeToggler = () => {
+  const { resolvedTheme, setTheme } = useTheme()
 
   const handleClick = () => {
-    const nextIndex = (currentIndex + 1) % themes.length;
-    setCurrentIndex(nextIndex);
-    const nextTheme = themes[nextIndex]?.theme;
-    if (nextTheme) {
-      toggleTheme(nextTheme);
-    }
-  };
+    setTheme(resolvedTheme === 'dark' ? 'light' : 'dark')
+  }
 
   return (
     <button
       className="size-10 items-center justify-center flex hover:cursor-pointer"
       onClick={handleClick}
+      aria-label="Toggle theme"
     >
-      {themes[currentIndex]?.icon ?? <PlaceholderIcon />}
+      <SunIcon className="text-gray-130 dark:hidden" />
+      <MoonIcon className="text-gray-130 hidden dark:block" />
     </button>
-  );
-};
-export { ThemeToggler };
+  )
+}
+export { ThemeToggler }

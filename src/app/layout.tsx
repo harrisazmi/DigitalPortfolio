@@ -66,19 +66,26 @@ const RootLayout: FSP = async ({ children }) => {
   const avatarInfo = avatarInfoData[0]
 
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
+      <head>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `(function(){try{var t=localStorage.getItem('theme');if(t==='dark')document.documentElement.classList.add('dark');}catch(e){}})();`,
+          }}
+        />
+      </head>
       <body
         className={clx(
           `${outfit.variable} antialiased`,
           'items-center justify-center flex flex-col font-outfit xl:px-8',
         )}
       >
-        <div className="mx-auto container px-8 pb-8 ">
-          <ThemeProvider>
+        <ThemeProvider>
+          <div className="mx-auto container px-8 pb-8 ">
             <Navbar></Navbar>
             {avatarInfo && <LayoutContent avatarInfo={avatarInfo}>{children}</LayoutContent>}
-          </ThemeProvider>
-        </div>
+          </div>
+        </ThemeProvider>
       </body>
     </html>
   )
