@@ -6,6 +6,7 @@
   "license": "MIT",
   "type": "module",
   "scripts": {
+    "predev": "node scripts/fetch-media.mjs",
     "dev": "next dev",
     "prebuild": "node scripts/fetch-media.mjs",
     "build": "next build",
