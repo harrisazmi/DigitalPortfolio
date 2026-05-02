@@ -12,7 +12,7 @@ export async function generateStaticParams() {
   return docs.map((doc) => ({ slug: doc.slug }))
 }
 
-export default async function ProjectPage({ params }: { params: Promise<{ slug: string }> }) {
+export default async function ExperiencePage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params
 
   const { docs: experienceDataList } = await cmsFind<ExperiencesList>('experiences-list', {

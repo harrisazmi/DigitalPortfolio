@@ -17,7 +17,7 @@ export default function CertificateCarousel({ items }: CertificateCarouselProps)
         const imageSrc = getMediaUrl(certificateLogo)
         return (
           <div
-            key={certificate.title.concat(certificate.year)}
+            key={certificate.id}
             className="flex shrink-0 snap-start items-center justify-between rounded-lg border border-blue-110 bg-white p-3"
           >
             <div>

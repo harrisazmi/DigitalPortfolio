@@ -6,12 +6,14 @@ import { cardVariants } from '@/lib/motionVariants'
 import { ContactInfo } from '@/types/payload-types'
 
 interface ContactsPageClientProps {
-  contactInfo: ContactInfo
+  contactInfo?: ContactInfo
 }
 
 export default function ContactsPageClient({ contactInfo }: ContactsPageClientProps) {
   const ref = useRef(null)
   const isInView = useInView(ref, { once: true })
+
+  if (!contactInfo) return null
 
   return (
     <div ref={ref}>

@@ -13,7 +13,7 @@ export default function EducationSection({ items }: EducationSectionProps) {
         const eduImage = edu.logo as Media
         const imageSrc = getMediaUrl(eduImage)
         return (
-          <div key={`${edu.title}${edu.year}`} className="flex items-start justify-between gap-6">
+          <div key={edu.id} className="flex items-start justify-between gap-6">
             <div>
               <div className="text-xl font-medium">{edu.title}</div>
               <div className="text-sm font-light text-gray-140">{edu.major}</div>

@@ -149,7 +149,11 @@ export default function PreviousExperience({
                           {projects.map((project) => {
                             const Icon = getIconComponent(project.iconKey)
                             return (
-                              <Link href={project.href} key={project.id ?? project.title}>
+                              <Link
+                                href={project.href}
+                                key={project.id ?? project.title}
+                                onClick={(e) => e.stopPropagation()}
+                              >
                                 <div
                                   className={clx(
                                     'w-37.5 h-17.5 rounded-xl flex items-center justify-center gap-3 px-6',
