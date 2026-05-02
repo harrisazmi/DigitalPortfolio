@@ -5,7 +5,7 @@ import ProjectClientPage from './page-component'
 import type { ProjectDetail } from '@/types/payload-types'
 
 export const revalidate = 3600
-export const dynamicParams = true
+export const dynamicParams = false
 
 export async function generateStaticParams() {
   const { docs } = await cmsFind<{ slug: string }>('project-details', { limit: 100 })

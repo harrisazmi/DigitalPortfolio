@@ -5,7 +5,7 @@ import ExperiencePageClient from './page-component'
 import type { ExperiencesList, Experience } from '@/types/payload-types'
 
 export const revalidate = 3600
-export const dynamicParams = true
+export const dynamicParams = false
 
 export async function generateStaticParams() {
   const { docs } = await cmsFind<{ slug: string }>('experiences-list', { limit: 100 })
