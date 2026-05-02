@@ -5,6 +5,7 @@ const cmsHostname = process.env.CMS_URL ? new URL(process.env.CMS_URL).hostname 
 const nextConfig: NextConfig = {
   output: 'export',
   images: {
+    unoptimized: true,
     remotePatterns: cmsHostname ? [{ protocol: 'https', hostname: cmsHostname }] : [],
     qualities: [100, 75],
   },
