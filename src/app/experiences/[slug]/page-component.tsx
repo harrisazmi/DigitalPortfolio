@@ -85,13 +85,21 @@ export default function ExperiencePageClient({
             </section>
             {experienceData.keyAchievements?.length && (
               <section>
-                <h2 className="font-bold text-4xl pb-6">{experienceData.keyAchievementsHeader}</h2>
-                <div className="space-y-6">
+                {experienceData.keyAchievementsHeader && (
+                  <h2 className="font-bold text-4xl pb-6">
+                    {experienceData.keyAchievementsHeader}
+                  </h2>
+                )}
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   {experienceData.keyAchievements.map(({ heading, content, id }) => (
-                    <article key={id}>
-                      <h3 className="font-semibold text-xl">{heading}</h3>
-                      <RichTextContent field={content} className="mt-3" />
-                    </article>
+                    <div key={id} className="flex flex-col gap-4 bg-gray-110 rounded-lg p-4">
+                      <div>
+                        <h3 className="text-xl font-semibold pb-4">{heading}</h3>
+                        <div className="space-y-2 text-gray-140">
+                          <RichTextContent field={content} className="mt-3 prose" />
+                        </div>
+                      </div>
+                    </div>
                   ))}
                 </div>
               </section>
@@ -102,7 +110,7 @@ export default function ExperiencePageClient({
                 <div className="space-y-6">
                   {experienceData.impact.map(({ heading, content, id }) => (
                     <article key={id}>
-                      <h3 className="font-semibold text-xl">{heading}</h3>
+                      <h3 className="font-semibold text-xl pb-2">{heading}</h3>
                       <RichTextContent field={content} className="leading-relaxed" />
                     </article>
                   ))}

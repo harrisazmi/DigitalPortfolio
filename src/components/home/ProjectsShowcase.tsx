@@ -35,7 +35,10 @@ export default function ProjectsShowcase({ projects }: ProjectsShowcaseProps) {
               <div className="text-xl font-semibold">{project.title}</div>
               <p className="text-gray-140">{project.shortDescription}</p>
               <Link href={project.path} className="mt-3 w-fit">
-                <Button size={'small'} className="flex h-8 items-center gap-2 text-white text-sm">
+                <Button
+                  size={'small'}
+                  className="flex h-8 items-center gap-2 text-white text-sm hover:cursor-pointer"
+                >
                   More Info <ArrowRightIcon className="shrink-0 text-white" />
                 </Button>
               </Link>

@@ -15,6 +15,7 @@ const HomePage: FSP = async () => {
   const { docs: collaborativeProjectInfoDocs } = await cmsFind<Project>('projects', {
     limit: 3,
     depth: 2,
+    sort: 'order',
     where: { category: { equals: 'collaboration' } },
   })
   const { docs: contactInfoDocs } = await cmsFind<ContactInfo>('contact-info', {
@@ -24,7 +25,7 @@ const HomePage: FSP = async () => {
 
   const experienceInfo = experienceInfoDocs.reverse()
   const homeInfo = homeInfoDocs[0]
-  const collaborativeProjectsInfo = collaborativeProjectInfoDocs.reverse()
+  const collaborativeProjectsInfo = collaborativeProjectInfoDocs
   const contactInfo = contactInfoDocs[0]
 
   return (
