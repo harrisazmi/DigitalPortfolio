@@ -19,7 +19,7 @@ export default function ProjectsShowcase({ projects }: ProjectsShowcaseProps) {
         return (
           <article key={project.id} className="flex flex-col gap-4">
             <Link href={project.path} className="relative block w-full">
-              <div className="aspect-325/202 w-full overflow-hidden rounded-2xl">
+              <div className="aspect-325/202 w-full overflow-hidden rounded-2xl border-[1.5px] border-gray-200">
                 {imageSrc && (
                   <Image
                     src={imageSrc}
