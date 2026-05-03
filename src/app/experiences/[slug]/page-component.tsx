@@ -71,7 +71,7 @@ export default function ExperiencePageClient({
                           )}
                         >
                           <IconComponent className="shrink-0" />
-                          <div className="font-semibold">{project.title}</div>
+                          <div className="font-semibold leading-tight">{project.title}</div>
                         </div>
                       </Link>
                     )
