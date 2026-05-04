@@ -1,0 +1,19 @@
+# Catch-all: pages must revalidate + security headers
+# Must be FIRST — Cloudflare applies last matching rule, so specific rules below will override Cache-Control
+/*
+  Cache-Control: public, max-age=0, must-revalidate
+  X-Content-Type-Options: nosniff
+  X-Frame-Options: DENY
+  Referrer-Policy: strict-origin-when-cross-origin
+
+# Hashed JS/CSS bundles — immutable (Next.js puts content hash in filename)
+/_next/static/*
+  Cache-Control: public, max-age=31536000, immutable
+
+# CMS images — 30 days (no content hash in filename, so not immutable)
+/cms-media/*
+  Cache-Control: public, max-age=2592000, stale-while-revalidate=86400
+
+# Documents — 1 week
+/resume/*
+  Cache-Control: public, max-age=604800, stale-while-revalidate=86400
