@@ -87,7 +87,7 @@ export default function Avatar({ className, avatarInfo }: AvatarProps) {
 
               <div className="space-x-4 py-4 flex">
                 {avatarInfo.links?.map((tab) => (
-                  <Link
+                  <a
                     key={tab.href}
                     href={tab.href}
                     target="_blank"
@@ -102,7 +102,7 @@ export default function Avatar({ className, avatarInfo }: AvatarProps) {
                     </div>
                     <IconAnimation />
                     <IconInfo className="top-11 bg-gray-120">{tab.label}</IconInfo>
-                  </Link>
+                  </a>
                 ))}
               </div>
             </div>
