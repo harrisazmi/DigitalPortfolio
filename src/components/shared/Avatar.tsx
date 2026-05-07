@@ -83,7 +83,7 @@ export default function Avatar({ className, avatarInfo }: AvatarProps) {
                       />
                     </span>
                   </h2>
-                  <p className="text-lg text-gray-130">{avatarInfo.location}</p>
+                  <p className="text-lg text-gray-140">{avatarInfo.location}</p>
                 </div>
               </div>
 
