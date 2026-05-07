@@ -30,10 +30,10 @@ export default function HorizontalCard({ title, children }: HorizontalCardProps)
             {title}
           </h2>
           <div className="flex space-x-1">
-            <IconButton onClick={() => scroll(-300)}>
+            <IconButton onClick={() => scroll(-300)} aria-label="Scroll left">
               <ArrowLeftShortIcon className="size-3" />
             </IconButton>
-            <IconButton onClick={() => scroll(300)}>
+            <IconButton onClick={() => scroll(300)} aria-label="Scroll right">
               <ArrowRightShortIcon className="size-3" />
             </IconButton>
           </div>
