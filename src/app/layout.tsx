@@ -23,14 +23,23 @@ const outfit = Outfit({
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://portfoliocf.harrisviewcodes.uk'),
-  title: 'Harris Azmi | Full-Stack Engineer Portfolio',
-  description: 'Modern Next.js portfolio showcasing projects, experience, and CI/CD practices',
+  title: 'Harris Azmi Roswadi | GovTech Malaysia · Mid-Senior Frontend Engineer',
+  description:
+    'Portfolio of Harris Azmi Roswadi — Mid-Senior Frontend Engineer at GovTech Malaysia (Nucleus Unit). Specialist in React, Next.js, and enterprise-grade government web platforms.',
   keywords: [
-    'Harris Azmi',
-    'Full-Stack Engineer',
-    'React',
+    'Harris Azmi Roswadi',
+    'GovTech Malaysia',
+    'GovTech Malaysia Developer',
+    'GovTech Nucleus Unit',
+    'Mid-Senior Frontend Engineer Malaysia',
+    'Mid-Senior Software Engineer Malaysia',
+    'Frontend Lead Malaysia',
+    'Full-Stack Developer',
+    'Software Engineer',
+    'Next.js Developer',
+    'React Expert',
+    'Government Web Developer Malaysia',
     'TypeScript',
-    'Next.js',
     'Tailwind CSS',
     'CI/CD',
     'Cloudflare Pages',
@@ -44,9 +53,9 @@ export const metadata: Metadata = {
     },
   ],
   openGraph: {
-    title: 'Harris Azmi | Full-Stack Engineer Portfolio',
+    title: 'Harris Azmi Roswadi | GovTech Malaysia · Mid-Senior Frontend Engineer',
     description:
-      "Explore Harris Azmi's projects, professional experience, and DevOps workflows built with Next.js",
+      'Portfolio of Harris Azmi Roswadi — Mid-Senior Frontend Engineer at GovTech Malaysia (Nucleus Unit). Specialist in React, Next.js, and enterprise-grade government web platforms.',
     url: 'https://portfoliocf.harrisviewcodes.uk',
     siteName: 'Harris Azmi Portfolio',
     locale: 'en_US',
@@ -56,14 +65,15 @@ export const metadata: Metadata = {
         url: 'https://portfoliocf.harrisviewcodes.uk/og-image.png',
         width: 1200,
         height: 630,
-        alt: 'Harris Azmi — Full-Stack Engineer Portfolio',
+        alt: 'Harris Azmi Roswadi — GovTech Malaysia Frontend Engineer',
       },
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Harris Azmi | Full-Stack Engineer Portfolio',
-    description: 'Modern Next.js portfolio highlighting projects, experience, and CI/CD pipeline.',
+    title: 'Harris Azmi Roswadi | GovTech Malaysia · Mid-Senior Frontend Engineer',
+    description:
+      'Mid-Senior Frontend Engineer at GovTech Malaysia. Building scalable government web platforms with React, Next.js, and TypeScript.',
     images: ['https://portfoliocf.harrisviewcodes.uk/og-image.png'],
   },
   alternates: {

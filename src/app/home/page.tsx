@@ -1,7 +1,31 @@
 import { JSX, Suspense } from 'react'
+import type { Metadata } from 'next'
 import { cmsFind } from '@/lib/cms'
 import HomePageClient from './page-component'
 import type { Experience, HomeInfo, Project, ContactInfo } from '@/types/payload-types'
+
+export const metadata: Metadata = {
+  title: 'Harris Azmi Roswadi | GovTech Malaysia · Mid-Senior Frontend Engineer',
+  description:
+    'Portfolio of Harris Azmi Roswadi — Mid-Senior Frontend Engineer at GovTech Malaysia (Nucleus Unit). Specialist in React, Next.js, and enterprise-grade government web platforms.',
+  keywords: [
+    'Harris Azmi Roswadi',
+    'GovTech Malaysia',
+    'GovTech Malaysia Developer',
+    'GovTech Nucleus Unit',
+    'Mid-Senior Frontend Engineer Malaysia',
+    'Mid-Senior Software Engineer Malaysia',
+    'Frontend Lead Malaysia',
+    'Full-Stack Developer',
+    'Software Engineer',
+    'Next.js Developer',
+    'React Expert',
+    'Government Web Developer Malaysia',
+  ],
+  alternates: {
+    canonical: 'https://portfoliocf.harrisviewcodes.uk/home',
+  },
+}
 
 // Async-friendly server component type alias
 type FSP = () => Promise<JSX.Element>

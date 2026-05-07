@@ -8,6 +8,56 @@ import type { Metadata } from 'next'
 export const revalidate = 3600
 export const dynamicParams = false
 
+// Per-project keyword map — boosts branded search for each project
+const PROJECT_KEYWORDS: Record<string, string[]> = {
+  myds: [
+    'MYDS Malaysia Design System',
+    'Malaysia Design System developer',
+    'MYDS contributor Harris Azmi',
+    'Malaysia government design system',
+    'MYDS Frontend Developer',
+    'MYDS Frontend Maintainer',
+    'MYDS Next.js',
+  ],
+  mygov: [
+    'MyGov Portal Malaysia',
+    'MyGov Harris Azmi',
+    'Malaysia government portal developer',
+    'MyGov Next.js',
+    'MyGov Portal Frontend Developer',
+  ],
+  rdmkd: [
+    'RDMKD Malaysia',
+    'RDMKD Harris Azmi',
+    'RDMKD government portal',
+    'RDMKD Frontend Developer',
+  ],
+  sekolahku: [
+    'Sekolahku Frontend Developer Harris Azmi',
+    'SekolahKu Malaysia',
+    'SekolahKu Harris Azmi',
+    'SekolahKu school portal developer',
+  ],
+  hansard: [
+    'Hansard Parliament Malaysia',
+    'Hansard Parliament Maintainer Harris Azmi',
+    'Malaysia Parliament Hansard system',
+    'Hansard Govtech Maintainer Harris Azmi',
+    'Hansard Next.js',
+  ],
+  kdportal: [
+    'KD Portal Malaysia',
+    'KD Portal Maintainer Harris Azmi',
+    'KD Portal GovTech Maintainer',
+  ],
+  askmygov: [
+    'AskMyGov Malaysia',
+    'AskMyGov Harris Azmi',
+    'AskMyGov GovTech Frontend Developer',
+    'AskMyGov Next.js',
+  ],
+}
+
 export async function generateMetadata({
   params,
 }: {
@@ -22,14 +72,25 @@ export async function generateMetadata({
   const project = docs[0]
   if (!project) return {}
 
-  const title = `${project.title} | Harris Azmi`
+  const title = `${project.title} | Harris Azmi Roswadi`
   const description = project.overview
     ? project.overview.slice(0, 155)
-    : `Explore the ${project.title} project built by Harris Azmi.`
+    : `Explore the ${project.title} project built by Harris Azmi, a Mid-Senior Software Engineer / Frontend Engineer from Malaysia.`
+
+  const keywords = [
+    project.title,
+    `${project.title} Harris Azmi`,
+    `${project.title} developer`,
+    ...(PROJECT_KEYWORDS[slug] ?? []),
+    'Harris Azmi Roswadi',
+    'Frontend Developer for GovTech Malaysia',
+    'Software Engineer',
+  ]
 
   return {
     title,
     description,
+    keywords,
     openGraph: {
       title,
       description,

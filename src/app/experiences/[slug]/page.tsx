@@ -22,7 +22,7 @@ export async function generateMetadata({
   const experience = docs[0]
   if (!experience) return {}
 
-  const title = `${experience.position} at ${experience.name} | Harris Azmi`
+  const title = `${experience.position} at ${experience.name} | Harris Azmi Roswadi`
   const description = `${experience.position} at ${experience.name} (${experience.yearRange}). Explore Harris Azmi's experience and responsibilities in this role.`
 
   return {
