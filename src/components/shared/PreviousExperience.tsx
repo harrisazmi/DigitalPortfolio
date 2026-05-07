@@ -170,9 +170,9 @@ export default function PreviousExperience({
                       </div>
                     )}
                   </div>
-                  <Link href={exp.ctaHref} aria-label={`More info about ${exp.name}`}>
+                  <Link href={exp.ctaHref} aria-label={`View details about ${exp.name}`}>
                     <Button className="flex items-center gap-2 shrink-0 text-white hover:cursor-pointer ">
-                      More Info
+                      View Details
                       <ArrowRightIcon />
                     </Button>
                   </Link>

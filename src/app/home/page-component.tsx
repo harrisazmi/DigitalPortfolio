@@ -46,7 +46,7 @@ export default function HomePageClient({
           action={
             <Link href="/experiences" aria-label="View all work experiences">
               <Button className="text-sm bg-linear-to-r from-orange-110 to-orange-120 border-orange-120 border-from bg-clip-text text-transparent hover:cursor-pointer">
-                More Info
+                View All Experiences
               </Button>
             </Link>
           }

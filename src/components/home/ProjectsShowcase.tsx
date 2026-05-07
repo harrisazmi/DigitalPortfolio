@@ -47,7 +47,7 @@ export default function ProjectsShowcase({ projects }: ProjectsShowcaseProps) {
                   size={'small'}
                   className="flex h-8 items-center gap-2 text-white text-sm hover:cursor-pointer"
                 >
-                  More Info <ArrowRightIcon className="shrink-0 text-white" />
+                  View Project <ArrowRightIcon className="shrink-0 text-white" />
                 </Button>
               </Link>
             </div>
