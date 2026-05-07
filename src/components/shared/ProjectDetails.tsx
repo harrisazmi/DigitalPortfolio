@@ -4,7 +4,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { useEffect, useRef } from 'react'
 import { motion, useInView } from 'framer-motion'
-import { RichText } from '@payloadcms/richtext-lexical/react'
+import { RichTextContent } from '@/components/shared/RichTextContent'
 import { Button } from '@/components/shared/Button'
 import ProjectLinks from '@/components/shared/ProjectLinks'
 import TechStack from '@/components/shared/TechStack'
@@ -77,9 +77,9 @@ export default function ProjectDetails({ projectDetails }: ProjectDetailsProps) 
           <section>
             <h2 className="font-bold text-2xl">{projectDetails.problemStatement.issuesHeader}</h2>
             <div className="text-lg text-gray-140 pt-2">
-              <RichText
+              <RichTextContent
                 className="flex flex-col prose gap-7"
-                data={projectDetails.problemStatement.issueRichText}
+                field={projectDetails.problemStatement.issueRichText}
               />
             </div>
           </section>
@@ -91,9 +91,9 @@ export default function ProjectDetails({ projectDetails }: ProjectDetailsProps) 
               {projectDetails.problemStatement.solutionsHeader}
             </h2>
             <div className="text-lg text-gray-140 pt-2">
-              <RichText
+              <RichTextContent
                 className="flex flex-col prose gap-7"
-                data={projectDetails.problemStatement.solutionsRichText}
+                field={projectDetails.problemStatement.solutionsRichText}
               />
             </div>
           </section>
@@ -121,7 +121,10 @@ export default function ProjectDetails({ projectDetails }: ProjectDetailsProps) 
                             key={`${section.title}-${index}-${detailIndex}`}
                             className="space-y-2  text-gray-140"
                           >
-                            <RichText className="flex flex-col prose gap-7" data={detail.line} />
+                            <RichTextContent
+                              className="flex flex-col prose gap-7"
+                              field={detail.line}
+                            />
                           </div>
                         ))}
                       </div>
