@@ -28,16 +28,35 @@ export async function generateMetadata({
   return {
     title,
     description,
+    keywords: [
+      experience.position,
+      experience.name,
+      `${experience.position} at ${experience.name}`,
+      `${experience.name} Harris Azmi`,
+      'Harris Azmi Roswadi',
+      'GovTech Malaysia Engineer',
+      'Frontend Engineer Malaysia',
+      'Software Engineer Experience',
+    ],
     openGraph: {
       title,
       description,
       url: `https://portfoliocf.harrisviewcodes.uk/experiences/${slug}`,
       type: 'article',
+      images: [
+        {
+          url: 'https://portfoliocf.harrisviewcodes.uk/og-image.png',
+          width: 1200,
+          height: 630,
+          alt: `${title} — Harris Azmi Roswadi`,
+        },
+      ],
     },
     twitter: {
       card: 'summary_large_image',
       title,
       description,
+      images: ['https://portfoliocf.harrisviewcodes.uk/og-image.png'],
     },
     alternates: {
       canonical: `https://portfoliocf.harrisviewcodes.uk/experiences/${slug}`,

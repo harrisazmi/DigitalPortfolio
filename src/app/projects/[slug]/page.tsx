@@ -74,7 +74,7 @@ export async function generateMetadata({
 
   const title = `${project.title} | Harris Azmi Roswadi`
   const description = project.overview
-    ? project.overview.slice(0, 155)
+    ? project.overview
     : `Explore the ${project.title} project built by Harris Azmi, a Mid-Senior Software Engineer / Frontend Engineer from Malaysia.`
 
   const keywords = [
@@ -96,11 +96,20 @@ export async function generateMetadata({
       description,
       url: `https://portfoliocf.harrisviewcodes.uk/projects/${slug}`,
       type: 'article',
+      images: [
+        {
+          url: 'https://portfoliocf.harrisviewcodes.uk/og-image.png',
+          width: 1200,
+          height: 630,
+          alt: `${title} — Harris Azmi Roswadi`,
+        },
+      ],
     },
     twitter: {
       card: 'summary_large_image',
       title,
       description,
+      images: ['https://portfoliocf.harrisviewcodes.uk/og-image.png'],
     },
     alternates: {
       canonical: `https://portfoliocf.harrisviewcodes.uk/projects/${slug}`,

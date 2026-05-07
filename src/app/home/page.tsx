@@ -53,14 +53,44 @@ const HomePage: FSP = async () => {
   const contactInfo = contactInfoDocs[0]
 
   return (
-    <Suspense>
-      <HomePageClient
-        experienceInfo={experienceInfo}
-        homeInfo={homeInfo}
-        collaborativeProjectsInfo={collaborativeProjectsInfo}
-        contactInfo={contactInfo}
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            '@context': 'https://schema.org',
+            '@type': 'Person',
+            name: 'Harris Azmi Roswadi',
+            jobTitle: 'Mid-Senior Frontend Engineer',
+            worksFor: {
+              '@type': 'Organization',
+              name: 'GovTech Malaysia',
+              url: 'https://govtech.gov.my',
+            },
+            url: 'https://portfoliocf.harrisviewcodes.uk/home',
+            sameAs: [
+              'https://www.linkedin.com/in/harris-azmi-roswadi/',
+              'https://github.com/harrisazmi',
+            ],
+            knowsAbout: [
+              'React',
+              'Next.js',
+              'TypeScript',
+              'Frontend Engineering',
+              'Government Web Platforms',
+            ],
+          }),
+        }}
       />
-    </Suspense>
+      <Suspense>
+        <HomePageClient
+          experienceInfo={experienceInfo}
+          homeInfo={homeInfo}
+          collaborativeProjectsInfo={collaborativeProjectsInfo}
+          contactInfo={contactInfo}
+        />
+      </Suspense>
+    </>
   )
 }
 

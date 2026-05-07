@@ -77,7 +77,7 @@ export const metadata: Metadata = {
     images: ['https://portfoliocf.harrisviewcodes.uk/og-image.png'],
   },
   alternates: {
-    canonical: 'https://portfoliocf.harrisviewcodes.uk',
+    canonical: 'https://portfoliocf.harrisviewcodes.uk/home',
   },
 }
 
