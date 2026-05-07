@@ -120,7 +120,9 @@ const RootLayout: FSP = async ({ children }) => {
         <ThemeProvider>
           <div className="mx-auto container px-8 pb-8 ">
             <Navbar></Navbar>
-            {avatarInfo && <LayoutContent avatarInfo={avatarInfo}>{children}</LayoutContent>}
+            <main>
+              {avatarInfo && <LayoutContent avatarInfo={avatarInfo}>{children}</LayoutContent>}
+            </main>
           </div>
         </ThemeProvider>
       </body>

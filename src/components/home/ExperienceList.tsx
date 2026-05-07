@@ -20,6 +20,7 @@ export default function ExperienceList({ experiences }: ExperienceListProps) {
           <Link
             key={experience.id}
             href={experience.ctaHref}
+            aria-label={`View ${experience.name} experience`}
             className="flex w-full items-center rounded-2xl transition-colors hover:bg-blue-20"
           >
             <div

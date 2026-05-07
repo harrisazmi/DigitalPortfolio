@@ -94,12 +94,16 @@ export default function Avatar({ className, avatarInfo }: AvatarProps) {
                     href={tab.href}
                     target="_blank"
                     rel="noopener noreferrer"
+                    aria-label={tab.label}
                     className={clx(
                       'p-2 rounded-xl relative group overflow-visible',
                       'hover:text-white',
                     )}
                   >
-                    <div className="relative z-10 flex items-center text-gray-130 group-hover:text-white">
+                    <div
+                      className="relative z-10 flex items-center text-gray-130 group-hover:text-white"
+                      aria-hidden="true"
+                    >
                       {iconMap[tab.icon]}
                     </div>
                     <IconAnimation />

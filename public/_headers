@@ -5,6 +5,7 @@
   X-Content-Type-Options: nosniff
   X-Frame-Options: DENY
   Referrer-Policy: strict-origin-when-cross-origin
+  Permissions-Policy: shared-storage=(), browsing-topics=(), join-ad-interest-group=(), run-ad-auction=(), private-state-token-redemption=(), private-state-token-issuance=()
 
 # Hashed JS/CSS bundles — immutable (Next.js puts content hash in filename)
 /_next/static/*

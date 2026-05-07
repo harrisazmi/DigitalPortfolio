@@ -68,7 +68,7 @@ export default function HomePageClient({
           <SectionCard
             label="MAIN TECHSTACK"
             action={
-              <Link href="/tools">
+              <Link href="/tools" aria-label="View all tools">
                 <Button className="text-sm bg-linear-to-r from-orange-110 to-orange-120 border-orange-120 border-from bg-clip-text text-transparent hover:cursor-pointer">
                   View All
                 </Button>
