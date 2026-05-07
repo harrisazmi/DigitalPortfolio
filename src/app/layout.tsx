@@ -51,10 +51,20 @@ export const metadata: Metadata = {
     siteName: 'Harris Azmi Portfolio',
     locale: 'en_US',
     type: 'website',
+    images: [
+      {
+        url: 'https://portfoliocf.harrisviewcodes.uk/og-image.png',
+        width: 1200,
+        height: 630,
+        alt: 'Harris Azmi — Full-Stack Engineer Portfolio',
+      },
+    ],
   },
   twitter: {
+    card: 'summary_large_image',
     title: 'Harris Azmi | Full-Stack Engineer Portfolio',
     description: 'Modern Next.js portfolio highlighting projects, experience, and CI/CD pipeline.',
+    images: ['https://portfoliocf.harrisviewcodes.uk/og-image.png'],
   },
   alternates: {
     canonical: 'https://portfoliocf.harrisviewcodes.uk',
