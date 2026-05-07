@@ -1,6 +1,11 @@
+import type { Metadata } from 'next'
 import Link from 'next/link'
 
 //404 issues with this page dont get triggered.
+
+export const metadata: Metadata = {
+  robots: { index: false, follow: false },
+}
 
 export default function NotFound() {
   return (

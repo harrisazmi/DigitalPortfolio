@@ -48,7 +48,7 @@ export async function generateMetadata({
           url: 'https://portfoliocf.harrisviewcodes.uk/og-image.png',
           width: 1200,
           height: 630,
-          alt: `${title} — Harris Azmi Roswadi`,
+          alt: title,
         },
       ],
     },

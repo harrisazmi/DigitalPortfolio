@@ -22,6 +22,23 @@ export const metadata: Metadata = {
     'React Expert',
     'Government Web Developer Malaysia',
   ],
+  openGraph: {
+    title: 'Harris Azmi Roswadi | GovTech Malaysia · Mid-Senior Frontend Engineer',
+    description:
+      'Portfolio of Harris Azmi Roswadi — Mid-Senior Frontend Engineer at GovTech Malaysia (Nucleus Unit). Specialist in React, Next.js, and enterprise-grade government web platforms.',
+    url: 'https://portfoliocf.harrisviewcodes.uk/home',
+    siteName: 'Harris Azmi Portfolio',
+    locale: 'en_US',
+    type: 'website',
+    images: [
+      {
+        url: 'https://portfoliocf.harrisviewcodes.uk/og-image.png',
+        width: 1200,
+        height: 630,
+        alt: 'Harris Azmi Roswadi — GovTech Malaysia Frontend Engineer',
+      },
+    ],
+  },
   alternates: {
     canonical: 'https://portfoliocf.harrisviewcodes.uk/home',
   },

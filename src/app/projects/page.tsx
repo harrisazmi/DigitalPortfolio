@@ -25,6 +25,23 @@ export const metadata: Metadata = {
     'Enterprise React Architecture',
     'Tech Portfolio',
   ],
+  openGraph: {
+    title: 'Software Engineering Projects & Case Studies | Harris Azmi Roswadi',
+    description:
+      'Explore enterprise-level software engineering projects by Harris Azmi — including MYDS, AskMyGov, Hansard Parliament, KD Portal, SekolahKu, RDMKD, and MyGov Portal.',
+    url: 'https://portfoliocf.harrisviewcodes.uk/projects',
+    siteName: 'Harris Azmi Portfolio',
+    locale: 'en_US',
+    type: 'website',
+    images: [
+      {
+        url: 'https://portfoliocf.harrisviewcodes.uk/og-image.png',
+        width: 1200,
+        height: 630,
+        alt: 'Harris Azmi Roswadi — Software Engineering Projects',
+      },
+    ],
+  },
   alternates: {
     canonical: 'https://portfoliocf.harrisviewcodes.uk/projects',
   },

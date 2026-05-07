@@ -19,6 +19,23 @@ export const metadata: Metadata = {
     'Full-Stack Developer Career',
     'Tech Career Transition',
   ],
+  openGraph: {
+    title: 'GovTech Malaysia Engineer · Experience & Resume | Harris Azmi Roswadi',
+    description:
+      "Harris Azmi Roswadi is a Frontend Engineer at GovTech Malaysia's Nucleus Unit, building national digital platforms. Previously Production Manager — a unique cross-industry journey.",
+    url: 'https://portfoliocf.harrisviewcodes.uk/experiences',
+    siteName: 'Harris Azmi Portfolio',
+    locale: 'en_US',
+    type: 'website',
+    images: [
+      {
+        url: 'https://portfoliocf.harrisviewcodes.uk/og-image.png',
+        width: 1200,
+        height: 630,
+        alt: 'Harris Azmi Roswadi — Experience & Resume',
+      },
+    ],
+  },
   alternates: {
     canonical: 'https://portfoliocf.harrisviewcodes.uk/experiences',
   },

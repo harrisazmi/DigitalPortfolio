@@ -18,6 +18,23 @@ export const metadata: Metadata = {
     'React Ecosystem',
     'Web Development Stack',
   ],
+  openGraph: {
+    title: 'My Tech Stack & Dev Tools | Frontend & DevOps | Harris Azmi',
+    description:
+      'Discover the technical stack Harris Azmi uses to build high-performance applications, including Next.js, React, TypeScript, AWS, Kubernetes, and Docker.',
+    url: 'https://portfoliocf.harrisviewcodes.uk/tools',
+    siteName: 'Harris Azmi Portfolio',
+    locale: 'en_US',
+    type: 'website',
+    images: [
+      {
+        url: 'https://portfoliocf.harrisviewcodes.uk/og-image.png',
+        width: 1200,
+        height: 630,
+        alt: 'Harris Azmi Roswadi — Tech Stack & Dev Tools',
+      },
+    ],
+  },
   alternates: {
     canonical: 'https://portfoliocf.harrisviewcodes.uk/tools',
   },

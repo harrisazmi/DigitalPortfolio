@@ -93,6 +93,23 @@ const RootLayout: FSP = async ({ children }) => {
             __html: `(function(){try{var t=localStorage.getItem('theme');if(t==='dark')document.documentElement.classList.add('dark');}catch(e){}})();`,
           }}
         />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              '@context': 'https://schema.org',
+              '@type': 'Person',
+              name: 'Harris Azmi Roswadi',
+              url: 'https://portfoliocf.harrisviewcodes.uk/home',
+              jobTitle: 'Mid-Senior Frontend Engineer',
+              worksFor: {
+                '@type': 'Organization',
+                name: 'GovTech Malaysia',
+              },
+              sameAs: ['https://www.linkedin.com/in/harris-azmi-roswadi/'],
+            }),
+          }}
+        />
       </head>
       <body
         className={clx(
