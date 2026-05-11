@@ -50,6 +50,8 @@ export default function Avatar({ className, avatarInfo }: AvatarProps) {
                       width={1015}
                       height={1230}
                       style={{ width: '100%', height: 'auto' }}
+                      loading="lazy"
+                      priority
                     ></Image>
                   )}
                 </div>
@@ -61,6 +63,8 @@ export default function Avatar({ className, avatarInfo }: AvatarProps) {
                       width={1015}
                       height={1230}
                       style={{ width: '100%', height: 'auto' }}
+                      loading="lazy"
+                      priority
                     ></Image>
                   )}
                 </div>
