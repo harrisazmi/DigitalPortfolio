@@ -79,6 +79,9 @@ export const metadata: Metadata = {
   alternates: {
     canonical: 'https://portfoliocf.harrisviewcodes.uk/home',
   },
+  verification: {
+    google: 'svR1LauoA_ENRX6_jVkuTkahLo9e6DvmOKTvnOqmHgc',
+  },
 }
 
 const RootLayout: FSP = async ({ children }) => {
