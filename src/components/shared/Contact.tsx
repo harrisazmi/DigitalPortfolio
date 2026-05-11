@@ -1,6 +1,5 @@
 import { ArrowRightShortIcon } from '@/Icons'
 import { clx } from '@/lib/utils'
-import Link from 'next/link'
 import { getIconComponent } from '@/lib/iconRegistry'
 import { ContactInfo } from '@/types/payload-types'
 
@@ -18,7 +17,7 @@ export default function Contacts({ title, contactItems }: ContactsProps) {
         {contactItemsCheck.map((connect) => {
           const IconComponent = getIconComponent(connect.iconKey)
           return (
-            <Link
+            <a
               key={connect.href}
               href={connect.href}
               target="_blank"
@@ -47,7 +46,7 @@ export default function Contacts({ title, contactItems }: ContactsProps) {
                   <ArrowRightShortIcon className="size-4"></ArrowRightShortIcon>
                 </div>
               </div>
-            </Link>
+            </a>
           )
         })}
       </div>
