@@ -143,13 +143,16 @@ export { Button, ButtonIcon, button_cva }
 export function IconButton({
   children,
   onClick,
+  'aria-label': ariaLabel,
 }: {
   children: React.ReactNode
   onClick?: () => void
+  'aria-label'?: string
 }) {
   return (
     <Button
       onClick={onClick} // Make sure to pass the onClick here
+      aria-label={ariaLabel}
       className="size-6 p-0 rounded-lg flex items-center justify-center shrink-0 relative overflow-visible hover:cursor-pointer"
     >
       <div className="absolute top-1/2 left-1/2 size-5.5 -translate-x-1/2 -translate-y-1/2 bg-white rounded-[7px] z-0" />

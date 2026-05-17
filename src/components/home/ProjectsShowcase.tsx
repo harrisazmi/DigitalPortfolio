@@ -18,7 +18,11 @@ export default function ProjectsShowcase({ projects }: ProjectsShowcaseProps) {
 
         return (
           <article key={project.id} className="flex flex-col gap-4">
-            <Link href={project.path} className="relative block w-full">
+            <Link
+              href={project.path}
+              className="relative block w-full"
+              aria-label={`View ${project.title}`}
+            >
               <div className="aspect-325/202 w-full overflow-hidden rounded-2xl">
                 {imageSrc && (
                   <Image
@@ -34,7 +38,11 @@ export default function ProjectsShowcase({ projects }: ProjectsShowcaseProps) {
             <div className="flex flex-col gap-2">
               <div className="text-xl font-semibold">{project.title}</div>
               <p className="text-gray-140">{project.shortDescription}</p>
-              <Link href={project.path} className="mt-3 w-fit">
+              <Link
+                href={project.path}
+                className="mt-3 w-fit"
+                aria-label={`View ${project.title} project details`}
+              >
                 <Button size={'small'} className="flex h-8 items-center gap-2 text-white text-sm">
                   More Info <ArrowRightIcon className="shrink-0 text-white" />
                 </Button>

@@ -81,28 +81,32 @@ export default function Avatar({ className, avatarInfo }: AvatarProps) {
                       />
                     </span>
                   </h2>
-                  <p className="text-lg text-gray-130">{avatarInfo.location}</p>
+                  <p className="text-lg text-gray-140">{avatarInfo.location}</p>
                 </div>
               </div>
 
               <div className="space-x-4 py-4 flex">
                 {avatarInfo.links?.map((tab) => (
-                  <Link
+                  <a
                     key={tab.href}
                     href={tab.href}
                     target="_blank"
                     rel="noopener noreferrer"
+                    aria-label={tab.label}
                     className={clx(
                       'p-2 rounded-xl relative group overflow-visible',
                       'hover:text-white',
                     )}
                   >
-                    <div className="relative z-10 flex items-center text-gray-130 group-hover:text-white">
+                    <div
+                      className="relative z-10 flex items-center text-gray-130 group-hover:text-white"
+                      aria-hidden="true"
+                    >
                       {iconMap[tab.icon]}
                     </div>
                     <IconAnimation />
                     <IconInfo className="top-11 bg-gray-120">{tab.label}</IconInfo>
-                  </Link>
+                  </a>
                 ))}
               </div>
             </div>

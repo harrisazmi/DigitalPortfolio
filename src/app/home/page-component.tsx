@@ -44,7 +44,7 @@ export default function HomePageClient({
         <SectionCard
           label="WORK EXPERIENCE"
           action={
-            <Link href="/experiences">
+            <Link href="/experiences" aria-label="View all work experiences">
               <Button className="text-sm bg-linear-to-r from-orange-110 to-orange-120 border-orange-120 border-from bg-clip-text text-transparent hover:cursor-pointer">
                 More Info
               </Button>
@@ -68,7 +68,7 @@ export default function HomePageClient({
           <SectionCard
             label="MAIN TECHSTACK"
             action={
-              <Link href="/tools">
+              <Link href="/tools" aria-label="View all tools">
                 <Button className="text-sm bg-linear-to-r from-orange-110 to-orange-120 border-orange-120 border-from bg-clip-text text-transparent hover:cursor-pointer">
                   View All
                 </Button>
@@ -90,7 +90,7 @@ export default function HomePageClient({
         <SectionCard
           label="RECENT PROJECTS"
           action={
-            <Link href="/projects">
+            <Link href="/projects" aria-label="View all projects">
               <Button className="text-sm bg-linear-to-r from-orange-110 to-orange-120 border-orange-120 border-from bg-clip-text text-transparent hover:cursor-pointer">
                 View All
               </Button>

@@ -20,6 +20,7 @@ export default function Navbar() {
           <Link
             key={tab.href}
             href={tab.href}
+            aria-label={tab.label}
             className={clx(
               'hover:text-white',
               'p-2 rounded-xl relative group overflow-visible',

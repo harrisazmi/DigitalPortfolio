@@ -18,7 +18,13 @@ export default function Contacts({ title, contactItems }: ContactsProps) {
         {contactItemsCheck.map((connect) => {
           const IconComponent = getIconComponent(connect.iconKey)
           return (
-            <Link key={connect.href} href={connect.href} target="_blank" rel="noopener noreferrer">
+            <Link
+              key={connect.href}
+              href={connect.href}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label={connect.title}
+            >
               <div
                 className={clx(
                   'rounded-lg border border-blue-110 bg-white p-3 flex justify-between items-center shrink-0 w-full',
