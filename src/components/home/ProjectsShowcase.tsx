@@ -43,8 +43,11 @@ export default function ProjectsShowcase({ projects }: ProjectsShowcaseProps) {
                 className="mt-3 w-fit"
                 aria-label={`View ${project.title} project details`}
               >
-                <Button size={'small'} className="flex h-8 items-center gap-2 text-white text-sm">
-                  More Info <ArrowRightIcon className="shrink-0 text-white" />
+                <Button
+                  size={'small'}
+                  className="flex h-8 items-center gap-2 text-white text-sm hover:cursor-pointer"
+                >
+                  View Project <ArrowRightIcon className="shrink-0 text-white" />
                 </Button>
               </Link>
             </div>

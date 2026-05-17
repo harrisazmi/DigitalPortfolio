@@ -26,7 +26,7 @@ export default function HorizontalCard({ title, children }: HorizontalCardProps)
     >
       <div className="w-full border-b border-blue-110">
         <div className="justify-between flex">
-          <h2 className="tracking-[2px] text-gray-130 text-xs font-medium items-center flex">
+          <h2 className="tracking-[2px] text-gray-140 text-xs font-medium items-center flex">
             {title}
           </h2>
           <div className="flex space-x-1">

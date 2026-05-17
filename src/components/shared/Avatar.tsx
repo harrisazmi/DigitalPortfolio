@@ -41,14 +41,17 @@ export default function Avatar({ className, avatarInfo }: AvatarProps) {
         >
           <div className="flex flex-col justify-between h-134">
             <div className="items-center justify-center flex flex-col">
-              <div className="h-70 w-60 rounded-lg mb-6 overflow-clip">
+              <div className="w-60 aspect-[1015/1230] rounded-lg mb-6 overflow-clip">
                 <div className="img-light">
                   {imageSrcLight && (
                     <Image
                       src={imageSrcLight}
                       alt={'Avatar Light Mode'}
-                      width={240}
-                      height={280}
+                      width={1015}
+                      height={1230}
+                      style={{ width: '100%', height: 'auto' }}
+                      loading="lazy"
+                      priority
                     ></Image>
                   )}
                 </div>
@@ -57,8 +60,11 @@ export default function Avatar({ className, avatarInfo }: AvatarProps) {
                     <Image
                       src={imageSrcDark}
                       alt={'Avatar Dark Mode'}
-                      width={240}
-                      height={280}
+                      width={1015}
+                      height={1230}
+                      style={{ width: '100%', height: 'auto' }}
+                      loading="lazy"
+                      priority
                     ></Image>
                   )}
                 </div>
