@@ -35,7 +35,7 @@ export async function cmsFind<T>(
 
   const headers = await getCmsAuthHeaders()
 
-  const res = await fetch(url, { headers, next: { revalidate: 3600 } })
+  const res = await fetch(url, { headers, next: { revalidate: false } })
 
   if (!res.ok) {
     throw new Error(`CMS fetch failed: ${res.status} for collection '${collection}'`)
